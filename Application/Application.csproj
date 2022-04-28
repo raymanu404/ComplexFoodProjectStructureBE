@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Commands\**" />
+		<Compile Remove="Handlers\**" />
+		<Compile Remove="Queries\**" />
+		<EmbeddedResource Remove="Commands\**" />
+		<EmbeddedResource Remove="Handlers\**" />
+		<EmbeddedResource Remove="Queries\**" />
+		<None Remove="Commands\**" />
+		<None Remove="Handlers\**" />
+		<None Remove="Queries\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MediatR" Version="10.0.1" />
+		<PackageReference Include="AutoMapper" Version="11.0.1" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Features\Buyers\Commands\CreateBuyer\" />
+		<Folder Include="Features\Buyers\Queries\GetBuyersList\" />
+		<Folder Include="Features\OrderItems\Queries\GetAllItems\" />
+		<Folder Include="Features\OrderItems\Queries\GetALLItemsByBuyerId\" />
+		<Folder Include="Features\Orders\Commands\CreateOrder\" />
+		<Folder Include="Features\Orders\Queries\" />
+		<Folder Include="Profiles\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Domain\Domain.csproj" />
+	</ItemGroup>
+
+</Project>
