@@ -2,7 +2,7 @@
 
 public enum OrderStatus
 {
-    Placed,
+    Placed = 1,
     InProgress,
     Done
 }

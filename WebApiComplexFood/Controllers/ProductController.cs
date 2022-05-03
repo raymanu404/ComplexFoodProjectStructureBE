@@ -11,7 +11,7 @@ using MediatR;
 namespace WebApiComplexFood.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("products")]
     public class ProductController : Controller
     {
         private readonly ILogger<ProductController> _logger;
@@ -23,8 +23,8 @@ namespace WebApiComplexFood.Controllers
             _mediator = mediator;
         }
 
-        // GET: Products
-        [HttpGet("Products")]
+        // GET: products
+        [HttpGet]
         public async Task<ActionResult<List<ProductDto>>> GetAllProducts() 
         {
             var quyerGetAllProducts = new GetAllProductsQuery();
@@ -32,7 +32,7 @@ namespace WebApiComplexFood.Controllers
             return Ok(products);
         }
 
-        //GET : Product/{productId}
+        //GET : products/{productId}
         [HttpGet("{productId}")]
         public async Task<ActionResult<ProductDto>> GetProductById(int productId)
         {
@@ -44,19 +44,27 @@ namespace WebApiComplexFood.Controllers
             return Ok(product);
         }
 
-        // POST : Product
-        [HttpPost("/create-product")]
+        // POST : products/create
+        [HttpPost("create")]
         public async Task<ActionResult<ProductDto>> CreateProduct([FromBody] ProductDto product)
         {
             var command = new CreateProductCommand
             {
                 Product = product
             };
-            await _mediator.Send(command);
-            return CreatedAtRoute(new { title = product.Title }, product);
+
+            string response = await _mediator.Send(command);
+            if (response.Equals("Product was created successfully!")){
+                return CreatedAtRoute(new { title = product.Title }, product);
+            }
+            else
+            {
+                return BadRequest(response);
+            }
+           
         }
 
-        //DELETE : Product/{id}
+        //DELETE : products/{id}
         [HttpDelete("{productId}")]
         public async Task<NoContentResult> DeleteProductById(int productId)
         {
@@ -69,7 +77,7 @@ namespace WebApiComplexFood.Controllers
             return NoContent();
         } 
 
-        //PUT : Product/{id}
+        //PUT : products/{id}
         [HttpPut("{productId}")]
         public async Task<ActionResult<ProductDto>> UpdateProduct(int productId, [FromBody] ProductDto updateProduct)
         {

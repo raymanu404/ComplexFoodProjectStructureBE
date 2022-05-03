@@ -28,7 +28,7 @@ namespace WebApiComplexFood.Controllers
             };
             var admin = await _mediator.Send(command);
 
-            return CreatedAtRoute(new { email = admin.Email.Value }, admin);
+            return CreatedAtRoute(new { email = admin.Email }, admin);
         }
     }
 }

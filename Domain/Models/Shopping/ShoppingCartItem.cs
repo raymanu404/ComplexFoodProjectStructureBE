@@ -9,7 +9,7 @@ namespace Domain.Models.Shopping
         public ShoppingCart ShoppingCart { get; set; }
         public int ShoppingCartId { get; set; }
 
-        //one to one
+        //one to many
         public Product Product { get; set; }    
         public int ProductId { get; set; }
 

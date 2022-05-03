@@ -6,5 +6,6 @@ namespace Application.Features.ShoppingItems.Commands
     {
         public int BuyerId { get; set; }
         public int ProductId { get; set; }
+        public int Amount { get; set; }
     }
 }

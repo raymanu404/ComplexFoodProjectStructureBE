@@ -172,16 +172,16 @@ internal class Program
 
         //PRODUCTS
 
-        var newProduct = new ProductDto
-        {
-            Category = Categories.Meat,
-            Title = "Snitel Paradisul Piratilor",
-            Description = "Snitel Paradisul Piratilor 300 de grame",
-            Price = new Price(3),
-            DateCreated = DateTime.Now,
-            DateUpdated = DateTime.Now,
-            IsInStock = true,
-        };
+        //var newProduct = new ProductDto
+        //{
+        //    Category = Categories.Meat,
+        //    Title = "Snitel Paradisul Piratilor",
+        //    Description = "Snitel Paradisul Piratilor 300 de grame",
+        //    Price = new Price(3),
+        //    DateCreated = DateTime.Now,
+        //    DateUpdated = DateTime.Now,
+        //    IsInStock = true,
+        //};
 
         //var productId = await mediator.Send(new CreateProductCommand
         //{
@@ -213,12 +213,12 @@ internal class Program
         //ITEMS 
         //relatie one to one cu Products 
 
-        var newItem = new OrderItemDto
-        {
-            Amount = new Amount(7),
-            ProductId = 2,
+        //var newItem = new OrderItemDto
+        //{
+        //    Amount = new Amount(7),
+        //    ProductId = 2,
 
-        };
+        //};
 
         //var itemID = await mediator.Send(new CreateItemCommand
         //{

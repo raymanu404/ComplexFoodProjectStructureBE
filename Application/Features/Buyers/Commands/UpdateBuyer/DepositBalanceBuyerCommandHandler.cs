@@ -20,7 +20,7 @@ namespace Application.Features.Buyers.Commands.UpdateBuyer
                 {
                     if (buyer.Confirmed)
                     {
-                        buyer.Balance = request.Balance;
+                        buyer.Balance = new Domain.ValueObjects.Balance(request.Balance);
                         await _unitOfWork.CommitAsync(cancellationToken);
                     }
                     else

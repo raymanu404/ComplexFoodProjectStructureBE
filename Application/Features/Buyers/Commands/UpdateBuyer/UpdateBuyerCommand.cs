@@ -3,9 +3,9 @@ using Application.DtoModels.Buyer;
 
 namespace Application.Features.Buyers.Commands.UpdateBuyer;
 
-public class UpdateBuyerCommand : IRequest<BuyerDto>
+public class UpdateBuyerCommand : IRequest
 {
     public int BuyerId { get; set; }
-    public BuyerDto Buyer { get; set; }
+    public BuyerUpdateDto Buyer { get; set; }
 
 }

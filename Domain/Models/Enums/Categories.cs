@@ -2,7 +2,7 @@
 
 public enum Categories
 {
-    Soup,
+    Soup = 1,
     Meat,
     FoodGarnish,
     Salad,

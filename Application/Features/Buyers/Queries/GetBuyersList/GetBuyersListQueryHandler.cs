@@ -2,11 +2,10 @@
 using AutoMapper;
 using MediatR;
 using Application.DtoModels.Buyer;
-using Domain.Models.Roles;
 
 namespace Application.Features.Buyers.Queries.GetBuyersList;
 
-public class GetBuyersListQueryHandler : IRequestHandler<GetBuyersListQuery, List<Buyer>>
+public class GetBuyersListQueryHandler : IRequestHandler<GetBuyersListQuery, List<BuyerDto>>
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
@@ -17,11 +16,11 @@ public class GetBuyersListQueryHandler : IRequestHandler<GetBuyersListQuery, Lis
         _mapper = mapper;
     }
 
-    public async Task<List<Buyer>> Handle(GetBuyersListQuery request, CancellationToken cancellationToken)
+    public async Task<List<BuyerDto>> Handle(GetBuyersListQuery request, CancellationToken cancellationToken)
     {  
         
         var buyers = await _unitOfWork.Buyers.GetAllAsync();
 
-        return buyers;
+        return _mapper.Map<List<BuyerDto>>(buyers);
     }
 }

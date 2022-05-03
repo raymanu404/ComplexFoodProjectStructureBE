@@ -28,7 +28,7 @@ namespace WebApiComplexFood.Controllers
             _mediator = mediator;
         }
 
-        //GET Buyer/buyer_login
+        //GET buyers/login
         [HttpPost("login")]
         public async Task<ActionResult<BuyerDto>> GetBuyerLogin([FromBody]BuyerDtoLogin buyerLogin)
         {
@@ -44,7 +44,7 @@ namespace WebApiComplexFood.Controllers
             
         }
 
-        //GET: Buyers
+        //GET: buyers
         [HttpGet]
         public async Task<ActionResult<IList<BuyerDto>>> GetAllBuyers()
         {
@@ -55,15 +55,15 @@ namespace WebApiComplexFood.Controllers
             return Ok(buyers);
         }
 
-        //POST BuyerController/id = id
-        [HttpPost]
-        public async Task<ActionResult<BuyerDto>> CreateBuyer([FromBody] CreateBuyerCommand command)
+        //POST buyers/register/email = email
+        [HttpPost("register")]
+        public async Task<ActionResult<BuyerDto>> RegisterBuyer([FromBody] CreateBuyerCommand command)
         {
             var buyer = await _mediator.Send(command);
-            return CreatedAtRoute(new { id = buyer.Id }, buyer);
+            return CreatedAtRoute(new { email = buyer.Email }, buyer);
         }
         
-        //DELETE /{id}
+        //DELETE buyers/{id}
         [HttpDelete("{id}")]
         public async Task<NoContentResult> DeleteBuyer(int id)
         {
@@ -76,26 +76,24 @@ namespace WebApiComplexFood.Controllers
             return NoContent();
         }
 
-        //PATCH /update-buyer/{buyerId}
-        [HttpPatch("update/{buyerId}")]
-        public async Task<ActionResult<BuyerDto>> UpdateBuyer(int buyerId, [FromBody]BuyerDto updateBuyer)
+        //Put buyers/update/{buyerId}
+        [HttpPut("update/{buyerId}")]
+        public async Task<ActionResult> UpdateBuyer(int buyerId, [FromBody]BuyerUpdateDto updateBuyer)
         {
 
             var command = new UpdateBuyerCommand
             {
                 BuyerId = buyerId,
                 Buyer = updateBuyer
-            };
+            }; 
            
-            var buyer = await _mediator.Send(command);
-
-            return Ok(buyer);
+            await _mediator.Send(command);
+            return Ok();
         }
 
-        //PATCH /confirm-buyer/{buyerId}
-
+        //PATCH buyers/confirm/{buyerId}
         [HttpPatch("confirm/{buyerId}")]
-        public async Task<ActionResult<BuyerDto>> ConfirmBuyer(int buyerId)
+        public async Task<ActionResult<string>> ConfirmBuyer(int buyerId)
         {
 
             var command = new ConfirmBuyerCommand
@@ -104,15 +102,15 @@ namespace WebApiComplexFood.Controllers
                 Confirmed = true
             };
 
-            var buyer = await _mediator.Send(command);
+            var confirmationMessage = await _mediator.Send(command);
 
-            return Ok(buyer);
+            return Ok(confirmationMessage);
         }
 
         //PATCH /deposit-balance/{buyerId}
 
         [HttpPatch("deposit-balance/{buyerId}")]
-        public async Task<ActionResult<BuyerDto>> DepositBalanceBuyer(int buyerId, [FromBody]Balance balance)
+        public async Task<ActionResult<string>> DepositBalanceBuyer(int buyerId, [FromBody]float balance)
         {
 
             var command = new DepositBalanceBuyerCommand
@@ -121,12 +119,26 @@ namespace WebApiComplexFood.Controllers
                 Balance = balance
             };
 
-            var buyer = await _mediator.Send(command);
-
-            return Ok(buyer);
+            var depositMessage = await _mediator.Send(command);
+            return Ok(depositMessage);
         }
 
-     
+        //PATCH /update-password/{buyerId}
+
+        [HttpPatch("update-password/{buyerId}")]
+        public async Task<ActionResult<string>> UpdatePasswordBuyer(int buyerId, [FromBody]BuyerUpdatePasswordDto updatePassword)
+        {
+
+            var command = new UpdatePasswordBuyerCommand
+            {
+                BuyerId = buyerId,
+                BuyerUpdatePassword = updatePassword
+            };
+
+            var updatePasswordMessage = await _mediator.Send(command);
+            return Ok(updatePasswordMessage);
+        }
+
 
 
     }

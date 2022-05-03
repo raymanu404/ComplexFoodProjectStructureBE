@@ -7,7 +7,7 @@ using Application.DtoModels.Buyer;
 
 namespace Application.Features.Buyers.Commands.UpdateBuyer;
 
-public class UpdateBuyerCommandHandler : IRequestHandler<UpdateBuyerCommand, BuyerDto>
+public class UpdateBuyerCommandHandler : IRequestHandler<UpdateBuyerCommand>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
@@ -17,23 +17,50 @@ public class UpdateBuyerCommandHandler : IRequestHandler<UpdateBuyerCommand, Buy
         _mapper = mapper;
     }
 
-    public async Task<BuyerDto> Handle(UpdateBuyerCommand command, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(UpdateBuyerCommand command, CancellationToken cancellationToken)
     {
         var buyer = await _unitOfWork.Buyers.GetByIdAsync(command.BuyerId);
-
-        
+    
         if (buyer != null)
         {
-            //buyer.Email = command.Buyer.Email.Value != null ? command.Buyer.Email : buyer.Email;
-            //buyer.FirstName = command.Buyer.FirstName.Value != null ? command.Buyer.FirstName : buyer.FirstName;
-            //buyer.LastName = command.Buyer.LastName.Value != null ? command.Buyer.LastName : buyer.LastName;
-            //buyer.Gender = command.Buyer.Gender.Value != null ? command.Buyer.Gender : buyer.Gender;
-            //buyer.PhoneNumber = command.Buyer.PhoneNumber.Value != null ? command.Buyer.PhoneNumber : buyer.PhoneNumber;
+
+            if (command.Buyer.Email == null || command.Buyer.Email.Equals("string"))
+            {
+                command.Buyer.Email = buyer.Email.Value;
+            }
+
+            if (command.Buyer.FirstName == null || command.Buyer.FirstName.Equals("string"))
+            {
+                command.Buyer.FirstName = buyer.FirstName.Value;
+            }
+
+            if (command.Buyer.LastName == null || command.Buyer.LastName.Equals("string"))
+            {
+                command.Buyer.LastName = buyer.LastName.Value;
+            }
+
+            if (command.Buyer.PhoneNumber == null || command.Buyer.PhoneNumber.Equals("string"))
+            {
+                command.Buyer.PhoneNumber = buyer.PhoneNumber.Value;
+            }
+
+            if (command.Buyer.Gender == null || command.Buyer.Gender.Equals("string"))
+            {
+                command.Buyer.Gender = buyer.Gender.Value;
+            }
+
+            buyer.Email = new Email(command.Buyer.Email);
+            buyer.FirstName = new Name(command.Buyer.FirstName);
+            buyer.LastName =new Name(command.Buyer.LastName);
+            buyer.Gender = new Gender(command.Buyer.Gender);
+            buyer.PhoneNumber =new PhoneNumber(command.Buyer.PhoneNumber);
+
+            //buyer. = _mapper.Map<Buyer>(command.Buyer);
 
             //_unitOfWork.Buyers.Update(command.Buyer);
             await _unitOfWork.CommitAsync(cancellationToken);
         }
 
-        return command.Buyer;
+        return Unit.Value;
     }
 }

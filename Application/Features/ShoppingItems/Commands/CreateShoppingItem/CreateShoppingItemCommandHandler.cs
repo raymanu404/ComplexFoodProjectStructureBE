@@ -33,43 +33,54 @@ namespace Application.Features.ShoppingItems.Commands
 
                 if(buyer != null && product != null)
                 {
-                    var shoppingCartId = 0;
-                    var getCart = await _unitOfWork.ShoppingCarts.GetCartByBuyerIdAsync(buyer.Id);
-                    if(getCart == null)
+                    var total_price = (request.Amount * product.Price.Value);
+                    if(buyer.Balance.Value >= total_price)
                     {
-                        //facem cart inainte
-                        var newCart = new ShoppingCartDto
+                        var shoppingCartId = 0;
+                        var getCart = await _unitOfWork.ShoppingCarts.GetCartByBuyerIdAsync(buyer.Id);
+                        if (getCart == null)
                         {
-                            BuyerId = buyer.Id,
-                            Code = new UniqueCode(RandomCode(6)),
-                            DatePlaced = DateTime.Now,
-                            Discount = new Discount(0),
-                            TotalPrice = product.Price
-                        };
-                        var cart = await _mediator.Send(new CreateShoppingCartCommand { BuyerId = buyer.Id, Cart = newCart });
-                        await _unitOfWork.CommitAsync(cancellationToken);
-                        shoppingCartId = cart.Id;
+                            //facem cart inainte
+                            var newCart = new ShoppingCartDto
+                            {
+                                BuyerId = buyer.Id,
+                                Code = RandomCode(6),
+                                DatePlaced = DateTime.Now,
+                                Discount = 0,
+                                TotalPrice = total_price
+                            };
+                            var cart = await _mediator.Send(new CreateShoppingCartCommand { BuyerId = buyer.Id, Cart = newCart });
+                            await _unitOfWork.CommitAsync(cancellationToken);
+                            shoppingCartId = cart.Id;
 
+                        }
+                        else
+                        {
+                            shoppingCartId = getCart.Id;
+
+                        }
+
+                        var shoppingItemDto = new ShoppingCartItemDto
+                        {
+
+                            ProductId = product.Id,
+                            ShoppingCartId = shoppingCartId,
+                            Amount = request.Amount
+
+                        };
+
+                        var shoppingItem = _mapper.Map<ShoppingCartItem>(shoppingItemDto);
+                        await _unitOfWork.ShoppingItems.AddAsync(shoppingItem);
+                        buyer.Balance = new Balance(buyer.Balance.Value - total_price);
+
+                        await _unitOfWork.CommitAsync(cancellationToken);
+                        id = shoppingItem.ShoppingCartId;
                     }
                     else
                     {
-                        shoppingCartId = getCart.Id;
-
+                        id = -2;
                     }
-                   
-                    var shoppingItemDto = new ShoppingCartItemDto
-                    {
-                        
-                        ProductId = product.Id,
-                        ShoppingCartId = shoppingCartId,
-
-                    };
-
-                    var shoppingItem = _mapper.Map<ShoppingCartItem>(shoppingItemDto);
-                    
-                    await _unitOfWork.ShoppingItems.AddAsync(shoppingItem);
-                    await _unitOfWork.CommitAsync(cancellationToken);
-                    
+                
                 }
                 else
                 {

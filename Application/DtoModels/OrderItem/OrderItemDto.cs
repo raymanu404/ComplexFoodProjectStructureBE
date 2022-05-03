@@ -5,7 +5,7 @@ namespace Application.DtoModels.OrderItem
 {
     public class OrderItemDto
     {
-        public Amount Amount { get; set; }
+        public int Amount { get; set; }
         public int ProductId { get; set; }
     }
 }

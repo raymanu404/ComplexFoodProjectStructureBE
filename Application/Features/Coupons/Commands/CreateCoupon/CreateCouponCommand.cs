@@ -4,7 +4,7 @@ using Domain.ValueObjects;
 
 namespace Application.Features.Coupons.Commands.CreateCoupon
 {
-    public class CreateCouponCommand : IRequest<List<CouponDto>> 
+    public class CreateCouponCommand : IRequest<string> 
     { 
 
         public int BuyerId { get; set; }

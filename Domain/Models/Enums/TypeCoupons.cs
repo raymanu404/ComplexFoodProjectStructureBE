@@ -2,7 +2,7 @@
 
 public enum TypeCoupons
 {
-    TenProcent,
+    TenProcent = 1,
     TwentyProcent,
     ThirtyProcent
 }

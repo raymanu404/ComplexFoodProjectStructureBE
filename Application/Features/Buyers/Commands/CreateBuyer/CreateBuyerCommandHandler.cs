@@ -6,7 +6,7 @@ using Application.DtoModels.Buyer;
 
 namespace Application.Features.Buyers.Commands.CreateBuyer;
 
-public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, Buyer>
+public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, BuyerDto>
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
@@ -17,7 +17,7 @@ public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, Buy
         _mapper = mapper;
     }
 
-    public async Task<Buyer> Handle(CreateBuyerCommand command, CancellationToken cancellationToken)
+    public async Task<BuyerDto> Handle(CreateBuyerCommand command, CancellationToken cancellationToken)
     {
 
        
@@ -27,6 +27,6 @@ public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, Buy
         await _unitOfWork.Buyers.AddAsync(buyer);
         await _unitOfWork.CommitAsync(cancellationToken);
 
-        return buyer;
+        return command.Buyer;
     }
 }

@@ -18,19 +18,11 @@ namespace Application.Features.Admins.Commands
 
         public async Task<AdminDto> Handle(CreateAdminCommand command, CancellationToken cancellationToken)
         {
-            try
-            {
-                var admin = _mapper.Map<Admin>(command.Admin);
-                await _unitOfWork.Admins.CreateAdminAsync(admin);
-                await _unitOfWork.CommitAsync(cancellationToken);
-                
-            }catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                
-            }
+            var admin = _mapper.Map<Admin>(command.Admin);
+            await _unitOfWork.Admins.CreateAdminAsync(admin);
+            await _unitOfWork.CommitAsync(cancellationToken);
 
-            return command.Admin;
+            return _mapper.Map<AdminDto>(admin);
         }
     }
 }

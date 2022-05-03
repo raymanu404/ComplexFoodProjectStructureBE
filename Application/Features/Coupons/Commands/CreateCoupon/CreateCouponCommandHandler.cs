@@ -1,27 +1,24 @@
 ﻿using Application.Contracts.Persistence;
 using MediatR;
 using Domain.Models.Shopping;
-using AutoMapper;
 using Domain.Models.Enums;
 using Domain.ValueObjects;
-using Application.DtoModels.Coupon;
+
 
 namespace Application.Features.Coupons.Commands.CreateCoupon
 {
-    public class CreateCouponCommandHandler : IRequestHandler<CreateCouponCommand, List<CouponDto>>
+    public class CreateCouponCommandHandler : IRequestHandler<CreateCouponCommand, string>
     {
 
-        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         
-        public CreateCouponCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public CreateCouponCommandHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _mapper = mapper;
         }
-        public async Task<List<CouponDto>> Handle(CreateCouponCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(CreateCouponCommand request, CancellationToken cancellationToken)
         {
-            var coupons = new List<CouponDto>();
+            string returnMessage = "";
             try
             {
                 var buyer = await _unitOfWork.Buyers.GetByIdAsync(request.BuyerId);
@@ -33,13 +30,13 @@ namespace Application.Features.Coupons.Commands.CreateCoupon
                         switch (request.Coupon.Type)
                         {
                             case TypeCoupons.TenProcent:
-                                totalPrice = request.Coupon.Amount.Value * 10; 
+                                totalPrice = request.Coupon.Amount * 10; 
                                 break;
                             case TypeCoupons.TwentyProcent:
-                                totalPrice = request.Coupon.Amount.Value * 15;
+                                totalPrice = request.Coupon.Amount * 15;
                                 break;
                             case TypeCoupons.ThirtyProcent:
-                                totalPrice = request.Coupon.Amount.Value * 20;
+                                totalPrice = request.Coupon.Amount * 20;
                                 break;
                             default:
                                 throw new Exception("Invalid Type of coupon!");
@@ -47,21 +44,19 @@ namespace Application.Features.Coupons.Commands.CreateCoupon
 
                         if (buyer.Balance.Value >= totalPrice)
                         {
-                            for (var i = 0; i < request.Coupon.Amount.Value; i++)
+                            for (var i = 0; i < request.Coupon.Amount; i++)
                             {
-                                var newCouponDto = new CouponDto
+
+                                var newCoupon = new Coupon
                                 {
                                     BuyerId = buyer.Id,
                                     Code = new UniqueCode(RandomCode(6)),
                                     DateCreated = DateTime.Now,
                                     Type = request.Coupon.Type
                                 };
-
-                                var coupon = _mapper.Map<Coupon>(newCouponDto);
-                                await _unitOfWork.Coupons.AddAsync(coupon);
-                                buyer.Coupons.Add(coupon);
-
-                                coupons.Add(newCouponDto);
+                            
+                                await _unitOfWork.Coupons.AddAsync(newCoupon);
+                                buyer.Coupons.Add(newCoupon);
                               
                             }
 
@@ -70,7 +65,7 @@ namespace Application.Features.Coupons.Commands.CreateCoupon
                         }
                         else
                         {
-                            
+                            returnMessage = "Insufficient funds!";
                         }
                       
                     }
@@ -78,15 +73,16 @@ namespace Application.Features.Coupons.Commands.CreateCoupon
                 }
                 else
                 {
-                   
+                    returnMessage = "Buyer doesn't exists!";
                 }
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                returnMessage = "Error in Create Coupons";
                 
             }
-            return coupons;
+            return returnMessage;
             
         }
 

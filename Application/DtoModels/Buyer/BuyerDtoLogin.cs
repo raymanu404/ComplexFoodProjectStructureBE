@@ -4,7 +4,7 @@ namespace Application.DtoModels.Buyer
 {
     public class BuyerDtoLogin
     {
-        public Email Email { get; set; }
-        public Password Password { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }

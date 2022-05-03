@@ -6,12 +6,11 @@ using Application.DtoModels.Coupon;
 using Application.Features.Coupons.Queries.GetCouponsByBuyerId;
 using Application.Features.Coupons.Commands.CreateCoupon;
 using Application.Features.Coupons.Commands.DeleteCoupon;
-using Domain.ValueObjects;
 
 namespace WebApiComplexFood.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("Coupons")]
     public class CouponController : Controller
     {
 
@@ -25,7 +24,7 @@ namespace WebApiComplexFood.Controllers
         }
 
         // GET: CouponController/Coupons/buyerId
-        [HttpGet("/Coupons/{buyerId}")]
+        [HttpGet("{buyerId}")]
         public async Task<ActionResult<CouponDto>> GetAllCouponsByBuyerId(int buyerId)
         {
             var queryGetAllCouponsByBuyerId = new GetCouponsByBuyerIdQuery() { BuyerId = buyerId };
@@ -34,9 +33,9 @@ namespace WebApiComplexFood.Controllers
         }
 
 
-        // POST: CouponController/Create/buyerId
-        [HttpPost("/Coupon/{buyerId}")]
-        public async Task<ActionResult<CouponDto>> CreateCoupons(int buyerId, [FromBody] CouponCreateDto newCoupons)
+        // POST: buy_coupons/buyerId
+        [HttpPost("buy_coupons/{buyerId}")]
+        public async Task<ActionResult<NoContentResult>> CreateCoupons(int buyerId, [FromBody] CouponCreateDto newCoupons)
         {
 
             var command = new CreateCouponCommand
@@ -49,11 +48,11 @@ namespace WebApiComplexFood.Controllers
             return CreatedAtRoute(new { code = buyerId.ToString()} , coupons);
         }
 
-        // DELETE: CouponController/id
+        // DELETE: Coupons/id
         [HttpDelete("{buyerId}/{code}")]
         public async Task<NoContentResult> DeleteCoupon(int buyerId, string code)
         {
-            var command = new DeleteCouponCommand() { BuyerId = buyerId, Code = new UniqueCode(code)};
+            var command = new DeleteCouponCommand() { BuyerId = buyerId, Code = code};
             await _mediator.Send(command);
 
             return NoContent();

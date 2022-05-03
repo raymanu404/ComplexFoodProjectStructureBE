@@ -8,7 +8,7 @@ namespace Application.DtoModels.Coupon
     {
         public TypeCoupons Type { get; set; }
         public DateTime DateCreated { get; set; }
-        public UniqueCode Code { get; set; }
+        public string Code { get; set; }
         public int BuyerId { get; set; }
     }
 }

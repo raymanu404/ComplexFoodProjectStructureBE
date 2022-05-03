@@ -1,5 +1,6 @@
 ﻿using Application.Contracts.Persistence;
 using MediatR;
+using Domain.ValueObjects;
 
 namespace Application.Features.Coupons.Commands.DeleteCoupon
 {
@@ -18,7 +19,7 @@ namespace Application.Features.Coupons.Commands.DeleteCoupon
                 if (buyer != null)
                 {
 
-                    var couponToDelete = await _unitOfWork.Coupons.GetByUniqueCodeAsync(request.Code, buyer.Id);
+                    var couponToDelete = await _unitOfWork.Coupons.GetByUniqueCodeAsync(new UniqueCode(request.Code), buyer.Id);
                     if(couponToDelete != null)
                     {
                         _unitOfWork.Coupons.Delete(couponToDelete);

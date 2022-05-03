@@ -21,9 +21,9 @@ public class MappingProfile : Profile
         //DTOs
         CreateMap<Admin, AdminDto>().ReverseMap();
         CreateMap<Buyer, BuyerDto>().ReverseMap();
+        CreateMap<Buyer, BuyerDtoLogin>().ReverseMap();
         CreateMap<Coupon, CouponDto>().ReverseMap();
         CreateMap<Product, ProductDto>().ReverseMap();
-        CreateMap<Admin, AdminDto>().ReverseMap();
         CreateMap<OrderItem, OrderItemDto>().ReverseMap();
         CreateMap<ShoppingCart, ShoppingCartDto>().ReverseMap();
         CreateMap<Order, OrderDto>().ReverseMap();

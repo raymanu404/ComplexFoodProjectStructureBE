@@ -22,9 +22,6 @@ namespace Application.Features.ShoppingCarts.Commands.CreateShoppingCartCommand
         public async Task<ShoppingCart> Handle(CreateShoppingCartCommand command, CancellationToken cancellationToken)
         {
 
-            //var buyer = await _unitOfWork.Buyers.GetByIdAsync(command.BuyerId);
-
-
             var cart = _mapper.Map<ShoppingCart>(command.Cart);
             await _unitOfWork.ShoppingCarts.AddAsync(cart);
             await _unitOfWork.CommitAsync(cancellationToken);

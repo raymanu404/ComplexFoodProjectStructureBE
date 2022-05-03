@@ -57,7 +57,7 @@ namespace WebApiComplexFood
             });
 
 
-            services.AddCors(options => options.AddPolicy(CORS_POLICY, builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+            services.AddCors(options => options.AddPolicy(CORS_POLICY, builder => builder.SetIsOriginAllowed(origin => true).AllowAnyMethod().AllowAnyHeader()));
 
         }
 

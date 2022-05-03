@@ -31,6 +31,8 @@
 		<Folder Include="Features\OrderItems\Queries\GetALLItemsByBuyerId\" />
 		<Folder Include="Features\Orders\Commands\CreateOrder\" />
 		<Folder Include="Features\Orders\Queries\" />
+		<Folder Include="Features\ShoppingItems\Commands\DeleteShoppingItem\" />
+		<Folder Include="Features\ShoppingItems\Commands\UpdateShoppingItem\" />
 		<Folder Include="Profiles\" />
 	</ItemGroup>
 
