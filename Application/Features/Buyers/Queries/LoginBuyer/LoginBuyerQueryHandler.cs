@@ -4,6 +4,8 @@ using Application.Contracts.Persistence;
 using Application.DtoModels.Buyer;
 using Domain.ValueObjects;
 using AutoMapper;
+using Application.Components;
+using Domain.Models.Roles;
 
 namespace Application.Features.Buyers.Queries.LoginBuyer
 {
@@ -18,9 +20,10 @@ namespace Application.Features.Buyers.Queries.LoginBuyer
         }
         public async Task<BuyerDto> Handle(LoginBuyerQuery request, CancellationToken cancellationToken)
         {
-            var loginBuyer = await _unitOfWork.Buyers.LoginBuyer(new Email(request.BuyerLogin.Email), new Password(request.BuyerLogin.Password));
+            var encodedPlainText = EncodePassword.ComputeSha256Hash(request.BuyerLogin.Password);
 
-            return _mapper.Map<BuyerDto>(loginBuyer);
+            var loginBuyer = await _unitOfWork.Buyers.LoginBuyer(new Email(request.BuyerLogin.Email), new Password(encodedPlainText));
+            return loginBuyer;
         }
     }
 }

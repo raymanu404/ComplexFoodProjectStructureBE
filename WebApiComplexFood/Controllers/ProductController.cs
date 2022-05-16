@@ -25,7 +25,7 @@ namespace WebApiComplexFood.Controllers
 
         // GET: products
         [HttpGet]
-        public async Task<ActionResult<List<ProductDto>>> GetAllProducts() 
+        public async Task<ActionResult<IList<ProductDto>>> GetAllProducts() 
         {
             var quyerGetAllProducts = new GetAllProductsQuery();
             var products = await _mediator.Send(quyerGetAllProducts);

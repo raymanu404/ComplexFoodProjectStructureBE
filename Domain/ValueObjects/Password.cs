@@ -12,11 +12,12 @@ public record struct Password
     {
         if (value == null) throw new ArgumentNullException("value");
 
-        if (hasNumber.IsMatch(value) && hasUpperChar.IsMatch(value) && hasMinimum8Chars.IsMatch(value))
+        if (hasNumber.IsMatch(value) /*&& hasUpperChar.IsMatch(value)*/ && hasMinimum8Chars.IsMatch(value))
             Value = value;
         else
             throw new Exception("Password invalid!");
     }
 
     public string Value { get; set; }
+    
 }

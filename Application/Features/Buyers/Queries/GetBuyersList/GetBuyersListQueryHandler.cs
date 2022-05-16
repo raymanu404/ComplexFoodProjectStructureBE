@@ -20,7 +20,6 @@ public class GetBuyersListQueryHandler : IRequestHandler<GetBuyersListQuery, Lis
     {  
         
         var buyers = await _unitOfWork.Buyers.GetAllAsync();
-
         return _mapper.Map<List<BuyerDto>>(buyers);
     }
 }

@@ -153,3 +153,6 @@ E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\ProjectStructure.MSTests
 E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\ProjectStructure.MSTests\obj\Debug\net6.0\ProjectStructure.MSTests.pdb
 E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\ProjectStructure.MSTests\obj\Debug\net6.0\ProjectStructure.MSTests.genruntimeconfig.cache
 E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\ProjectStructure.MSTests\obj\Debug\net6.0\ref\ProjectStructure.MSTests.dll
+E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\ProjectStructure.MSTests\bin\Debug\net6.0\MailKit.dll
+E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\ProjectStructure.MSTests\bin\Debug\net6.0\MimeKit.dll
+E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\ProjectStructure.MSTests\bin\Debug\net6.0\BouncyCastle.Crypto.dll

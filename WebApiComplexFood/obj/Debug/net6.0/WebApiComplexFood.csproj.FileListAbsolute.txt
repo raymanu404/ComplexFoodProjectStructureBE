@@ -70,3 +70,6 @@ E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\WebApiComplexFood\obj\De
 E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\WebApiComplexFood\obj\Debug\net6.0\WebApiComplexFood.pdb
 E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\WebApiComplexFood\obj\Debug\net6.0\WebApiComplexFood.genruntimeconfig.cache
 E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\WebApiComplexFood\obj\Debug\net6.0\ref\WebApiComplexFood.dll
+E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\WebApiComplexFood\bin\Debug\net6.0\MailKit.dll
+E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\WebApiComplexFood\bin\Debug\net6.0\MimeKit.dll
+E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\WebApiComplexFood\bin\Debug\net6.0\BouncyCastle.Crypto.dll

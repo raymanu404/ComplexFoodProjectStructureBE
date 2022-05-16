@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Application.DtoModels.Buyer;
+using Domain.Models.Roles;
 
 namespace Application.Features.Buyers.Queries.LoginBuyer
 {

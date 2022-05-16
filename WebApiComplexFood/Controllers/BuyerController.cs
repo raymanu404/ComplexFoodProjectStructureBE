@@ -39,7 +39,7 @@ namespace WebApiComplexFood.Controllers
             }
             else
             {
-                return NotFound("Buyer doesn't exist!");
+                return NotFound("Email/Password invalid!");
             }
             
         }
@@ -93,18 +93,25 @@ namespace WebApiComplexFood.Controllers
 
         //PATCH buyers/confirm/{buyerId}
         [HttpPatch("confirm/{buyerId}")]
-        public async Task<ActionResult<string>> ConfirmBuyer(int buyerId)
+        public async Task<ActionResult<string>> ConfirmBuyer(int buyerId,[FromBody] BuyerDtoConfirm confirmBuyer)
         {
 
             var command = new ConfirmBuyerCommand
             {
                 BuyerId = buyerId,
-                Confirmed = true
+                Buyer = confirmBuyer
             };
 
             var confirmationMessage = await _mediator.Send(command);
-
-            return Ok(confirmationMessage);
+            if(confirmationMessage.Equals("Buyer-ul a fost confirmat cu succes!"))
+            {
+                return Ok(confirmationMessage);
+            }
+            else
+            {
+                return BadRequest(confirmationMessage);
+            }
+           
         }
 
         //PATCH /deposit-balance/{buyerId}

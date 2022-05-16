@@ -3,6 +3,7 @@ using AutoMapper;
 using Application.Contracts.Persistence;
 using Domain.Models.Roles;
 using Application.DtoModels.Admin;
+using Application.Components;
 
 namespace Application.Features.Admins.Commands
 {
@@ -18,6 +19,7 @@ namespace Application.Features.Admins.Commands
 
         public async Task<AdminDto> Handle(CreateAdminCommand command, CancellationToken cancellationToken)
         {
+            command.Admin.Password = EncodePassword.ComputeSha256Hash(command.Admin.Password);
             var admin = _mapper.Map<Admin>(command.Admin);
             await _unitOfWork.Admins.CreateAdminAsync(admin);
             await _unitOfWork.CommitAsync(cancellationToken);

@@ -1,11 +1,9 @@
 ﻿using System.Text.RegularExpressions;
 
 namespace Domain.ValueObjects;
-
 public record struct Gender
 {
-    private readonly Regex pattern = new(@"M|F");
-
+    private readonly Regex pattern = new(@"M|F|N");
 
     public Gender(string value)
     {

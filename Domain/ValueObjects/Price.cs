@@ -6,7 +6,14 @@ namespace Domain.ValueObjects
         public float Value { get; set; }
         public Price(float value)
         {            
-            Value = value > 0 ? value : throw new Exception("Price invalid!"); ;
+            if(value > 0)
+            {
+                Value = value;
+            }
+            else
+            {
+                throw new Exception("Price invalid!");
+            }
         }
     }
 }

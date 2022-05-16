@@ -155,6 +155,11 @@ namespace Infrastructure.Migrations
                         .HasDefaultValue(0f)
                         .HasColumnName("Balance");
 
+                    b.Property<string>("ConfirmationCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ConfirmCode");
+
                     b.Property<bool>("Confirmed")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
@@ -326,8 +331,9 @@ namespace Infrastructure.Migrations
                     b.Property<int>("ShoppingCartId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
+                    b.Property<int>("Cantity")
+                        .HasColumnType("int")
+                        .HasColumnName("Cantity");
 
                     b.HasKey("ProductId", "ShoppingCartId");
 

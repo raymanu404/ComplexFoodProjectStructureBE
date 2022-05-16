@@ -6,5 +6,6 @@ namespace Application.Contracts.Persistence
     {
         Task AddAsync(ShoppingCartItem shoppingItem);
         void Delete(ShoppingCartItem shoppingItem);
+        Task<ShoppingCartItem?> GetShoppingItemByIds(int shoppingCartId, int productId);
     }
 }

@@ -64,30 +64,10 @@ public class BuyerRepository : IBuyerRepository
         }).ToList();
     }
 
-    public async Task<Buyer> LoginBuyer(Email email, Password password)
+    public async Task<BuyerDto?> LoginBuyer(Email email, Password password)
     {
-        var query = _context.Buyers
-        .Include(x => x.Coupons)
-        .Select(x => new
-        {
-            x.Id,
-            x.Email,
-            x.FirstName,
-            x.LastName,
-            x.Password,
-            x.PhoneNumber,
-            x.Gender,
-            x.Coupons
-        });
-        var buyer = await query.Where(x => x.Email == email && x.Password == password).FirstOrDefaultAsync();
-        return new Buyer
-        {
-            Id = buyer.Id,
-            FirstName = buyer.FirstName,
-            LastName= buyer.LastName,
-            PhoneNumber= buyer.PhoneNumber,
-            Gender = buyer.Gender,
-            Coupons = buyer.Coupons
-        };
+        var buyer = await _context.Buyers.Where(x => x.Email == email && x.Password == password).FirstOrDefaultAsync();
+        return _mapper.Map<BuyerDto?>(buyer);
     }
+
 }

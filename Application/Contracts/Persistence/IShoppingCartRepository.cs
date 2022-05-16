@@ -7,5 +7,6 @@ namespace Application.Contracts.Persistence
         Task AddAsync(ShoppingCart cart);
         void Delete(ShoppingCart cart);
         Task<ShoppingCart?> GetCartByBuyerIdAsync(int buyerId);
+        Task<ShoppingCart?> GetCartByIdAsync(int id);
     }
 }

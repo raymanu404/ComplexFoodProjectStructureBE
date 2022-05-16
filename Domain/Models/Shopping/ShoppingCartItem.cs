@@ -13,7 +13,7 @@ namespace Domain.Models.Shopping
         public Product Product { get; set; }    
         public int ProductId { get; set; }
 
-        public Amount Amount { get; set; }
+        public Cantity Cantity { get; set; }
 
     }
 }

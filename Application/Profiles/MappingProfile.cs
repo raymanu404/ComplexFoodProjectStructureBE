@@ -28,6 +28,6 @@ public class MappingProfile : Profile
         CreateMap<ShoppingCart, ShoppingCartDto>().ReverseMap();
         CreateMap<Order, OrderDto>().ReverseMap();
         CreateMap<ShoppingCartItem, ShoppingCartItemDto>().ReverseMap();
-
+        
     }
 }

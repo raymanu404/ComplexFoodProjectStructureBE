@@ -1,15 +1,19 @@
 Order -  createOrder ( primeste BuyerId) -creez order si sterg shoppingCart
-ShoppingCart - AddItem => - daca nu exista cart -> createShoppingCart -> add item
-			  - exista shopping cart dar nu exista item-ul respectiv => adaugam item-ul
-			  - exista shopping cart si exista item-ul => UpdateAmountItem	
+ShoppingCart - AddItem => - daca nu exista cart -> createShoppingCart -> add item -> ok
+			  - exista shopping cart dar nu exista item-ul respectiv => adaugam item-ul -> ok
+			  - exista shopping cart si exista item-ul => UpdateAmountItem	-> ok / separat facut
 
 	     - Delete Cart - daca exista itemuri si stergem toate itemele stergem si cartul
 	    
 
-Product - create, delete, update, get
-Admin -> create
-Buyer -> create, update,delete
-Coupons -> create, delete(use), get
+Product - create, delete, update, get -> ok
+Admin -> create -> ok
+Buyer -> create, update,delete, login -> ok
+Coupons -> create, delete(use), get -> ok
+
+
+
+GUID ???
 
 
 
@@ -18,5 +22,7 @@ Coupons -> create, delete(use), get
 
 
 
-GUID 
+
+
+
 

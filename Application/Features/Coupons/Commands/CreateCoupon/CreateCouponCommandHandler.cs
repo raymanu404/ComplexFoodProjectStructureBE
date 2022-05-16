@@ -3,6 +3,7 @@ using MediatR;
 using Domain.Models.Shopping;
 using Domain.Models.Enums;
 using Domain.ValueObjects;
+using Application.Components.RandomCode;
 
 
 namespace Application.Features.Coupons.Commands.CreateCoupon
@@ -50,7 +51,7 @@ namespace Application.Features.Coupons.Commands.CreateCoupon
                                 var newCoupon = new Coupon
                                 {
                                     BuyerId = buyer.Id,
-                                    Code = new UniqueCode(RandomCode(6)),
+                                    Code = new UniqueCode(RandomCode.GetRandomCode(6)),
                                     DateCreated = DateTime.Now,
                                     Type = request.Coupon.Type
                                 };
@@ -86,22 +87,6 @@ namespace Application.Features.Coupons.Commands.CreateCoupon
             
         }
 
-        private static string RandomCode(int length)
-        {
-            var ran = new Random();
-
-            var b = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-            string random = "";
-
-            for (var i = 0; i < length; i++)
-            {
-                var a = ran.Next(b.Length);
-                random = random + b.ElementAt(a);
-            }
-
-            return random;
-        }
     }  
 
 }

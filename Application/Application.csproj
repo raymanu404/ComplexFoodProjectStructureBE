@@ -7,18 +7,26 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Remove="Assets\**" />
 		<Compile Remove="Commands\**" />
 		<Compile Remove="Handlers\**" />
 		<Compile Remove="Queries\**" />
+		<EmbeddedResource Remove="Assets\**" />
 		<EmbeddedResource Remove="Commands\**" />
 		<EmbeddedResource Remove="Handlers\**" />
 		<EmbeddedResource Remove="Queries\**" />
+		<None Remove="Assets\**" />
 		<None Remove="Commands\**" />
 		<None Remove="Handlers\**" />
 		<None Remove="Queries\**" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Features\Admins\Commands\CreateAdminCommandHandler.cs~RF766e97ff.TMP" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MailKit" Version="3.2.0" />
 		<PackageReference Include="MediatR" Version="10.0.1" />
 		<PackageReference Include="AutoMapper" Version="11.0.1" />
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
@@ -31,8 +39,6 @@
 		<Folder Include="Features\OrderItems\Queries\GetALLItemsByBuyerId\" />
 		<Folder Include="Features\Orders\Commands\CreateOrder\" />
 		<Folder Include="Features\Orders\Queries\" />
-		<Folder Include="Features\ShoppingItems\Commands\DeleteShoppingItem\" />
-		<Folder Include="Features\ShoppingItems\Commands\UpdateShoppingItem\" />
 		<Folder Include="Profiles\" />
 	</ItemGroup>
 

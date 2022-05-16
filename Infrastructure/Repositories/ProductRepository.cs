@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Application.Contracts.Persistence;
 using Domain.Models.Shopping;
+using Application.DtoModels.Product;
 
 namespace Infrastructure.Repositories
 {
@@ -19,7 +20,7 @@ namespace Infrastructure.Repositories
 
         public async Task<List<Product>> GetAllAsync() => await _context.Products.ToListAsync();
 
-        public async Task<Product?> GetByIdAsync(int id) => await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+        public async Task<Product?> GetByIdAsync(int id) => await _context.Products.Where(x => x.Id == id).FirstOrDefaultAsync();
 
         public Task UpdateAsync(Product product)
         {

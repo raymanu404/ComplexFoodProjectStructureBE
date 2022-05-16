@@ -57,5 +57,10 @@ public class BuyerEntityTypeConfiguration : IEntityTypeConfiguration<Buyer>
           .HasConversion(v => v.Value, v => new Balance(v))
           .HasColumnName("Balance")
           .HasDefaultValue(new Balance(0));
+
+        buyerConfiguration
+         .Property(c => c.ConfirmationCode)
+         .HasConversion(v => v.Value, v => new UniqueCode(v))
+         .HasColumnName("ConfirmCode");
     }
 }

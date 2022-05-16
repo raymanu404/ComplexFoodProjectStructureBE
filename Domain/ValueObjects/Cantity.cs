@@ -1,13 +1,13 @@
 ﻿namespace Domain.ValueObjects;
 
-public record struct Amount
+public record struct Cantity
 {
-    public Amount(int value)
+    public Cantity(int value)
     {
         if (value > 0)
             Value = value;
         else
-            throw new Exception("Amount invalid!");
+            throw new Exception("Cantity invalid!");
     }
 
     public int Value { get; set; }

@@ -4,13 +4,13 @@ namespace Domain.ValueObjects;
 
 public record struct UniqueCode
 {
-    private readonly Regex validCode = new(@"^[a-zA-Z0-9]+$");
+    private readonly Regex validCode = new(@"^[a-zA-Z]+$");
 
     public UniqueCode(string value)
     {
         if (value == null) throw new ArgumentNullException("value");
 
-        if (validCode.IsMatch(value) && value.Length == 6)
+        if (validCode.IsMatch(value))
             Value = value;
         else
             throw new Exception("UniqueCode invalid!");

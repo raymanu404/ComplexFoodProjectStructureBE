@@ -6,9 +6,7 @@ public interface IUnitOfWork : IAsyncDisposable
     IBuyerRepository Buyers { get; }
     ICouponRepository Coupons { get; }
     IProductRepository Products { get; }
-
     IOrderItemsRepository Items { get; }
-
     IShoppingCartRepository ShoppingCarts { get; }
     IShoppingItemRepository ShoppingItems { get; }
     IOrderRepository Orders { get; }

@@ -205,3 +205,8 @@ E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\Presentation\obj\Debug\n
 E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\Presentation\obj\Debug\net6.0\Presentation.pdb
 E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\Presentation\obj\Debug\net6.0\Presentation.genruntimeconfig.cache
 E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\Presentation\obj\Debug\net6.0\ref\Presentation.dll
+E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\Presentation\bin\Debug\net6.0\MailKit.dll
+E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\Presentation\bin\Debug\net6.0\MimeKit.dll
+E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\Presentation\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\Presentation\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
+E:\Anul 4\Work-internship\ComplexFoodProjectStructureBE\Presentation\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll

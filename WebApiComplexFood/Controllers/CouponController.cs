@@ -10,7 +10,7 @@ using Application.Features.Coupons.Commands.DeleteCoupon;
 namespace WebApiComplexFood.Controllers
 {
     [ApiController]
-    [Route("Coupons")]
+    [Route("coupons")]
     public class CouponController : Controller
     {
 
@@ -23,7 +23,7 @@ namespace WebApiComplexFood.Controllers
             _mediator = mediator;
         }
 
-        // GET: CouponController/Coupons/buyerId
+        // GET: coupons/buyerId
         [HttpGet("{buyerId}")]
         public async Task<ActionResult<CouponDto>> GetAllCouponsByBuyerId(int buyerId)
         {
@@ -48,7 +48,7 @@ namespace WebApiComplexFood.Controllers
             return CreatedAtRoute(new { code = buyerId.ToString()} , coupons);
         }
 
-        // DELETE: Coupons/id
+        // DELETE: coupons/{buyerId}/{code}
         [HttpDelete("{buyerId}/{code}")]
         public async Task<NoContentResult> DeleteCoupon(int buyerId, string code)
         {

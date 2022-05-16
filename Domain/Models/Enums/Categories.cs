@@ -7,5 +7,6 @@ public enum Categories
     FoodGarnish,
     Salad,
     Desert,
-    Drink
+    Drink,
+    Standard
 }

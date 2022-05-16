@@ -1,5 +1,4 @@
-﻿using Domain.ValueObjects;
-using Domain.Models.Enums;
+﻿using Domain.Models.Enums;
 
 namespace Application.DtoModels.Product
 {

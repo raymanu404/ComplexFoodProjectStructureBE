@@ -56,22 +56,26 @@ namespace WebApiComplexFood
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProjectStructure.Api", Version = "v1" });
             });
 
-
             services.AddCors(options => options.AddPolicy(CORS_POLICY, builder => builder.SetIsOriginAllowed(origin => true).AllowAnyMethod().AllowAnyHeader()));
 
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProjectStructure.Api v1"));
             }
+            else
+            {
+                app.UseHttpsRedirection();
+            }
 
-            app.UseHttpsRedirection();
-
+            app.UseCors(CORS_POLICY);
+         
             app.UseRouting();
 
             app.UseAuthorization();
@@ -81,7 +85,7 @@ namespace WebApiComplexFood
                 endpoints.MapControllers();
             });
 
-            app.UseCors(CORS_POLICY);
+           
         }
     }
 }

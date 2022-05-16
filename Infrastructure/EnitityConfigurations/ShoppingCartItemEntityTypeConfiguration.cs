@@ -10,8 +10,9 @@ public class ShoppingCartItemEntityTypeConfiguration : IEntityTypeConfiguration<
     public void Configure(EntityTypeBuilder<ShoppingCartItem> shoppingCartItemBuilder)
     {
         shoppingCartItemBuilder
-           .Property(c => c.Amount)
-           .HasConversion(v => v.Value, v => new Amount(v));
+           .Property(c => c.Cantity)
+           .HasConversion(v => v.Value, v => new Cantity(v))
+           .HasColumnName("Cantity");
 
         shoppingCartItemBuilder
             .HasKey(x => new { x.ProductId, x.ShoppingCartId });

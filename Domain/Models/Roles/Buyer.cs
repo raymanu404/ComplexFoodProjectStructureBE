@@ -15,6 +15,7 @@ public class Buyer
     public Gender Gender { get; set; }
     public bool Confirmed { get; set; }
     public Balance Balance { get; set; }
+    public UniqueCode ConfirmationCode { get; set; }
 
     //one to many
     public ICollection<Coupon> Coupons { get; set; }

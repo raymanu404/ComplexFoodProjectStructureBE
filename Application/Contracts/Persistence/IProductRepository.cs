@@ -1,4 +1,5 @@
 ﻿using Domain.Models.Shopping;
+using Application.DtoModels.Product;
 
 namespace Application.Contracts.Persistence;
 

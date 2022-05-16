@@ -6,7 +6,7 @@ namespace Application.DtoModels.ShoppingCartItemDto
     {
         public int ProductId { get; set; }
         public int ShoppingCartId { get; set; }
-        public int Amount { get; set; }
+        public int Cantity { get; set; }
 
     }
 }

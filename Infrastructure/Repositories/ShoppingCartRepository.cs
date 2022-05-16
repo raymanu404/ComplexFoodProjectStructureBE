@@ -16,5 +16,7 @@ namespace Infrastructure.Repositories
         public void Delete(ShoppingCart cart) => _context.ShoppingCarts.Remove(cart);
     
         public async Task<ShoppingCart?> GetCartByBuyerIdAsync(int buyerId) => await _context.ShoppingCarts.Where(x => x.BuyerId == buyerId).FirstOrDefaultAsync();
+
+        public async Task<ShoppingCart?> GetCartByIdAsync(int id) => await _context.ShoppingCarts.Where(x => x.Id == id).FirstOrDefaultAsync();
     }
 }

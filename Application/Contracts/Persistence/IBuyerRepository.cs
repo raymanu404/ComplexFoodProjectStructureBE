@@ -11,5 +11,5 @@ public interface IBuyerRepository
     void Delete(Buyer buyer);
     Task<Buyer?> GetByIdAsync(int id);
     Task<List<Buyer>> GetAllAsync();
-    Task<Buyer> LoginBuyer(Email email, Password password);
+    Task<BuyerDto?> LoginBuyer(Email email, Password password);
 }

@@ -1,6 +1,6 @@
 ﻿using Application.Contracts.Persistence;
 using MediatR;
-
+using Domain.ValueObjects;
 
 namespace Application.Features.Buyers.Commands.UpdateBuyer
 {
@@ -21,8 +21,22 @@ namespace Application.Features.Buyers.Commands.UpdateBuyer
 
                 if (buyer != null)
                 {
-                    buyer.Confirmed = command.Confirmed;
-                    await _unitOfWork.CommitAsync(cancellationToken);
+                    if (buyer.ConfirmationCode.Value.Equals("confirmed"))
+                    {
+                        return "Contul este deja confirmat!";
+                    }
+
+                    if (buyer.ConfirmationCode.Value.Equals(command.Buyer.ConfirmationCode))
+                    {
+                        buyer.Confirmed = true;
+                        buyer.ConfirmationCode = new UniqueCode("confirmed");
+                        await _unitOfWork.CommitAsync(cancellationToken);
+                    }
+                    else
+                    {
+                        return "Cod invalid!";
+                    }
+                  
                 }
             }catch(Exception ex)
             {

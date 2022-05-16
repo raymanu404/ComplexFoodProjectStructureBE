@@ -1,6 +1,9 @@
 ﻿using MediatR;
 using Application.DtoModels.Buyer;
 using Application.Contracts.Persistence;
+using Application.Components;
+using Domain.ValueObjects;
+
 
 namespace Application.Features.Buyers.Commands.UpdateBuyer
 {
@@ -18,9 +21,13 @@ namespace Application.Features.Buyers.Commands.UpdateBuyer
             var buyer = await _unitOfWork.Buyers.GetByIdAsync(request.BuyerId);
             if(buyer != null)
             {
-                if (buyer.Password.Value.Equals(request.BuyerUpdatePassword.OldPassword))
+
+                var encodeOldPassoword = EncodePassword.ComputeSha256Hash(request.BuyerUpdatePassword.OldPassword);
+                if (buyer.Password.Value.Equals(encodeOldPassoword))
                 {
-                    buyer.Password = new Domain.ValueObjects.Password(request.BuyerUpdatePassword.NewPassword);
+                    var encodeNewPassoword = EncodePassword.ComputeSha256Hash(request.BuyerUpdatePassword.NewPassword);
+                    buyer.Password = new Password(encodeNewPassoword);
+
                     await _unitOfWork.CommitAsync(cancellationToken);
                     returnMessage = "Password was updated successfully!";
                 }
