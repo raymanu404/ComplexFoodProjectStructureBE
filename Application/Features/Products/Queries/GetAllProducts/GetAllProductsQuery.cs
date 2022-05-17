@@ -4,7 +4,7 @@ using Domain.Models.Shopping;
 
 namespace Application.Features.Products.Queries.GetAllProducts
 {
-    public class GetAllProductsQuery : IRequest<List<Product>>
+    public class GetAllProductsQuery : IRequest<List<ProductDto>>
     {
     }
 }

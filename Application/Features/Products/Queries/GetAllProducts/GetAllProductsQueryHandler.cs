@@ -6,7 +6,7 @@ using Domain.Models.Shopping;
 
 namespace Application.Features.Products.Queries.GetAllProducts
 {
-    public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQuery, List<Product>>
+    public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQuery, List<ProductDto>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -16,11 +16,10 @@ namespace Application.Features.Products.Queries.GetAllProducts
             _mapper = mapper;
 
          }
-        public async Task<List<Product>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
+        public async Task<List<ProductDto>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
             var products = await _unitOfWork.Products.GetAllAsync();
-            return products;
-            //return _mapper.Map<List<ProductDto>>(products);
+            return _mapper.Map<List<ProductDto>>(products);
         }
     }
 }

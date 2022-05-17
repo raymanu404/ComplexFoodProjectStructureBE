@@ -29,13 +29,21 @@ namespace WebApiComplexFood.Controllers
         {
             var queryGetAllCouponsByBuyerId = new GetCouponsByBuyerIdQuery() { BuyerId = buyerId };
             var coupons = await _mediator.Send(queryGetAllCouponsByBuyerId);
-            return Ok(coupons);
+            if(coupons.Count > 0)
+            {
+                return Ok(coupons);
+            }
+            else
+            {
+                return NotFound();
+            }
+            
         }
 
 
         // POST: buy_coupons/buyerId
         [HttpPost("buy_coupons/{buyerId}")]
-        public async Task<ActionResult<NoContentResult>> CreateCoupons(int buyerId, [FromBody] CouponCreateDto newCoupons)
+        public async Task<ActionResult<int>> CreateCoupons(int buyerId, [FromBody] CouponCreateDto newCoupons)
         {
 
             var command = new CreateCouponCommand

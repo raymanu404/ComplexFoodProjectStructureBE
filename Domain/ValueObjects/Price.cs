@@ -3,10 +3,10 @@ namespace Domain.ValueObjects
 {
     public record struct Price
     {
-        public float Value { get; set; }
-        public Price(float value)
+        public double Value { get; set; }
+        public Price(double value)
         {            
-            if(value > 0)
+            if(value > 0.0)
             {
                 Value = value;
             }

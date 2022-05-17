@@ -12,6 +12,6 @@ namespace Application.DtoModels.Order
         public int Discount { get; set; }
         public string Code { get; set; }
 
-        public ShoppingCartDto Cart { get; set; }
+        //public ShoppingCartDto Cart { get; set; }
     }
 }

@@ -14,7 +14,7 @@ public class OrderItemEntityTypeConfiguration : IEntityTypeConfiguration<OrderIt
             .HasColumnName("Id");
 
         orderItemBuilder
-            .Property(x => x.Amount)
+            .Property(x => x.Cantity)
             .HasConversion(v => v.Value, v => new Cantity(v))
             .HasColumnName("Amount");
 

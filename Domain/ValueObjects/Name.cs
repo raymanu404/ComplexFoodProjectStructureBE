@@ -4,7 +4,7 @@ namespace Domain.ValueObjects;
 
 public record struct Name
 {
-    private readonly Regex onlyLetters = new(@"^[a-zA-Z]+$");
+    private readonly Regex onlyLetters = new(@"^[a-zA-Z]|[A-Za-z]+$");
 
     public Name(string value)
     {

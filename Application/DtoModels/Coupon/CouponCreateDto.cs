@@ -5,7 +5,7 @@ namespace Application.DtoModels.Coupon
 {
     public class CouponCreateDto
     {
-        public int Amount { get; set; }
+        public int Cantity { get; set; }
         public TypeCoupons Type { get; set; }
     }
 }

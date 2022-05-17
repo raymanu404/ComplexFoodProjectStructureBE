@@ -31,13 +31,13 @@ namespace Application.Features.Coupons.Commands.CreateCoupon
                         switch (request.Coupon.Type)
                         {
                             case TypeCoupons.TenProcent:
-                                totalPrice = request.Coupon.Amount * 10; 
+                                totalPrice = request.Coupon.Cantity * 10; 
                                 break;
                             case TypeCoupons.TwentyProcent:
-                                totalPrice = request.Coupon.Amount * 15;
+                                totalPrice = request.Coupon.Cantity * 15;
                                 break;
                             case TypeCoupons.ThirtyProcent:
-                                totalPrice = request.Coupon.Amount * 20;
+                                totalPrice = request.Coupon.Cantity * 20;
                                 break;
                             default:
                                 throw new Exception("Invalid Type of coupon!");
@@ -45,7 +45,7 @@ namespace Application.Features.Coupons.Commands.CreateCoupon
 
                         if (buyer.Balance.Value >= totalPrice)
                         {
-                            for (var i = 0; i < request.Coupon.Amount; i++)
+                            for (var i = 0; i < request.Coupon.Cantity; i++)
                             {
 
                                 var newCoupon = new Coupon
@@ -63,6 +63,7 @@ namespace Application.Features.Coupons.Commands.CreateCoupon
 
                             buyer.Balance = new Balance(buyer.Balance.Value - totalPrice);                          
                             await _unitOfWork.CommitAsync(cancellationToken);
+                            return buyer.Balance.Value.ToString();
                         }
                         else
                         {

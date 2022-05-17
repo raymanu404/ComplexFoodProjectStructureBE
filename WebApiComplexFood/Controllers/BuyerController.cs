@@ -5,6 +5,7 @@ using Application.Features.Buyers.Commands.CreateBuyer;
 using Application.Features.Buyers.Commands.DeleteBuyer;
 using Application.Features.Buyers.Commands.UpdateBuyer;
 using Application.Features.Buyers.Queries.LoginBuyer;
+using Application.Features.Buyers.Queries.GetBuyerById;
 using Domain.ValueObjects;
 #endregion
 using Microsoft.AspNetCore.Mvc;
@@ -42,6 +43,26 @@ namespace WebApiComplexFood.Controllers
                 return NotFound("Email/Password invalid!");
             }
             
+        }
+
+        //GET: buyers/1
+        [HttpGet("{buyerId}")]
+        public async Task<ActionResult<BuyerDto>> GetBuyerById(int buyerId)
+        {
+            var querySelectBuyerById = new GetBuyerByIdQuery
+            {
+                BuyerId = buyerId
+            };
+            var getBuyer =  await _mediator.Send(querySelectBuyerById);
+            if(getBuyer.Id != 0)
+            {
+                return Ok(getBuyer);
+            }
+            else
+            {
+                return NotFound();
+            }
+           
         }
 
         //GET: buyers

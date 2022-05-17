@@ -52,7 +52,7 @@ namespace ProjectStructure.UnitTests
             //ARANGE
             var coupons = new CouponCreateDto
             {
-                Amount = 3,
+                Cantity = 3,
                 Type = Domain.Models.Enums.TypeCoupons.ThirtyProcent
             };
 

@@ -29,7 +29,16 @@ namespace WebApiComplexFood.Controllers
         {
             var quyerGetAllProducts = new GetAllProductsQuery();
             var products = await _mediator.Send(quyerGetAllProducts);
-            return Ok(products);
+            if(products.Count > 0)
+            {
+                return Ok(products);
+
+            }
+            else
+            {
+                return NotFound();
+            }
+            
         }
 
         //GET : products/{productId}

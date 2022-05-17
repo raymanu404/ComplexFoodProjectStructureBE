@@ -14,6 +14,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Application.Contracts.FileUtils;
+using Infrastructure.FileUtils;
+using Application.Models;
 
 namespace WebApiComplexFood
 {
@@ -30,6 +33,8 @@ namespace WebApiComplexFood
         {
             string defaultConnectionString = Configuration.GetConnectionString("DefaultConnection");
 
+            services.Configure<EmailSettings>(Configuration.GetSection(nameof(EmailSettings)));
+
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(defaultConnectionString));
           
             // ----- repositories
@@ -41,6 +46,7 @@ namespace WebApiComplexFood
             services.AddScoped<IOrderItemsRepository, OrderItemRepository>();
             services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddScoped<IShoppingItemRepository, ShoppingItemRepository>();
+            services.AddSingleton<IFileReader, FileReader>();         
 
             // ---- unit of work
             services.AddScoped<IUnitOfWork, UnitOfWork>();

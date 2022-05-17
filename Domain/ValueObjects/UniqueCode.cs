@@ -4,7 +4,7 @@ namespace Domain.ValueObjects;
 
 public record struct UniqueCode
 {
-    private readonly Regex validCode = new(@"^[a-zA-Z]+$");
+    private readonly Regex validCode = new(@"^[a-zA-Z]|[A-Za-z]+$");
 
     public UniqueCode(string value)
     {

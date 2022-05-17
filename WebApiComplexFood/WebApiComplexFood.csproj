@@ -4,8 +4,9 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>47f437a2-825e-4814-9ab7-58366098b2fc</UserSecretsId>
   </PropertyGroup>
-
+   
   <ItemGroup>
     <None Remove="Controllers\BuyerController.cs~RFf9db7e4.TMP" />
   </ItemGroup>

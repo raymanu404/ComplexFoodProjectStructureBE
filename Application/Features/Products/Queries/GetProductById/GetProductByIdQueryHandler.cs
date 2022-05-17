@@ -6,7 +6,7 @@ using Domain.Models.Shopping;
 
 namespace Application.Features.Products.Queries.GetProductById
 {
-    public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, Product>
+    public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, ProductDto>
     {
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
@@ -16,11 +16,10 @@ namespace Application.Features.Products.Queries.GetProductById
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<Product> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
+        public async Task<ProductDto> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
             var productById = await _unitOfWork.Products.GetByIdAsync(request.ProductId);
-            return productById;
-            //return _mapper.Map<ProductDto>(productById);
+            return _mapper.Map<ProductDto>(productById);
         }
     }
 }

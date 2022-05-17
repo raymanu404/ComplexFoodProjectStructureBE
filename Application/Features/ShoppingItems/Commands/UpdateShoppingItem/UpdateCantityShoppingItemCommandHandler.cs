@@ -26,8 +26,8 @@ namespace Application.Features.ShoppingItems.Commands
                                      
                     if(getShoppingCart != null)
                     {
-                        var totalPrice = 0.0f;
-                        var buyerTotalBalance = 0.0f;
+                        var totalPrice = 0.0;
+                        var buyerTotalBalance = 0.0;
                         if (command.Cantity > getShoppingItem.Cantity.Value)
                         {
                             totalPrice = getShoppingCart.TotalPrice.Value + (command.Cantity - getShoppingItem.Cantity.Value) * getProduct.Price.Value;
@@ -50,7 +50,7 @@ namespace Application.Features.ShoppingItems.Commands
                 else
                 {
                     //stergere shopping item dupa acel produs
-                    var totalPrice = 0.0f;
+                    var totalPrice = 0.0;
                     totalPrice = getShoppingCart.TotalPrice.Value - getShoppingItem.Cantity.Value * getProduct.Price.Value;
                     getShoppingCart.TotalPrice = new Price(totalPrice);
                     _unitOfWork.ShoppingItems.Delete(getShoppingItem);
