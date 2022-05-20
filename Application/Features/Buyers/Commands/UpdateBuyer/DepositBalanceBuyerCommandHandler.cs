@@ -21,7 +21,7 @@ namespace Application.Features.Buyers.Commands.UpdateBuyer
                 {
                     if (buyer.Confirmed)
                     {
-                        buyer.Balance = new Balance(request.Balance);
+                        buyer.Balance = new Balance(buyer.Balance.Value + request.Balance);
                         await _unitOfWork.CommitAsync(cancellationToken);
                     }
                     else

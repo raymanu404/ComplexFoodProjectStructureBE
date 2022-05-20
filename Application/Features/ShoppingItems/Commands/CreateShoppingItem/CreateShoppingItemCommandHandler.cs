@@ -40,6 +40,7 @@ namespace Application.Features.ShoppingItems.Commands
                     {
                         var shoppingCartId = 0;
                         var getCart = await _unitOfWork.ShoppingCarts.GetCartByBuyerIdAsync(buyer.Id);
+                        var totalPriceFromCart = 0.0;
                         if (getCart == null)
                         {
                             //facem cart inainte
@@ -54,38 +55,48 @@ namespace Application.Features.ShoppingItems.Commands
 
                             var cart = await _mediator.Send(new CreateShoppingCartCommand { BuyerId = buyer.Id, Cart = newCart });
                             shoppingCartId = cart.Id;
+                            totalPriceFromCart = cart.TotalPrice.Value;
 
                         }
                         else
                         {
                             shoppingCartId = getCart.Id;
-                            //getCart.TotalPrice = new Price(getCart.TotalPrice.Value + total_price);
+                            totalPriceFromCart = getCart.TotalPrice.Value;
+                            //getCart.TotalPrice = new Price(totalPriceFromCart + total_price);
                         }
                       
                         var shoppingItemDto = new ShoppingCartItemDto
                         {
-                            ShoppingCartId = shoppingCartId,
+                           
                             ProductId = product.Id,                         
                             Cantity = command.Cantity
 
                         };
                         //verificat productId daca exista facem update cantitate, daca nu adaugam normal
 
-                        var getItem = await _unitOfWork.ShoppingItems.GetShoppingItemByIds(shoppingItemDto.ShoppingCartId, shoppingItemDto.ProductId);
+                        var getItem = await _unitOfWork.ShoppingItems.GetShoppingItemByIds(shoppingCartId, shoppingItemDto.ProductId);
                         if(getItem != null) //update
                         {
-                            if (buyer.Balance.Value >= getCart.TotalPrice.Value)
+                            if (buyer.Balance.Value >= totalPriceFromCart)
                             {
                                 var updateCommand = new UpdateCantityShoppingItemCommand
                                 {
-                                    ShoppingCartId = shoppingItemDto.ShoppingCartId,
+                                    ShoppingCartId = shoppingCartId,
                                     ProductId = shoppingItemDto.ProductId,
                                     Cantity = shoppingItemDto.Cantity,
                                     BuyerId = command.BuyerId
                                 };
 
-                                var message = await _mediator.Send(updateCommand);
-                                id = updateCommand.ShoppingCartId;
+                                var responseId = await _mediator.Send(updateCommand);
+                                if(responseId > 0)
+                                {
+                                    id = updateCommand.ShoppingCartId;
+                                }
+                                else
+                                {
+                                    id = responseId;
+                                }
+                                
 
                             }
                             else
@@ -96,9 +107,15 @@ namespace Application.Features.ShoppingItems.Commands
                         }//create 
                         else
                         {
-                            getCart.TotalPrice = new Price(getCart.TotalPrice.Value + total_price);
+                            if (getCart != null)
+                            {
+                                getCart.TotalPrice = new Price(totalPriceFromCart + total_price);
+                            }
+
                             var shoppingItem = _mapper.Map<ShoppingCartItem>(shoppingItemDto);
+                            shoppingItem.ShoppingCartId = shoppingCartId;
                             await _unitOfWork.ShoppingItems.AddAsync(shoppingItem);
+
                             buyer.Balance = new Balance(buyer.Balance.Value - total_price);
                             id = shoppingItem.ShoppingCartId;
                         }

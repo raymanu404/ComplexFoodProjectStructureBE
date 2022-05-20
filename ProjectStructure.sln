@@ -7,13 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{4ABE2F2A-5021-472B-9E55-B38CF84D001F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "Presentation\Presentation.csproj", "{29F784A4-B806-417F-9C63-773B9DC366BA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{44E4E071-0348-42E6-9F15-02629D13589B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiComplexFood", "WebApiComplexFood\WebApiComplexFood.csproj", "{3A3EB3D1-2815-41D4-9FE4-D7FF67E24CE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectStructure.MSTests", "ProjectStructure.MSTests\ProjectStructure.MSTests.csproj", "{87FF7024-D28B-48C4-BB58-523A1D3B165D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectStructure.MSTests", "ProjectStructure.MSTests\ProjectStructure.MSTests.csproj", "{87FF7024-D28B-48C4-BB58-523A1D3B165D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{4ABE2F2A-5021-472B-9E55-B38CF84D001F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ABE2F2A-5021-472B-9E55-B38CF84D001F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ABE2F2A-5021-472B-9E55-B38CF84D001F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{29F784A4-B806-417F-9C63-773B9DC366BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{29F784A4-B806-417F-9C63-773B9DC366BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{29F784A4-B806-417F-9C63-773B9DC366BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{29F784A4-B806-417F-9C63-773B9DC366BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{44E4E071-0348-42E6-9F15-02629D13589B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{44E4E071-0348-42E6-9F15-02629D13589B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44E4E071-0348-42E6-9F15-02629D13589B}.Release|Any CPU.ActiveCfg = Release|Any CPU

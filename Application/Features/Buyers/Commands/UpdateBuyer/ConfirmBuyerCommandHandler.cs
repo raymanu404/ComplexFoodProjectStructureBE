@@ -31,14 +31,22 @@ namespace Application.Features.Buyers.Commands.UpdateBuyer
                         buyer.Confirmed = true;
                         buyer.ConfirmationCode = new UniqueCode("confirmed");
                         await _unitOfWork.CommitAsync(cancellationToken);
+
                     }
                     else
                     {
                         return "Cod invalid!";
                     }
-                  
+
                 }
-            }catch(Exception ex)
+                else
+                {
+                    return "Buyer-ul nu exista!";
+                }
+
+                
+            }
+            catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return "Nu s-a putut confirma!";

@@ -1,7 +1,7 @@
 ﻿
 namespace Application.DtoModels.Buyer
 {
-    public class BuyerDtoConfirm
+    public class BuyerConfirmDto
     {
         public string ConfirmationCode { get; set; }
     }

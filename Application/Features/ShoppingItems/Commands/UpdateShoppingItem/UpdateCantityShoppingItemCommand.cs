@@ -2,7 +2,7 @@
 
 namespace Application.Features.ShoppingItems.Commands
 {
-    public class UpdateCantityShoppingItemCommand : IRequest<string>
+    public class UpdateCantityShoppingItemCommand : IRequest<int>
     {
         public int ShoppingCartId { get; set; }
         public int ProductId { get; set; }

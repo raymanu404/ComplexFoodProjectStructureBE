@@ -15,17 +15,16 @@ namespace Infrastructure.Repositories
 
         public async Task AddAsync(Order order) => await _context.Orders.AddAsync(order);
 
+
         public void DeleteAsync(Order order) => _context.Orders.Remove(order);
 
         public async Task<List<Order>> GetAllAsync() => await _context.Orders.ToListAsync();
 
+        public async Task<List<Order>> GetAllOrdersByBuyerId(int buyerId) => await _context.Orders.Where(x => x.BuyerId == buyerId).OrderBy(x => x.Id).ToListAsync();
         public async Task<Order?> GetByIdAsync(int id) => await _context.Orders.Where(x => x.Id == id).FirstOrDefaultAsync();
 
-        //public async Task<Order?> GetOrderByBuyerId(int buyerId) => await _context.Orders.Where(x => x.Cart.BuyerId == buyerId).FirstOrDefaultAsync();  
+        public async Task<Order?> GetOrderByBuyerId(int buyerId) => await _context.Orders.Where(x => x.BuyerId == buyerId).OrderBy(x => x.Id).LastOrDefaultAsync();
 
-        public Task UpdateAsync(Order order)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

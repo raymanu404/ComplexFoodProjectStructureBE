@@ -35,10 +35,7 @@
 	<ItemGroup>
 		<Folder Include="Features\Buyers\Commands\CreateBuyer\" />
 		<Folder Include="Features\Buyers\Queries\GetBuyersList\" />
-		<Folder Include="Features\OrderItems\Queries\GetAllItems\" />
-		<Folder Include="Features\OrderItems\Queries\GetALLItemsByBuyerId\" />
-		<Folder Include="Features\Orders\Commands\CreateOrder\" />
-		<Folder Include="Features\Orders\Queries\" />
+		<Folder Include="Features\Orders\Commands\CreateOrderCommand\" />
 		<Folder Include="Profiles\" />
 	</ItemGroup>
 

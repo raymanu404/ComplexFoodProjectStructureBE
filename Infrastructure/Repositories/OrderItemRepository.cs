@@ -13,19 +13,10 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task CreateItemAsync(OrderItem item) => await _context.OrderItems.AddAsync(item);
+        public async Task AddAsync(OrderItem orderItem) => await _context.AddAsync(orderItem);
 
-        public void DeleteItem(OrderItem item) => _context.OrderItems.Remove(item);
+        public async Task<List<OrderItem>> GetAllItems() => await _context.OrderItems.ToListAsync();
 
-        public async Task<List<OrderItem?>> GetAllItemsAsync() => await _context.OrderItems.ToListAsync();
-
-        //public async Task<List<OrderItem?>> GetALLItemsByBuyerId(int buyerId) => await _context.OrderItems.Where(x => x.BuyerId == buyerId).ToListAsync();
-
-        public async Task<OrderItem?> GetItemByIdAsync(int id) => await _context.OrderItems.FindAsync(id);
-
-        public Task UpdateItemAsync(OrderItem item)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<List<OrderItem>> GetAllItemsByOrderId(int orderId) => await _context.OrderItems.Where(x => x.OrderId == orderId).ToListAsync();
     }
 }

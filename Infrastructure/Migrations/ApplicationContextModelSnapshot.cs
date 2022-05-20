@@ -49,8 +49,8 @@ namespace Infrastructure.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<float>("TotalPrice")
-                        .HasColumnType("real")
+                    b.Property<double>("TotalPrice")
+                        .HasColumnType("float")
                         .HasColumnName("TotalPrice");
 
                     b.HasKey("Id");
@@ -72,9 +72,9 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderItemId"), 1L, 1);
 
-                    b.Property<int>("Amount")
+                    b.Property<int>("Cantity")
                         .HasColumnType("int")
-                        .HasColumnName("Amount");
+                        .HasColumnName("Cantity");
 
                     b.Property<int>("Category")
                         .HasColumnType("int");
@@ -86,8 +86,8 @@ namespace Infrastructure.Migrations
                     b.Property<int?>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<float>("Price")
-                        .HasColumnType("real")
+                    b.Property<double>("Price")
+                        .HasColumnType("float")
                         .HasColumnName("Price");
 
                     b.Property<string>("Title")
@@ -149,10 +149,10 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<float>("Balance")
+                    b.Property<double>("Balance")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("real")
-                        .HasDefaultValue(0f)
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0)
                         .HasColumnName("Balance");
 
                     b.Property<string>("ConfirmationCode")
@@ -270,8 +270,8 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("IsInStock")
                         .HasColumnType("bit");
 
-                    b.Property<float>("Price")
-                        .HasColumnType("real")
+                    b.Property<double>("Price")
+                        .HasColumnType("float")
                         .HasColumnName("Price");
 
                     b.Property<string>("Title")
@@ -308,8 +308,8 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Discount");
 
-                    b.Property<float>("TotalPrice")
-                        .HasColumnType("real")
+                    b.Property<double>("TotalPrice")
+                        .HasColumnType("float")
                         .HasColumnName("TotalPrice");
 
                     b.HasKey("Id");

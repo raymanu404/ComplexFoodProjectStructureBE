@@ -65,8 +65,7 @@ namespace Application.Features.Products.Commands.UpdateProduct
                 productToUpdate.DateCreated = request.Product.DateCreated;
                 productToUpdate.DateUpdated = request.Product.DateUpdated;
                 productToUpdate.IsInStock = request.Product.IsInStock;
-
-                productToUpdate = _mapper.Map<Product>(request.Product);           
+                        
                 await _unitOfWork.CommitAsync(cancellationToken);
             }
 

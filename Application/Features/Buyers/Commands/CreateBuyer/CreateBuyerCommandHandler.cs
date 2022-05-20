@@ -10,7 +10,7 @@ using Domain.ValueObjects;
 
 namespace Application.Features.Buyers.Commands.CreateBuyer;
 
-public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, BuyerDto>
+public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, BuyerRegisterDto>
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
@@ -23,8 +23,13 @@ public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, Buy
         _fileReader = fileReader;
     }
 
-    public async Task<BuyerDto> Handle(CreateBuyerCommand command, CancellationToken cancellationToken)
+    public async Task<BuyerRegisterDto> Handle(CreateBuyerCommand command, CancellationToken cancellationToken)
     {
+        if (command.Buyer.Email.EndsWith("email.com"))
+        {
+            return null;
+        }
+
         //aici ar trebui sa criptam parolele
         command.Buyer.Password =  EncodePassword.ComputeSha256Hash(command.Buyer.Password);    
         var buyer = _mapper.Map<Buyer>(command.Buyer);

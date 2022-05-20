@@ -8,7 +8,7 @@ using Application.DtoModels.Cart;
 
 namespace Application.Features.ShoppingCarts.Commands.CreateShoppingCartCommand
 {
-    public class CreateShoppingCartCommandHandler : IRequestHandler<CreateShoppingCartCommand, ShoppingCartDto>
+    public class CreateShoppingCartCommandHandler : IRequestHandler<CreateShoppingCartCommand, ShoppingCart>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -19,14 +19,14 @@ namespace Application.Features.ShoppingCarts.Commands.CreateShoppingCartCommand
             _mapper = mapper;
         }
 
-        public async Task<ShoppingCartDto> Handle(CreateShoppingCartCommand command, CancellationToken cancellationToken)
+        public async Task<ShoppingCart> Handle(CreateShoppingCartCommand command, CancellationToken cancellationToken)
         {
 
             var cart = _mapper.Map<ShoppingCart>(command.Cart);
             await _unitOfWork.ShoppingCarts.AddAsync(cart);
             await _unitOfWork.CommitAsync(cancellationToken);
 
-            return command.Cart;
+            return cart;
         }
    
     }

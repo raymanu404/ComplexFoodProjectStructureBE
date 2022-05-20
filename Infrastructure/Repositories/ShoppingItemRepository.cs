@@ -15,6 +15,9 @@ namespace Infrastructure.Repositories
 
         public async Task AddAsync(ShoppingCartItem shoppingItem) => await _context.ShoppingItems.AddAsync(shoppingItem);
         public void Delete(ShoppingCartItem shoppingItem) => _context.ShoppingItems.Remove(shoppingItem);
+
+        public async Task<List<ShoppingCartItem>> GetAllShoppingItemsByShoppingCartId(int shoppingCartId) => await _context.ShoppingItems.Where(x => x.ShoppingCartId == shoppingCartId).ToListAsync();
+
         public async Task<ShoppingCartItem?> GetShoppingItemByIds(int shoppingCartId, int productId) 
         {
 

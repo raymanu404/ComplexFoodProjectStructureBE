@@ -22,7 +22,7 @@ public class UnitOfWork : IUnitOfWork
         Coupons = coupons;
         Products = products;
         Admins = admins;
-        Items = items;
+        OrderItems = items;
         ShoppingCarts = carts;
         Orders = orders;
         ShoppingItems = shoppingItems;
@@ -34,7 +34,7 @@ public class UnitOfWork : IUnitOfWork
 
     public IAdminRepository Admins { get; }
 
-    public IOrderItemsRepository Items { get; }
+    public IOrderItemsRepository OrderItems { get; }
 
     public IShoppingCartRepository ShoppingCarts { get; }
     public IShoppingItemRepository ShoppingItems { get; }

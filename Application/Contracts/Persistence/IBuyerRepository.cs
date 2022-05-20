@@ -7,7 +7,6 @@ namespace Application.Contracts.Persistence;
 public interface IBuyerRepository
 {
     Task AddAsync(Buyer buyer);
-    void Update(BuyerDto buyer);
     void Delete(Buyer buyer);
     Task<Buyer?> GetByIdAsync(int id);
     Task<List<Buyer>> GetAllAsync();

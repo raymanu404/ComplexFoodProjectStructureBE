@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
-
 using Application.DtoModels.Coupon;
 using Application.Features.Coupons.Queries.GetCouponsByBuyerId;
 using Application.Features.Coupons.Commands.CreateCoupon;
-using Application.Features.Coupons.Commands.DeleteCoupon;
 
 namespace WebApiComplexFood.Controllers
 {
@@ -56,15 +54,6 @@ namespace WebApiComplexFood.Controllers
             return CreatedAtRoute(new { code = buyerId.ToString()} , coupons);
         }
 
-        // DELETE: coupons/{buyerId}/{code}
-        [HttpDelete("{buyerId}/{code}")]
-        public async Task<NoContentResult> DeleteCoupon(int buyerId, string code)
-        {
-            var command = new DeleteCouponCommand() { BuyerId = buyerId, Code = code};
-            await _mediator.Send(command);
-
-            return NoContent();
-        }
 
     
     }

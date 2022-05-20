@@ -21,8 +21,8 @@ namespace WebApiComplexFood.Controllers
             _mediator = mediator;
         }
 
-        //POST : /create/{buyerId}
-        [HttpPost("/create/{buyerId}")]
+        //POST : create/{buyerId}
+        [HttpPost("create/{buyerId}")]
         public async Task<ActionResult<ShoppingCartItem>> Create_ShoppingItem_CreateShoppingItemCommand(int buyerId,[FromBody]ShoppingCartItemDto request )
         {
             var command = new CreateShoppingItemCommand
@@ -37,44 +37,25 @@ namespace WebApiComplexFood.Controllers
             if(shoppingItem == -2)
             {
                 return BadRequest("Insufficient funds!");
-            }
-
-            if(shoppingItem != -1 || shoppingItem != 0 && shoppingItem != -2)
-            {
-                return CreatedAtRoute(new { id = shoppingItem }, shoppingItem);
-            }
-            else
+            }  
+            if(shoppingItem == -1)
             {
                 return NotFound("Buyer or Product not found!");
             }
-           
-        }
-
-        //momentan lasam ca si test
-        //PATCH: /update/{buyerId}
-        [HttpPatch("/update_item/{buyerId}")]
-        public async Task<ActionResult<ShoppingCartItem>> Update_Cantity_UpdateCantityShoppingItemCommand(int buyerId, [FromBody] ShoppingCartItemDto request)
-        {
-            var command = new UpdateCantityShoppingItemCommand
+            if (shoppingItem == -4)
             {
-                ShoppingCartId = request.ShoppingCartId,
-                ProductId = request.ProductId,
-                Cantity = request.Cantity,
-                BuyerId = buyerId
-
-            };
-
-            var shoppingItem = await _mediator.Send(command);
-            if(shoppingItem.Equals("Item doesn't exists!"))
-            {
-                return NotFound(shoppingItem);
+                return Ok("Item was deleted successesfully!");
             }
-            else
-            {
-                return Ok(shoppingItem);
-            }
-        }
 
+            if (shoppingItem > 0)
+            {
+                return CreatedAtRoute(new { id = shoppingItem }, shoppingItem);
+            }
+
+            return BadRequest("Upps, something went wrong...");
+
+
+        }
 
     }
 }

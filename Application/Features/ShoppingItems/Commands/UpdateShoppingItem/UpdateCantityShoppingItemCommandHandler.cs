@@ -4,21 +4,27 @@ using Domain.ValueObjects;
 
 namespace Application.Features.ShoppingItems.Commands
 {
-    public class UpdateCantityShoppingItemCommandHandler : IRequestHandler<UpdateCantityShoppingItemCommand, string>
+    public class UpdateCantityShoppingItemCommandHandler : IRequestHandler<UpdateCantityShoppingItemCommand, int>
     {
         public readonly IUnitOfWork _unitOfWork;
         public UpdateCantityShoppingItemCommandHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task<string> Handle(UpdateCantityShoppingItemCommand command, CancellationToken cancellationToken)
+        public async Task<int> Handle(UpdateCantityShoppingItemCommand command, CancellationToken cancellationToken)
         {
-            string returnMessage = "";
+            int id = 0;
             var getShoppingItem = await _unitOfWork.ShoppingItems.GetShoppingItemByIds(command.ShoppingCartId, command.ProductId);
             var getProduct = await _unitOfWork.Products.GetByIdAsync(command.ProductId);
 
             if(getShoppingItem != null && getProduct != null)
             {
+                if(command.Cantity == getShoppingItem.Cantity.Value)
+                {
+                    return getShoppingItem.ShoppingCartId;
+                    //daca sunt egale cantitatile sa nu facem nimic
+                }
+
                 var getShoppingCart = await _unitOfWork.ShoppingCarts.GetCartByIdAsync(getShoppingItem.ShoppingCartId);
                 var getBuyer = await _unitOfWork.Buyers.GetByIdAsync(command.BuyerId);
                 if (command.Cantity != 0)
@@ -42,19 +48,34 @@ namespace Application.Features.ShoppingItems.Commands
                         getShoppingItem.Cantity = new Cantity(command.Cantity);
                         getShoppingCart.TotalPrice = new Price(totalPrice);        
                         getBuyer.Balance = new Balance(buyerTotalBalance);
-                        
-                        returnMessage = "Your item was updated succssesfully";
+
+                        id = getShoppingItem.ShoppingCartId;
+                    }
+                    else
+                    {
+                        id = -3;
                     }
                    
                 }
                 else
                 {
-                    //stergere shopping item dupa acel produs
+                    //stergere shopping item dupa acel produs sau cartul in sine daca era ultimul element din lista de itemuri pentru acel cart
                     var totalPrice = 0.0;
-                    totalPrice = getShoppingCart.TotalPrice.Value - getShoppingItem.Cantity.Value * getProduct.Price.Value;
-                    getShoppingCart.TotalPrice = new Price(totalPrice);
-                    _unitOfWork.ShoppingItems.Delete(getShoppingItem);
-                    returnMessage = "Item was deleted successesfully!";
+                    totalPrice =  getShoppingItem.Cantity.Value * getProduct.Price.Value;
+                   
+                    var itemsInCart = await _unitOfWork.ShoppingItems.GetAllShoppingItemsByShoppingCartId(getShoppingCart.Id);
+                    if(itemsInCart.Count > 1)
+                    {
+                        getShoppingCart.TotalPrice = new Price(getShoppingCart.TotalPrice.Value - totalPrice);
+                        _unitOfWork.ShoppingItems.Delete(getShoppingItem);
+                    }
+                    else
+                    {
+                        _unitOfWork.ShoppingCarts.Delete(getShoppingCart);
+                    } 
+                    
+                    getBuyer.Balance = new Balance(getBuyer.Balance.Value + totalPrice);
+                    id = -4;
 
                 }
 
@@ -62,10 +83,10 @@ namespace Application.Features.ShoppingItems.Commands
             }
             else
             {
-                returnMessage = "Item doesn't exists!";
+                id = -3;
             }
 
-            return returnMessage;
+            return id;
         }
     }
 }

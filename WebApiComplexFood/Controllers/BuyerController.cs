@@ -31,7 +31,7 @@ namespace WebApiComplexFood.Controllers
 
         //GET buyers/login
         [HttpPost("login")]
-        public async Task<ActionResult<BuyerDto>> GetBuyerLogin([FromBody]BuyerDtoLogin buyerLogin)
+        public async Task<ActionResult<BuyerDto>> GetBuyerLogin([FromBody]BuyerLoginDto buyerLogin)
         {
             var queryBuyerLogin = await _mediator.Send(new LoginBuyerQuery { BuyerLogin = buyerLogin });
             if(queryBuyerLogin != null)
@@ -78,10 +78,23 @@ namespace WebApiComplexFood.Controllers
 
         //POST buyers/register/email = email
         [HttpPost("register")]
-        public async Task<ActionResult<BuyerDto>> RegisterBuyer([FromBody] CreateBuyerCommand command)
+        public async Task<ActionResult<BuyerRegisterDto>> RegisterBuyer([FromBody] BuyerRegisterDto newBuyer)
         {
+            var command = new CreateBuyerCommand()
+            {
+                Buyer = newBuyer
+            };
+
             var buyer = await _mediator.Send(command);
-            return CreatedAtRoute(new { email = buyer.Email }, buyer);
+            if(buyer != null)
+            {
+                return CreatedAtRoute(new { email = buyer.Email }, buyer);
+            }
+            else
+            {
+                return BadRequest("Email invalid!");
+            }
+            
         }
         
         //DELETE buyers/{id}
@@ -114,7 +127,7 @@ namespace WebApiComplexFood.Controllers
 
         //PATCH buyers/confirm/{buyerId}
         [HttpPatch("confirm/{buyerId}")]
-        public async Task<ActionResult<string>> ConfirmBuyer(int buyerId,[FromBody] BuyerDtoConfirm confirmBuyer)
+        public async Task<ActionResult<string>> ConfirmBuyer(int buyerId,[FromBody] BuyerConfirmDto confirmBuyer)
         {
 
             var command = new ConfirmBuyerCommand

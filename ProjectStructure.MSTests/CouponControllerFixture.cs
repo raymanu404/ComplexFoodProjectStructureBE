@@ -7,7 +7,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Features.Coupons.Queries.GetCouponsByBuyerId;
 using Application.Features.Coupons.Commands.CreateCoupon;
-using Application.Features.Coupons.Commands.DeleteCoupon;
 using Application.DtoModels.Coupon;
 
 using WebApiComplexFood.Controllers;
@@ -69,20 +68,5 @@ namespace ProjectStructure.UnitTests
             _mockMediator.Verify(x => x.Send(It.IsAny<CreateCouponCommand>(), It.IsAny<CancellationToken>()), Times.Once());
         }
 
-        [TestMethod]
-        public async Task Delete_Coupon_DeleteCouponCommand()
-        {
-            //ARRANGE
-            _mockMediator
-                .Setup(m => m.Send(It.IsAny<DeleteCouponCommand>(), It.IsAny<CancellationToken>()))
-                .Verifiable();
-
-            //ACT
-            var controller = new CouponController(_mockMediator.Object);
-            await controller.DeleteCoupon(1, "YHeWP8");
-
-            //ASSERT
-            _mockMediator.Verify(m => m.Send(It.IsAny<DeleteCouponCommand>(), It.IsAny<CancellationToken>()), Times.Once);
-        }
     }
 }

@@ -11,5 +11,6 @@ public class OrderItem
     public string Title { get; set; } = null!;
     public string Description { get; set; } = null!;
     public Price Price { get; set; }
+    public int OrderId { get; set; }
 
 }

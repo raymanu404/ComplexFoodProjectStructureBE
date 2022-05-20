@@ -5,8 +5,8 @@ using Domain.Models.Roles;
 namespace Application.Features.Buyers.Commands.CreateBuyer
 {
 
-    public class CreateBuyerCommand : IRequest<BuyerDto>
+    public class CreateBuyerCommand : IRequest<BuyerRegisterDto>
     {
-        public BuyerDto Buyer { get; set; }
+        public BuyerRegisterDto Buyer { get; set; }
     }
 }

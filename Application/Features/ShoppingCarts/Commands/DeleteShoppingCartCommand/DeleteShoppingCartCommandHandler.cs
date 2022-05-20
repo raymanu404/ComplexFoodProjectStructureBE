@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Application.Contracts.Persistence;
 
-namespace Application.Features.ShoppingCarts.Commands.DeleteShoppingCartCommand
+namespace Application.Features.ShoppingCarts.Commands
 {
     public class DeleteShoppingCartCommandHandler : IRequestHandler<DeleteShoppingCartCommand, string>
     {

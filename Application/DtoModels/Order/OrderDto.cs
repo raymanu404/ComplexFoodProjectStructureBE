@@ -1,17 +1,16 @@
-﻿using Domain.ValueObjects;
-using Domain.Models.Enums;
-using Application.DtoModels.Cart;
+﻿using Domain.Models.Enums;
 
 namespace Application.DtoModels.Order
 {
     public class OrderDto
     {
-        public string TotalPrice { get; set; }
+        public int Id { get; set; }
+        public double TotalPrice { get; set; }
         public DateTime DatePlaced { get; set; }
         public OrderStatus Status { get; set; }
         public int Discount { get; set; }
         public string Code { get; set; }
+        public int BuyerId { get; set; }
 
-        //public ShoppingCartDto Cart { get; set; }
     }
 }
