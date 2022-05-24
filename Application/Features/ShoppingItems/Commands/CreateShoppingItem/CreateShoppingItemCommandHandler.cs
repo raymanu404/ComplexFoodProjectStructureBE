@@ -116,7 +116,8 @@ namespace Application.Features.ShoppingItems.Commands
                             shoppingItem.ShoppingCartId = shoppingCartId;
                             await _unitOfWork.ShoppingItems.AddAsync(shoppingItem);
 
-                            buyer.Balance = new Balance(buyer.Balance.Value - total_price);
+                            //buyer.Balance = new Balance(buyer.Balance.Value - total_price);
+                            //nu are rost sa scadem de aici ca oricum scadem cu tot cu discount din orders
                             id = shoppingItem.ShoppingCartId;
                         }
                                        

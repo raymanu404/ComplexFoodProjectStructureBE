@@ -12,12 +12,12 @@ namespace WebApiComplexFood.Controllers
     public class CouponController : Controller
     {
 
-        private readonly ILogger<BuyerController> _logger;
+        private readonly ILogger<CouponController> _logger;
         private readonly IMediator _mediator;
 
-        public CouponController(IMediator mediator)
+        public CouponController(IMediator mediator, ILogger<CouponController> logger)
         {
-            //_logger = logger;
+            _logger = logger;
             _mediator = mediator;
         }
 
@@ -38,7 +38,6 @@ namespace WebApiComplexFood.Controllers
             
         }
 
-
         // POST: buy_coupons/buyerId
         [HttpPost("buy_coupons/{buyerId}")]
         public async Task<ActionResult<int>> CreateCoupons(int buyerId, [FromBody] CouponCreateDto newCoupons)
@@ -53,8 +52,6 @@ namespace WebApiComplexFood.Controllers
             var coupons = await _mediator.Send(command);
             return CreatedAtRoute(new { code = buyerId.ToString()} , coupons);
         }
-
-
     
     }
 }

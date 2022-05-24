@@ -8,8 +8,13 @@ using Application.Components.RandomCode;
 
 namespace Application.Features.Coupons.Commands.CreateCoupon
 {
+   
     public class CreateCouponCommandHandler : IRequestHandler<CreateCouponCommand, string>
     {
+
+        const int PRICE_TICKET_TYPE1 = 10;
+        const int PRICE_TICKET_TYPE2 = 30;
+        const int PRICE_TICKET_TYPE3 = 50;
 
         private readonly IUnitOfWork _unitOfWork;
         
@@ -28,16 +33,20 @@ namespace Application.Features.Coupons.Commands.CreateCoupon
                     if (buyer.Balance.Value > 0)
                     {
                         var totalPrice = 0;
+                        var amountOfCoupons = 0;
                         switch (request.Coupon.Type)
                         {
                             case TypeCoupons.TenProcent:
-                                totalPrice = request.Coupon.Cantity * 10; 
+                                totalPrice = PRICE_TICKET_TYPE1;
+                                amountOfCoupons = 1;
                                 break;
                             case TypeCoupons.TwentyProcent:
-                                totalPrice = request.Coupon.Cantity * 15;
+                                totalPrice = PRICE_TICKET_TYPE2;
+                                amountOfCoupons = 3;
                                 break;
                             case TypeCoupons.ThirtyProcent:
-                                totalPrice = request.Coupon.Cantity * 20;
+                                totalPrice = PRICE_TICKET_TYPE3; 
+                                amountOfCoupons = 5;
                                 break;
                             default:
                                 throw new Exception("Invalid Type of coupon!");
@@ -45,7 +54,7 @@ namespace Application.Features.Coupons.Commands.CreateCoupon
 
                         if (buyer.Balance.Value >= totalPrice)
                         {
-                            for (var i = 0; i < request.Coupon.Cantity; i++)
+                            for (var i = 0; i < amountOfCoupons; i++)
                             {
 
                                 var newCoupon = new Coupon

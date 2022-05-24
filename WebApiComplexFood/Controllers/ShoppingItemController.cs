@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Application.Features.ShoppingItems.Commands;
 using Domain.Models.Shopping;
 using Application.DtoModels.ShoppingCartItemDto;
+using Application.DtoModels.Product;
+using Application.Features.ShoppingItems.Queries.GetAllProductsByCartId;
 
 namespace WebApiComplexFood.Controllers
 {
@@ -12,12 +14,12 @@ namespace WebApiComplexFood.Controllers
     [Route("shoppingItems")]
     public class ShoppingItemController : Controller
     {
-        private readonly ILogger<BuyerController> _logger;
+        private readonly ILogger<ShoppingItemController> _logger;
         private readonly IMediator _mediator;
 
-        public ShoppingItemController(IMediator mediator)
+        public ShoppingItemController(IMediator mediator, ILogger<ShoppingItemController> logger)
         {
-            //_logger = logger;
+            _logger = logger;
             _mediator = mediator;
         }
 
@@ -55,6 +57,26 @@ namespace WebApiComplexFood.Controllers
             return BadRequest("Upps, something went wrong...");
 
 
+        }
+
+        //GET: shoppingItems/{shoppingCartId}
+        [HttpGet("{shoppingCartId}")]
+        public async Task<ActionResult<List<ProductFromCartDto>>> GetAllProductsByCartId(int shoppingCartId)
+        {
+            var query = new GetAllProductsByCartIdQuery
+            {
+                ShoppingCartId = shoppingCartId
+            };
+            var products = await _mediator.Send(query);
+            if(products.Count > 0)
+            {
+                return Ok(products);
+            }
+            else
+            {
+                return NotFound();
+            }
+            
         }
 
     }

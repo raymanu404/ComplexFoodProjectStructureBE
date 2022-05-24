@@ -16,7 +16,7 @@ namespace Infrastructure.Repositories
         public async Task AddAsync(Order order) => await _context.Orders.AddAsync(order);
 
 
-        public void DeleteAsync(Order order) => _context.Orders.Remove(order);
+        public void DeleteOrder(Order order) => _context.Orders.Remove(order);
 
         public async Task<List<Order>> GetAllAsync() => await _context.Orders.ToListAsync();
 

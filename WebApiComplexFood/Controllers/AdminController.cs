@@ -11,7 +11,7 @@ namespace WebApiComplexFood.Controllers
     {
         private readonly ILogger<AdminController> _logger;
         private readonly IMediator _mediator;
-        public AdminController(ILogger<AdminController> logger, IMediator mediator)
+        public AdminController(IMediator mediator, ILogger<AdminController> logger)
         {
             _logger = logger;
             _mediator = mediator;

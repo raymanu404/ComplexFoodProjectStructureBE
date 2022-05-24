@@ -10,6 +10,7 @@ using Application.Features.Coupons.Commands.CreateCoupon;
 using Application.DtoModels.Coupon;
 
 using WebApiComplexFood.Controllers;
+using Microsoft.Extensions.Logging;
 
 namespace ProjectStructure.UnitTests
 {
@@ -19,13 +20,16 @@ namespace ProjectStructure.UnitTests
 
         private static TestContext _testContext;
         private static Mock<IMediator> _mockMediator;
+        private static Mock<ILogger<CouponController>> _mockLogger;
 
         [ClassInitialize]
         public static void ClassInitialize(TestContext testContext)
         {
             _testContext = testContext;
             _mockMediator = new Mock<IMediator>();
-            
+            _mockLogger = new Mock<ILogger<CouponController>>();
+
+
         }
 
         [TestMethod]
@@ -38,7 +42,7 @@ namespace ProjectStructure.UnitTests
 
 
             //ACT
-            var controller = new CouponController(_mockMediator.Object);
+            var controller = new CouponController(_mockMediator.Object, _mockLogger.Object);
             await controller.GetAllCouponsByBuyerId(1);
 
             //ASSERT
@@ -51,7 +55,6 @@ namespace ProjectStructure.UnitTests
             //ARANGE
             var coupons = new CouponCreateDto
             {
-                Cantity = 3,
                 Type = Domain.Models.Enums.TypeCoupons.ThirtyProcent
             };
 
@@ -61,7 +64,7 @@ namespace ProjectStructure.UnitTests
 
 
             //ACT
-            var controller = new CouponController(_mockMediator.Object);
+            var controller = new CouponController(_mockMediator.Object, _mockLogger.Object);
             await controller.CreateCoupons(1, coupons);
 
             //ASSERT

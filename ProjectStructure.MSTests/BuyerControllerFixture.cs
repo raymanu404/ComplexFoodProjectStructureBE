@@ -23,12 +23,14 @@
 //    {
 //        private static TestContext _testContext;
 //        private static Mock<IMediator> _mockMediator;
+//        private static Mock<ILogger<BuyerController>> _mockLogger;
 
 //        [ClassInitialize]
 //        public static void ClassInitialize(TestContext testContext)
 //        {
 //            _testContext = testContext;
 //            _mockMediator = new Mock<IMediator>();
+//            _mockLogger = new Mock<ILogger<BuyerController>>();
 //        }
 
 
@@ -41,7 +43,7 @@
 //                .Verifiable();
 
 //            //ACT
-//            var controller = new BuyerController(_mockMediator.Object);
+//            var controller = new BuyerController(_mockMediator.Object, _mockLogger.Object);
 //            await controller.GetAllBuyers();
 
 //            //ASSERT
@@ -56,7 +58,7 @@
 //                .Setup(m => m.Send(It.IsAny<DeleteBuyerByIdCommand>(), It.IsAny<CancellationToken>()))
 //                .Verifiable();
 
-//            var controller = new BuyerController(_mockMediator.Object);
+//            var controller = new BuyerController(_mockMediator.Object, _mockLogger.Object);
 
 //            await controller.DeleteBuyer(2);
 
@@ -70,33 +72,33 @@
 //            //ARRANGE
 //            var newBuyer = new BuyerDto
 //            {
-//                Email = new Email("aurel@email.com"),
-//                FirstName = new Name("Marius"),
-//                LastName = new Name("Aurel"),
-//                Password = new Password("123ALAA2"),
-//                Gender = new Gender("M"),
-//                PhoneNumber = new PhoneNumber("081231242")
-                
+//                Email = "aurel@email.com",
+//                FirstName = "Marius",
+//                LastName = "Aurel",
+//                Password = "123ALAA2",
+//                Gender = "M",
+//                PhoneNumber = "081231242"
+
 //            };
 
-//            _mockMediator
-//                .Setup(m => m.Send(It.IsAny<CreateBuyerCommand>(), It.IsAny<CancellationToken>()))
-//                .ReturnsAsync(
-//                    new Buyer
-//                    {
-                       
-//                    }
-//                );
-            
+//            //_mockMediator
+//            //    .Setup(m => m.Send(It.IsAny<CreateBuyerCommand>(), It.IsAny<CancellationToken>()))
+//            //    .ReturnsAsync(
+//            //        new Buyer
+//            //        {
+
+//            //        }
+//            //    );
+
 //            //ACT
-//            var controller = new BuyerController(_mockMediator.Object);
-//            var result = await controller.CreateBuyer(new CreateBuyerCommand() { Buyer = newBuyer});
+//            //var controller = new BuyerController(_mockMediator.Object, _mockLogger.Object);
+//            //var result = await controller.CreateBuyer(new CreateBuyerCommand() { Buyer = newBuyer });
 
-//            var createdResult = result.Result as CreatedAtRouteResult;
+//            //var createdResult = result.Result as CreatedAtRouteResult;
 
 
-//            //ASSERT
-//            Assert.AreEqual((int)HttpStatusCode.Created , createdResult.StatusCode);
+//            ////ASSERT
+//            //Assert.AreEqual((int)HttpStatusCode.Created, createdResult.StatusCode);
 //        }
 
 //        [TestMethod]
@@ -106,11 +108,11 @@
 //            {
 //                Email = new Email("aurel1@email.com"),
 //                FirstName = new Name("Marius"),
-               
+
 //            };
 
 //            _mockMediator
-//                .Setup(m => m.Send(It.IsAny <UpdateBuyerCommand>(), It.IsAny<CancellationToken>()))
+//                .Setup(m => m.Send(It.IsAny<UpdateBuyerCommand>(), It.IsAny<CancellationToken>()))
 //                .ReturnsAsync(
 //                    newBuyer
 //                );

@@ -33,21 +33,21 @@ namespace Application.Features.ShoppingItems.Commands
                     if(getShoppingCart != null)
                     {
                         var totalPrice = 0.0;
-                        var buyerTotalBalance = 0.0;
+                        //var buyerTotalBalance = 0.0;
                         if (command.Cantity > getShoppingItem.Cantity.Value)
                         {
                             totalPrice = getShoppingCart.TotalPrice.Value + (command.Cantity - getShoppingItem.Cantity.Value) * getProduct.Price.Value;
-                            buyerTotalBalance = getBuyer.Balance.Value - (command.Cantity - getShoppingItem.Cantity.Value) * getProduct.Price.Value;
+                            //buyerTotalBalance = getBuyer.Balance.Value - (command.Cantity - getShoppingItem.Cantity.Value) * getProduct.Price.Value;
                         }
                         else
                         {
                             totalPrice = getShoppingCart.TotalPrice.Value - (getShoppingItem.Cantity.Value - command.Cantity) * getProduct.Price.Value;
-                            buyerTotalBalance = getBuyer.Balance.Value + (getShoppingItem.Cantity.Value - command.Cantity) * getProduct.Price.Value;
+                            //buyerTotalBalance = getBuyer.Balance.Value + (getShoppingItem.Cantity.Value - command.Cantity) * getProduct.Price.Value;
                         }
 
                         getShoppingItem.Cantity = new Cantity(command.Cantity);
                         getShoppingCart.TotalPrice = new Price(totalPrice);        
-                        getBuyer.Balance = new Balance(buyerTotalBalance);
+                        //getBuyer.Balance = new Balance(buyerTotalBalance);
 
                         id = getShoppingItem.ShoppingCartId;
                     }
@@ -74,7 +74,7 @@ namespace Application.Features.ShoppingItems.Commands
                         _unitOfWork.ShoppingCarts.Delete(getShoppingCart);
                     } 
                     
-                    getBuyer.Balance = new Balance(getBuyer.Balance.Value + totalPrice);
+                    //getBuyer.Balance = new Balance(getBuyer.Balance.Value + totalPrice);
                     id = -4;
 
                 }

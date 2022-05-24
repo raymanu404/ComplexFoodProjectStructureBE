@@ -31,10 +31,13 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
         public async Task<string> Handle(ConfirmShoppingCartCommand command, CancellationToken cancellationToken)
         {
             var returnMessage = "";
+            int orderIdInCaseOfException = 0;
+            var totalPriceInCaseOfException = 0.0;
             try
             {
+                var getBuyer = await _unitOfWork.Buyers.GetByIdAsync(command.BuyerId);
                 var getCartByBuyerId = await _unitOfWork.ShoppingCarts.GetCartByBuyerIdAsync(command.BuyerId);
-                if(getCartByBuyerId != null)
+                if(getCartByBuyerId != null && getBuyer != null)
                 {
                    
                     var discountTotalPrice = 0.0;
@@ -61,8 +64,7 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
 
                             discountTotalPrice = getCartByBuyerId.TotalPrice.Value - (getCartByBuyerId.TotalPrice.Value * discount / 100) - PRICE_PER_COUPON;
                             _unitOfWork.Coupons.Delete(couponDto);
-                            await _unitOfWork.CommitAsync(cancellationToken);
-
+                           
                         }
                         else
                         {
@@ -85,7 +87,7 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
                         BuyerId = command.BuyerId
                         
                     };
-
+                    totalPriceInCaseOfException = newOrder.TotalPrice;
                     var createOrderCommand = new CreateOrderCommand
                     {
                         Order = newOrder
@@ -93,6 +95,7 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
                     };
 
                     var responseOrderId = await _mediator.Send(createOrderCommand);
+                    orderIdInCaseOfException = responseOrderId;
                     if (responseOrderId > 0)
                     {
 
@@ -110,6 +113,7 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
                                     Title = getProduct.Title,
                                     Description = getProduct.Description,
                                     Price = getProduct.Price.Value,
+                                    Image = getProduct.Image,
                                     OrderId = responseOrderId
 
                                 };
@@ -119,9 +123,12 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
 
                             }
                         }
-
+                        
                         //stergem  cartul doar daca order-ul si itemele din order s au creat cu succes!;
                         _unitOfWork.ShoppingCarts.Delete(getCartByBuyerId);
+
+                        //actualizam Balance buyer-lui
+                        getBuyer.Balance = new Balance(getBuyer.Balance.Value - newOrder.TotalPrice);
                         await _unitOfWork.CommitAsync(cancellationToken);
                         returnMessage = $"OrderCode:{newOrder.Code}";
 
@@ -140,6 +147,15 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
             {
                 Console.WriteLine(ex.Message);
                 returnMessage = "Upss, an exception had occurred in confirmation of your cart!";
+                var getBuyer = await _unitOfWork.Buyers.GetByIdAsync(command.BuyerId);
+                var order = await _unitOfWork.Orders.GetByIdAsync(orderIdInCaseOfException);
+                if(order != null && getBuyer != null)
+                {
+                    getBuyer.Balance = new Balance(getBuyer.Balance.Value + totalPriceInCaseOfException);
+                    _unitOfWork.Orders.DeleteOrder(order);
+                    await _unitOfWork.CommitAsync(cancellationToken);
+                }           
+
             }
 
             return returnMessage;

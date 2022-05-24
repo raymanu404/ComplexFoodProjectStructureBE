@@ -54,6 +54,9 @@ public class MappingProfile : Profile
 
         CreateMap<Product, ProductDto>()
             .ForMember(x => x.Price, dest => dest.MapFrom(x => x.Price.Value))
+            .ReverseMap(); 
+        
+        CreateMap<ProductDto, ProductFromCartDto>()
             .ReverseMap();
 
         CreateMap<Order, OrderDto>()

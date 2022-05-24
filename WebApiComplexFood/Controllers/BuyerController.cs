@@ -23,9 +23,9 @@ namespace WebApiComplexFood.Controllers
         private readonly ILogger<BuyerController> _logger;
         private readonly IMediator _mediator;
 
-        public BuyerController(IMediator mediator)
+        public BuyerController(IMediator mediator, ILogger<BuyerController> logger)
         {
-            //_logger = logger;
+            _logger = logger;
             _mediator = mediator;
         }
 
@@ -45,7 +45,7 @@ namespace WebApiComplexFood.Controllers
             
         }
 
-        //GET: buyers/1
+        //GET: buyers/{buyerId}
         [HttpGet("{buyerId}")]
         public async Task<ActionResult<BuyerDto>> GetBuyerById(int buyerId)
         {
@@ -179,8 +179,6 @@ namespace WebApiComplexFood.Controllers
             var updatePasswordMessage = await _mediator.Send(command);
             return Ok(updatePasswordMessage);
         }
-
-
 
     }
 }

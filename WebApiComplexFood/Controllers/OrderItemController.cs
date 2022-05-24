@@ -25,7 +25,14 @@ namespace WebApiComplexFood.Controllers
             var command = new GetALLItemsQuery() { };
 
             var items = await _mediator.Send(command);
-            return Ok(items);
+            if (items.Count != 0)
+            {
+                return Ok(items);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         //GET: /rders/{buyerId}
@@ -38,7 +45,14 @@ namespace WebApiComplexFood.Controllers
             };
 
             var items = await _mediator.Send(command);
-            return Ok(items);
+            if (items.Count != 0)
+            {
+                return Ok(items);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }
