@@ -15,7 +15,7 @@ public record struct Password
         if (hasNumber.IsMatch(value) /*&& hasUpperChar.IsMatch(value)*/ && hasMinimum8Chars.IsMatch(value))
             Value = value;
         else
-            throw new Exception("Password invalid!");
+            throw new Exception("Password Invalid!");
     }
 
     public string Value { get; set; }

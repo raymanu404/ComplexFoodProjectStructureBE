@@ -16,6 +16,7 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
     public class ConfirmShoppingCartCommandHandler : IRequestHandler<ConfirmShoppingCartCommand, string>
     {
         const double PRICE_PER_COUPON = 10.0;
+        const double MINIMUM_TOTAL_PRICE_CART = 12.0;
 
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMediator _mediator;
@@ -42,7 +43,8 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
                    
                     var discountTotalPrice = 0.0;
                     int discount = 0;
-                    if(command.CouponCode.Length != 0 && !command.CouponCode.Equals("string"))
+
+                    if(command.CouponCode.Length != 0 && !command.CouponCode.Equals("string") && getCartByBuyerId.TotalPrice.Value >= MINIMUM_TOTAL_PRICE_CART)
                     {
                         //verificam validitatea cuponului
                         var couponDto = await _unitOfWork.Coupons.GetByUniqueCodeAsync(new UniqueCode(command.CouponCode), command.BuyerId);

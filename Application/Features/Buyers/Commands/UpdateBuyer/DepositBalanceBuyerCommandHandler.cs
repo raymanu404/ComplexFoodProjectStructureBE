@@ -21,7 +21,7 @@ namespace Application.Features.Buyers.Commands.UpdateBuyer
                 {
                     if (buyer.Confirmed)
                     {
-                        buyer.Balance = new Balance(buyer.Balance.Value + request.Balance);
+                        buyer.Balance = new Balance(buyer.Balance.Value + request.DepositBalanceDto.Balance);
                         await _unitOfWork.CommitAsync(cancellationToken);
                     }
                     else
@@ -42,7 +42,7 @@ namespace Application.Features.Buyers.Commands.UpdateBuyer
                 return "Tranzactia de depunere a fost esuata...";
             }
 
-            return $"Suma {request.Balance} a fost depusa cu succes!";
+            return $"Suma {request.DepositBalanceDto.Balance} RON a fost depusa cu succes!";
         }
     }
 }

@@ -33,8 +33,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Folder Include="Contracts\ThirdParty\" />
 		<Folder Include="Features\Buyers\Commands\CreateBuyer\" />
 		<Folder Include="Features\Buyers\Queries\GetBuyersList\" />
+		<Folder Include="Features\PaymentIntent\" />
 		<Folder Include="Features\Orders\Commands\CreateOrderCommand\" />
 		<Folder Include="Profiles\" />
 	</ItemGroup>

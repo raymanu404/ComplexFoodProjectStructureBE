@@ -6,6 +6,7 @@ using Domain.Models.Shopping;
 using Application.DtoModels.ShoppingCartItemDto;
 using Application.DtoModels.Product;
 using Application.Features.ShoppingItems.Queries.GetAllProductsByCartId;
+using Application.Features.ShoppingItems.Queries.GetAllProductsByBuyerId;
 
 namespace WebApiComplexFood.Controllers
 {
@@ -66,6 +67,25 @@ namespace WebApiComplexFood.Controllers
             var query = new GetAllProductsByCartIdQuery
             {
                 ShoppingCartId = shoppingCartId
+            };
+            var products = await _mediator.Send(query);
+            if(products.Count > 0)
+            {
+                return Ok(products);
+            }
+            else
+            {
+                return NotFound();
+            }
+            
+        }
+        //GET: shoppingItems/{buyerId}
+        [HttpGet("get_items/{buyerId}")]
+        public async Task<ActionResult<List<ProductFromCartDto>>> GetAllProductsByBuyerId(int buyerId)
+        {
+            var query = new GetAllProductsByBuyerIdQuery
+            {
+                BuyerId = buyerId
             };
             var products = await _mediator.Send(query);
             if(products.Count > 0)

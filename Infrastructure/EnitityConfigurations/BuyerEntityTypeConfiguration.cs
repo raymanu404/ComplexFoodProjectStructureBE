@@ -55,6 +55,7 @@ public class BuyerEntityTypeConfiguration : IEntityTypeConfiguration<Buyer>
         buyerConfiguration
           .Property(c => c.Balance)
           .HasConversion(v => v.Value, v => new Balance(v))
+          .HasPrecision(18,2)
           .HasColumnName("Balance")
           .HasDefaultValue(new Balance(0));
 

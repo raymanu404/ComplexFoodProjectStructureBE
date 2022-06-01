@@ -100,4 +100,18 @@ public class BuyerRepository : IBuyerRepository
         return buyer;
     }
 
+    public async Task<bool> GetBuyerByEmail(Email email)
+    {
+        var query = from buyer in _context.Buyers
+                    where buyer.Email == email
+                    select buyer.Email;
+        var result = await query.FirstOrDefaultAsync();      
+        return result.Value != null;
+    }
+
+    public async Task<Buyer?> GetBuyerByEmailAsync(Email email)
+    {
+        var buyer = await _context.Buyers.Where(x => x.Email == email).FirstOrDefaultAsync();
+        return buyer;
+    }
 }

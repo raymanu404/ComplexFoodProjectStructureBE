@@ -17,6 +17,8 @@ using Microsoft.OpenApi.Models;
 using Application.Contracts.FileUtils;
 using Infrastructure.FileUtils;
 using Application.Models;
+using Microsoft.Extensions.Options;
+using Stripe;
 
 namespace WebApiComplexFood
 {
@@ -34,6 +36,8 @@ namespace WebApiComplexFood
             string defaultConnectionString = Configuration.GetConnectionString("DefaultConnection");
 
             services.Configure<EmailSettings>(Configuration.GetSection(nameof(EmailSettings)));
+            services.Configure<StripeSettings>(Configuration.GetSection(nameof(StripeSettings)));
+            
 
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(defaultConnectionString));
           
@@ -46,7 +50,7 @@ namespace WebApiComplexFood
             services.AddScoped<IOrderItemsRepository, OrderItemRepository>();
             services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddScoped<IShoppingItemRepository, ShoppingItemRepository>();
-            services.AddSingleton<IFileReader, FileReader>();         
+            services.AddSingleton<IFileReader, FileReader>();
 
             // ---- unit of work
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -68,6 +72,7 @@ namespace WebApiComplexFood
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
 
             if (env.IsDevelopment())
             {

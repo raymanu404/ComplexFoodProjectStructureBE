@@ -155,7 +155,8 @@ namespace Infrastructure.Migrations
 
                     b.Property<double>("Balance")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("float")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("float(18)")
                         .HasDefaultValue(0.0)
                         .HasColumnName("Balance");
 

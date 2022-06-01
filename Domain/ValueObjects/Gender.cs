@@ -11,7 +11,7 @@ public record struct Gender
         if (pattern.IsMatch(value))
             Value = value;
         else
-            throw new Exception("Gender invalid!");
+           Value = "";
     }
 
     public string Value { get; set; }

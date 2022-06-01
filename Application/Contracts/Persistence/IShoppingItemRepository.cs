@@ -8,5 +8,6 @@ namespace Application.Contracts.Persistence
         void Delete(ShoppingCartItem shoppingItem);
         Task<ShoppingCartItem?> GetShoppingItemByIds(int shoppingCartId, int productId);
         Task<List<ShoppingCartItem>> GetAllShoppingItemsByShoppingCartId(int shoppingCartId);
+
     }
 }

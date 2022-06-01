@@ -1,11 +1,11 @@
 ﻿using MediatR;
-using Domain.ValueObjects;
+using Application.DtoModels.Buyer;
 
 namespace Application.Features.Buyers.Commands.UpdateBuyer
 {
     public class DepositBalanceBuyerCommand : IRequest<string>
     {
         public int BuyerId { get; set; }
-        public double Balance { get; set; }
+        public BuyerDepositBalanceDto DepositBalanceDto { get; set; }
     }
 }
