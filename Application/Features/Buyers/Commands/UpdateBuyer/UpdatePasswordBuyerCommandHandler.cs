@@ -22,6 +22,17 @@ namespace Application.Features.Buyers.Commands.UpdateBuyer
             if(buyer != null)
             {
 
+                var validatePassword = new Password(request.BuyerUpdatePassword.OldPassword);
+                if (validatePassword.Value.Equals(""))
+                {
+                    return "Old Password invalid!";
+                }
+                var validatePassword1 = new Password(request.BuyerUpdatePassword.NewPassword);
+                if (validatePassword1.Value.Equals(""))
+                {
+                    return "New Password invalid!";
+                }
+
                 var encodeOldPassoword = EncodePassword.ComputeSha256Hash(request.BuyerUpdatePassword.OldPassword);
                 if (buyer.Password.Value.Equals(encodeOldPassoword))
                 {

@@ -12,7 +12,7 @@ using Microsoft.Extensions.Options;
 
 namespace Application.Features.Buyers.Commands.CreateBuyer;
 
-public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, BuyerRegisterDto>
+public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, string>
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
@@ -26,16 +26,23 @@ public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, Buy
         _emailSettings = emailSettings.Value;
     }
 
-    public async Task<BuyerRegisterDto> Handle(CreateBuyerCommand command, CancellationToken cancellationToken)
+    public async Task<string> Handle(CreateBuyerCommand command, CancellationToken cancellationToken)
     {
+        var returnMessage = "";
         var checkBuyerIfExists = await _unitOfWork.Buyers.GetBuyerByEmail(new Email(command.Buyer.Email));
         if (!checkBuyerIfExists)
         {
 
-
             if (command.Buyer.Email.EndsWith("email.com"))
             {
-                return null;
+                return "Email invalid!";
+            }
+
+            //verificare inainte de hash
+            var checkNewPassword = new Password(command.Buyer.Password);
+            if (checkNewPassword.Value.Equals(""))
+            {
+                return "Password Invalid!";
             }
 
             //aici ar trebui sa criptam parolele
@@ -44,26 +51,28 @@ public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, Buy
 
             if (buyer.Email.Value.Equals(""))
             {
-                return null;
+                return "Email invalid!";
             }
 
             if (buyer.FirstName.Value.Equals(""))
             {
-                return null;
+                return "FirstName invalid!";
             }
 
             if (buyer.LastName.Value.Equals(""))
             {
-                return null;
+                return "LastName invalid!";
+            } 
+            
+            if (buyer.PhoneNumber.Value.Equals(""))
+            {
+                return "PhoneNumber invalid!";
             }
 
-            if (buyer.Password.Value.Equals(""))
-            {
-                return null;
-            }
+           
             if (buyer.Gender.Value.Equals(""))
             {
-                return null;
+                return "Gender invalid!";
             }
 
             buyer.ConfirmationCode = new UniqueCode(RandomCode.GetRandomCode(6));
@@ -79,15 +88,15 @@ public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, Buy
             var mailStatus = StmpGmail.SendMail(mailFrom, _emailSettings.Password, buyer.Email.Value, subject, body, nameTo);
             if (mailStatus.Equals("OK"))
             {
-                Console.WriteLine("A fost trimis mailul");
+                returnMessage = $"{buyer.Email.Value}";
             }
         }
         else
         {
-            return null;
+            return "This account exists/invalid!";
         }
 
-        return command.Buyer;
+        return returnMessage;
     }
 
    

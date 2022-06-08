@@ -22,12 +22,14 @@ namespace Application.Features.Buyers.Commands.UpdateBuyer
             if (buyer != null)
             {
 
-                var encodeNewPassoword = EncodePassword.ComputeSha256Hash(request.Buyer.Password);
-                buyer.Password = new Password(encodeNewPassoword);
-                if (buyer.Password.Value.Equals(""))
+                var validatePassword = new Password(request.Buyer.Password);
+                if (validatePassword.Value.Equals(""))
                 {
                     return "Password invalid!";
                 }
+
+                var encodeNewPassoword = EncodePassword.ComputeSha256Hash(request.Buyer.Password);
+                buyer.Password = new Password(encodeNewPassoword);
 
                 await _unitOfWork.CommitAsync(cancellationToken);
                 returnMessage = "Password was updated successfully!";

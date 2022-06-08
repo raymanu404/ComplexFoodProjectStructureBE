@@ -86,14 +86,14 @@ namespace WebApiComplexFood.Controllers
                 Buyer = newBuyer
             };
 
-            var buyer = await _mediator.Send(command);
-            if(buyer != null)
+            var buyerMessage = await _mediator.Send(command);
+            if(!buyerMessage.EndsWith("invalid!"))
             {
-                return CreatedAtRoute(new { email = buyer.Email }, buyer);
+                return CreatedAtRoute(new { email = buyerMessage }, buyerMessage);
             }
             else
             {
-                return BadRequest("Upps, something went wrong...");
+                return BadRequest(buyerMessage);
             }
             
         }
