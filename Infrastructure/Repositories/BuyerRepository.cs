@@ -21,45 +21,9 @@ public class BuyerRepository : IBuyerRepository
 
     public async Task<Buyer?> GetByIdAsync(int id)
     {
-        //var query = _context.Buyers
-        //    .Include(x => x.Coupons)
-        //    .Select(x => new
-        //    {
-        //        x.Id,
-        //        x.Email,
-        //        x.FirstName,
-        //        x.LastName,
-        //        x.Password,
-        //        x.PhoneNumber,
-        //        x.Gender,
-        //        x.Confirmed,
-        //        x.Balance,
-        //        x.ConfirmationCode,
-        //        x.Coupons,
 
-        //    }).Where(x => x.Id == id).FirstOrDefaultAsync();
         var buyer = await _context.Buyers.Where(x => x.Id == id).FirstOrDefaultAsync();
         return buyer;
-        //var buyer = await query;
-        //if(buyer == null)
-        //{
-        //    return new Buyer() { };
-        //}
-
-        //return new Buyer
-        //{
-        //    Id = buyer.Id,
-        //    Email = buyer.Email,
-        //    FirstName = buyer.FirstName,
-        //    LastName = buyer.LastName,
-        //    Password = buyer.Password,
-        //    PhoneNumber = buyer.PhoneNumber,
-        //    Gender = buyer.Gender,
-        //    Confirmed = buyer.Confirmed,
-        //    Balance = buyer.Balance,
-        //    ConfirmationCode = buyer.ConfirmationCode,
-        //    Coupons = buyer.Coupons,
-        //};
     }
 
     public async Task<List<Buyer>> GetAllAsync()
