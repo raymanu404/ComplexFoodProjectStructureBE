@@ -12,7 +12,7 @@ namespace WebApiComplexFood.Controllers
     {
         private readonly ILogger<OrderController> _logger;
         private readonly IMediator _mediator;
-        public OrderController(ILogger<OrderController> logger, IMediator mediator)
+        public OrderController(IMediator mediator, ILogger<OrderController> logger)
         {
             _logger = logger;
             _mediator = mediator;

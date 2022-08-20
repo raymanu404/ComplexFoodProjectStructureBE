@@ -884,7 +884,7 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
-      "Newtonsoft.Json/12.0.3": {
+      "Newtonsoft.Json/13.0.1": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -1080,6 +1080,28 @@
             "assetType": "native",
             "rid": "ubuntu.16.10-x64"
           }
+        }
+      },
+      "SendGrid/9.28.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1",
+          "starkbank-ecdsa": "[1.3.3, 2.0.0)"
+        },
+        "compile": {
+          "lib/netstandard2.0/SendGrid.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SendGrid.dll": {}
+        }
+      },
+      "starkbank-ecdsa/1.3.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/StarkbankEcdsa.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/StarkbankEcdsa.dll": {}
         }
       },
       "Stripe.net/39.114.0": {
@@ -2498,7 +2520,8 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "Domain": "1.0.0",
           "MailKit": "3.2.0",
-          "MediatR": "10.0.1"
+          "MediatR": "10.0.1",
+          "SendGrid": "9.28.0"
         },
         "compile": {
           "bin/placeholder/Application.dll": {}
@@ -2544,6 +2567,7 @@
           "MediatR.Extensions.Microsoft.DependencyInjection": "10.0.1",
           "Microsoft.EntityFrameworkCore": "6.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.4",
+          "SendGrid": "9.28.0",
           "Stripe.net": "39.114.0",
           "Swashbuckle.AspNetCore": "6.2.3"
         },
@@ -4446,10 +4470,10 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/12.0.3": {
-      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
       "type": "package",
-      "path": "newtonsoft.json/12.0.3",
+      "path": "newtonsoft.json/13.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4468,11 +4492,7 @@
         "lib/netstandard1.3/Newtonsoft.Json.xml",
         "lib/netstandard2.0/Newtonsoft.Json.dll",
         "lib/netstandard2.0/Newtonsoft.Json.xml",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
@@ -4720,6 +4740,45 @@
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
+      ]
+    },
+    "SendGrid/9.28.0": {
+      "sha512": "Cckzr5ypfVtqtZuMYOLuSEULIYrJLkoAIz5CsSkvjRanD7YoHIR73ENMnoPzpWNkyrDgMAHux7jOnbImv0kL8A==",
+      "type": "package",
+      "path": "sendgrid/9.28.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/SendGrid.dll",
+        "lib/net40/SendGrid.pdb",
+        "lib/net40/SendGrid.xml",
+        "lib/net452/SendGrid.dll",
+        "lib/net452/SendGrid.pdb",
+        "lib/net452/SendGrid.xml",
+        "lib/netstandard1.3/SendGrid.dll",
+        "lib/netstandard1.3/SendGrid.pdb",
+        "lib/netstandard1.3/SendGrid.xml",
+        "lib/netstandard2.0/SendGrid.dll",
+        "lib/netstandard2.0/SendGrid.pdb",
+        "lib/netstandard2.0/SendGrid.xml",
+        "sendgrid.9.28.0.nupkg.sha512",
+        "sendgrid.nuspec"
+      ]
+    },
+    "starkbank-ecdsa/1.3.3": {
+      "sha512": "OblOaKb1enXn+dSp7tsx9yjwV+/BEKM9jFhshIkZTwCk7LuTFTp+wSon6rFzuPiIiTGtvVWQNUw2slHjGktJog==",
+      "type": "package",
+      "path": "starkbank-ecdsa/1.3.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/StarkbankEcdsa.dll",
+        "lib/net452/StarkbankEcdsa.dll",
+        "lib/netstandard1.3/StarkbankEcdsa.dll",
+        "lib/netstandard2.0/StarkbankEcdsa.dll",
+        "lib/netstandard2.1/StarkbankEcdsa.dll",
+        "starkbank-ecdsa.1.3.3.nupkg.sha512",
+        "starkbank-ecdsa.nuspec"
       ]
     },
     "Stripe.net/39.114.0": {
@@ -8712,11 +8771,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\ProjectStructure.MSTests.csproj",
+      "projectUniqueName": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\ProjectStructure.MSTests.csproj",
       "projectName": "ProjectStructure.MSTests",
-      "projectPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\ProjectStructure.MSTests.csproj",
+      "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\ProjectStructure.MSTests.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\obj\\",
+      "outputPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -8738,11 +8797,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Application\\Application.csproj": {
-              "projectPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Application\\Application.csproj"
+            "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj": {
+              "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj"
             },
-            "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj": {
-              "projectPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj"
+            "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj": {
+              "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj"
             }
           }
         }
@@ -8793,7 +8852,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -7,7 +7,6 @@ using Application.Features.Buyers.Commands.UpdateBuyer;
 using Application.Features.Buyers.Queries.LoginBuyer;
 using Application.Features.Buyers.Queries.GetBuyerById;
 using Application.Features.Buyers.Queries.GetBuyerByEmail;
-using Domain.ValueObjects;
 #endregion
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
@@ -32,7 +31,7 @@ namespace WebApiComplexFood.Controllers
 
         //GET buyers/login
         [HttpPost("login")]
-        public async Task<ActionResult<BuyerDto>> GetBuyerLogin([FromBody]BuyerLoginDto buyerLogin)
+        public async Task<ActionResult<BuyerDto>> LoginBuyer([FromBody]BuyerLoginDto buyerLogin)
         {
             var queryBuyerLogin = await _mediator.Send(new LoginBuyerQuery { BuyerLogin = buyerLogin });
             if(queryBuyerLogin != null)
@@ -54,8 +53,8 @@ namespace WebApiComplexFood.Controllers
             {
                 BuyerId = buyerId
             };
-            var getBuyer =  await _mediator.Send(querySelectBuyerById);
-            if(getBuyer.Id != 0)
+            var getBuyer = await _mediator.Send(querySelectBuyerById);
+            if (getBuyer.Id != 0)
             {
                 return Ok(getBuyer);
             }
@@ -63,7 +62,7 @@ namespace WebApiComplexFood.Controllers
             {
                 return NotFound();
             }
-           
+
         }
 
         //GET: buyers
@@ -113,7 +112,7 @@ namespace WebApiComplexFood.Controllers
 
         //Put buyers/update/{buyerId}
         [HttpPut("update/{buyerId}")]
-        public async Task<ActionResult> UpdateBuyer(int buyerId, [FromBody]BuyerUpdateDto updateBuyer)
+        public async Task<ActionResult<int>> UpdateBuyer(int buyerId, [FromBody]BuyerUpdateDto updateBuyer)
         {
 
             var command = new UpdateBuyerCommand
@@ -125,11 +124,11 @@ namespace WebApiComplexFood.Controllers
             var reponse = await _mediator.Send(command);
             if(reponse > 0)
             {
-                return Ok();
+                return Ok(reponse);
             }
             else
             {
-                return NotFound();
+                return NotFound(reponse);
             }
             
         }
@@ -170,7 +169,15 @@ namespace WebApiComplexFood.Controllers
             };
 
             var depositMessage = await _mediator.Send(command);
-            return Ok(depositMessage);
+            if (depositMessage.StartsWith("Suma"))
+            {
+                return Ok(depositMessage);
+            }
+            else
+            {
+                return BadRequest(depositMessage);
+            }
+            
         }
 
         //PATCH /update-password/{buyerId}
@@ -186,12 +193,20 @@ namespace WebApiComplexFood.Controllers
             };
 
             var updatePasswordMessage = await _mediator.Send(command);
-            return Ok(updatePasswordMessage);
+            if (updatePasswordMessage.EndsWith("successfully!"))
+            {
+                return Ok(updatePasswordMessage);
+            }
+            else
+            {
+                return BadRequest(updatePasswordMessage);
+            }
+            
         }
 
         //POST buyers/forgot-password
         [HttpPost("forgot-password")]
-        public async Task<ActionResult> ForgotPasswordBuyer([FromBody] BuyerForgotPasswordDto emailBuyer)
+        public async Task<ActionResult<string>> ForgotPasswordBuyer([FromBody] BuyerForgotPasswordDto emailBuyer)
         {
             var query = new GetBuyerByEmailQuery()
             {

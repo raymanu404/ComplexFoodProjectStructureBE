@@ -32,22 +32,18 @@ public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, str
         var checkBuyerIfExists = await _unitOfWork.Buyers.GetBuyerByEmail(new Email(command.Buyer.Email));
         if (!checkBuyerIfExists)
         {
-
-            if (command.Buyer.Email.EndsWith("email.com"))
-            {
-                return "Email invalid!";
-            }
-
-            //verificare inainte de hash
+                   
             var checkNewPassword = new Password(command.Buyer.Password);
             if (checkNewPassword.Value.Equals(""))
             {
                 return "Password Invalid!";
             }
-
-            //aici ar trebui sa criptam parolele
+    
             command.Buyer.Password = EncodePassword.ComputeSha256Hash(command.Buyer.Password);
             var buyer = _mapper.Map<Buyer>(command.Buyer);
+            if (buyer.Password.Value.Equals("")){
+                return "Password invalid!";
+            }
 
             if (buyer.Email.Value.Equals(""))
             {
@@ -75,20 +71,28 @@ public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, str
                 return "Gender invalid!";
             }
 
-            buyer.ConfirmationCode = new UniqueCode(RandomCode.GetRandomCode(6));
+            var randomConfirmationCode = RandomCode.GetRandomCode(6);
+
+            buyer.ConfirmationCode = new UniqueCode(randomConfirmationCode);
             await _unitOfWork.Buyers.AddAsync(buyer);
-            await _unitOfWork.CommitAsync(cancellationToken);
+           
 
             //send mail
             string mailFrom = _emailSettings.Sender;
             string subject = _emailSettings.Subject;
-            string body = $"Codul dumneavoastra : {buyer.ConfirmationCode.Value}";
+            string body = $"Salut, {buyer.FirstName.Value}  {buyer.LastName.Value}!\nContul dumneavoastră a fost creat cu succes!\nCodul pentru confirmarea contului este: {buyer.ConfirmationCode.Value}";
             string nameTo = buyer.FirstName.Value + " " + buyer.LastName.Value;
 
             var mailStatus = StmpGmail.SendMail(mailFrom, _emailSettings.Password, buyer.Email.Value, subject, body, nameTo);
             if (mailStatus.Equals("OK"))
             {
                 returnMessage = $"{buyer.Email.Value}";
+                await _unitOfWork.CommitAsync(cancellationToken);
+
+            }
+            else
+            {
+                return "Error appeared in deliver the email";
             }
         }
         else

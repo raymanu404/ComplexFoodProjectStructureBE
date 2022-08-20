@@ -2,7 +2,6 @@
 
 public interface IUnitOfWork : IAsyncDisposable
 {
-    IAdminRepository Admins { get; }
     IBuyerRepository Buyers { get; }
     ICouponRepository Coupons { get; }
     IProductRepository Products { get; }

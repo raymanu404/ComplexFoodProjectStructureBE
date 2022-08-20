@@ -21,7 +21,7 @@ namespace Application.Features.Buyers.Queries.LoginBuyer
         public async Task<BuyerDto> Handle(LoginBuyerQuery request, CancellationToken cancellationToken)
         {
             var encodedPlainText = EncodePassword.ComputeSha256Hash(request.BuyerLogin.Password);
-            var loginBuyer = await _unitOfWork.Buyers.LoginBuyer(new Email(request.BuyerLogin.Email), new Password(encodedPlainText));
+            var loginBuyer = await _unitOfWork.Buyers.LoginBuyer(new Email(request.BuyerLogin.Email), new Password(encodedPlainText, true));
             return _mapper.Map<BuyerDto>(loginBuyer);
         }
     }

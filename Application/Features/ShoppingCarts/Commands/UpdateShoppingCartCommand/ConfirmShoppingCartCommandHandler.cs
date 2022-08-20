@@ -89,6 +89,7 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
                         BuyerId = command.BuyerId
                         
                     };
+
                     totalPriceInCaseOfException = newOrder.TotalPrice;
                     var createOrderCommand = new CreateOrderCommand
                     {

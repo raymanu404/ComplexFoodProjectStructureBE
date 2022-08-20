@@ -26,7 +26,14 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, int
 
             await _unitOfWork.CommitAsync(cancellationToken);
             var order = await _unitOfWork.Orders.GetOrderByBuyerId(newOrder.BuyerId);
-            orderId = order.Id;         
+            if (order != null)
+            {
+                orderId = order.Id;
+            }
+            else
+            {
+                return -1;
+            }        
 
         }
         catch (Exception ex)

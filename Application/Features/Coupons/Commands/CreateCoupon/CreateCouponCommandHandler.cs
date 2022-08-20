@@ -30,57 +30,54 @@ namespace Application.Features.Coupons.Commands.CreateCoupon
                 var buyer = await _unitOfWork.Buyers.GetByIdAsync(request.BuyerId);
                 if (buyer != null)
                 {
-                    if (buyer.Balance.Value > 0)
+
+                    var totalPrice = 0;
+                    var amountOfCoupons = 0;
+                    switch (request.Coupon.Type)
                     {
-                        var totalPrice = 0;
-                        var amountOfCoupons = 0;
-                        switch (request.Coupon.Type)
-                        {
-                            case TypeCoupons.TenProcent:
-                                totalPrice = PRICE_TICKET_TYPE1;
-                                amountOfCoupons = 1;
-                                break;
-                            case TypeCoupons.TwentyProcent:
-                                totalPrice = PRICE_TICKET_TYPE2;
-                                amountOfCoupons = 3;
-                                break;
-                            case TypeCoupons.ThirtyProcent:
-                                totalPrice = PRICE_TICKET_TYPE3; 
-                                amountOfCoupons = 5;
-                                break;
-                            default:
-                                throw new Exception("Invalid Type of coupon!");
-                        }
-
-                        if (buyer.Balance.Value >= totalPrice)
-                        {
-                            for (var i = 0; i < amountOfCoupons; i++)
-                            {
-
-                                var newCoupon = new Coupon
-                                {
-                                    BuyerId = buyer.Id,
-                                    Code = new UniqueCode(RandomCode.GetRandomCode(6)),
-                                    DateCreated = DateTime.Now,
-                                    Type = request.Coupon.Type
-                                };
-                            
-                                await _unitOfWork.Coupons.AddAsync(newCoupon);
-                                buyer.Coupons.Add(newCoupon);
-                              
-                            }
-
-                            buyer.Balance = new Balance(buyer.Balance.Value - totalPrice);                          
-                            await _unitOfWork.CommitAsync(cancellationToken);
-                            return buyer.Balance.Value.ToString();
-                        }
-                        else
-                        {
-                            returnMessage = "Insufficient funds!";
-                        }
-                      
+                        case TypeCoupons.TenProcent:
+                            totalPrice = PRICE_TICKET_TYPE1;
+                            amountOfCoupons = 1;
+                            break;
+                        case TypeCoupons.TwentyProcent:
+                            totalPrice = PRICE_TICKET_TYPE2;
+                            amountOfCoupons = 3;
+                            break;
+                        case TypeCoupons.ThirtyProcent:
+                            totalPrice = PRICE_TICKET_TYPE3;
+                            amountOfCoupons = 5;
+                            break;
+                        default:
+                            throw new Exception("Invalid Type of coupon!");
                     }
-                  
+
+                    if (buyer.Balance.Value >= totalPrice)
+                    {
+                        for (var i = 0; i < amountOfCoupons; i++)
+                        {
+
+                            var newCoupon = new Coupon
+                            {
+                                BuyerId = buyer.Id,
+                                Code = new UniqueCode(RandomCode.GetRandomCode(6)),
+                                DateCreated = DateTime.Now,
+                                Type = request.Coupon.Type
+                            };
+
+                            await _unitOfWork.Coupons.AddAsync(newCoupon);
+                            buyer.Coupons.Add(newCoupon);
+
+                        }
+
+                        buyer.Balance = new Balance(buyer.Balance.Value - totalPrice);
+                        await _unitOfWork.CommitAsync(cancellationToken);
+                        return $"Successfully!{buyer.Balance.Value}";
+                    }
+                    else
+                    {
+                        returnMessage = "Insufficient funds!";
+                    }
+
                 }
                 else
                 {

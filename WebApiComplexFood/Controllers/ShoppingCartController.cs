@@ -50,7 +50,15 @@ namespace WebApiComplexFood.Controllers
                 BuyerId = buyerId
             };
             var returnMessage = await _mediator.Send(command);
-            return returnMessage;
+            if (returnMessage.StartsWith("Success!"))
+            {
+                return Ok(returnMessage);
+            }
+            else
+            {
+                return BadRequest(returnMessage);
+            }
+            
         }
 
     }

@@ -26,7 +26,7 @@ namespace Application.Features.ShoppingItems.Commands
                 }
 
                 var getShoppingCart = await _unitOfWork.ShoppingCarts.GetCartByIdAsync(getShoppingItem.ShoppingCartId);
-                var getBuyer = await _unitOfWork.Buyers.GetByIdAsync(command.BuyerId);
+                //var getBuyer = await _unitOfWork.Buyers.GetByIdAsync(command.BuyerId); //nu mai trebuie sa actualizam balance-ul pentru buyer ca facem asta la confirmarea comenzii!!!
                 if (command.Cantity != 0)
                 {
                                      

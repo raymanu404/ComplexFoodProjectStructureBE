@@ -43,7 +43,6 @@ namespace WebApiComplexFood
           
             // ----- repositories
             services.AddScoped<IBuyerRepository, BuyerRepository>();
-            services.AddScoped<IAdminRepository, AdminRepository>();
             services.AddScoped<ICouponRepository, CouponRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();

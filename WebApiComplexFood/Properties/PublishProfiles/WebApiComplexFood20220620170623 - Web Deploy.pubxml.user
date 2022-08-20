@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgzUcv188CUigZEjhPqMDAAAAAAACAAAAAAAQZgAAAAEAACAAAADU6hzGGw7rqq75ISOi3iTg4iXSLeNjjkWP6onlu/WyjAAAAAAOgAAAAAIAACAAAAC3rX9luZ1YVwwGb7aZOfq+RTwSuoi8lE88hxUXTkEdtoAAAAADCuOKoWOo8/DNpHXsIs2LbncbSgP/1vlRTiWF5b+Poa+GkcndeidkRfqu1prqamuNT+7OdTtaK5iu4G/Nt88EXUryboozHq9nzPpQGlylDvcIKBfSr0ua4QE80p7gMzzJYR3XD5bVmdrioLeDcUzKo4ISr2Rwc3lZjT/c/V8SDUAAAAA587R0ihlCAt2dEERzbIbpIbBgOacGDAKZKp24e+tIS5q55AXkU4aCOXBZkSoXSHNbpUJhPPSLRn+vQgMljA8c</EncryptedPassword>
+    <History>True|2022-06-20T18:07:19.4238417Z;True|2022-06-20T20:58:13.1592710+03:00;True|2022-06-20T17:33:45.9965415+03:00;True|2022-06-20T17:18:57.6438256+03:00;False|2022-06-20T17:17:35.2035734+03:00;True|2022-06-20T17:12:23.7260292+03:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="Infrastructure.ApplicationContext">
+      <Value>Data Source=tcp:webapicomplexfooddbserver.database.windows.net,1433%3bInitial Catalog=WebApiComplexFood_db%3bUser Id=emanuelcaprariu%40webapicomplexfooddbserver%3bPassword=2013manooH</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

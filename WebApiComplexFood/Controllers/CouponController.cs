@@ -23,7 +23,7 @@ namespace WebApiComplexFood.Controllers
 
         // GET: coupons/buyerId
         [HttpGet("{buyerId}")]
-        public async Task<ActionResult<CouponDto>> GetAllCouponsByBuyerId(int buyerId)
+        public async Task<ActionResult<List<CouponDto>>> GetAllCouponsByBuyerId(int buyerId)
         {
             var queryGetAllCouponsByBuyerId = new GetCouponsByBuyerIdQuery() { BuyerId = buyerId };
             var coupons = await _mediator.Send(queryGetAllCouponsByBuyerId);
@@ -49,8 +49,16 @@ namespace WebApiComplexFood.Controllers
                 Coupon = newCoupons
             };
 
-            var coupons = await _mediator.Send(command);
-            return CreatedAtRoute(new { code = buyerId.ToString()} , coupons);
+            var returnMessage = await _mediator.Send(command);
+            if (returnMessage.StartsWith("Successfully"))
+            {
+                return CreatedAtRoute(new { code = buyerId.ToString() }, returnMessage);
+            }
+            else
+            {
+                return BadRequest(returnMessage);
+            }
+            
         }
     
     }

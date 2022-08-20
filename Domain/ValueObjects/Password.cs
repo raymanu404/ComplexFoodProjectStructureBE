@@ -4,7 +4,8 @@ namespace Domain.ValueObjects;
 
 public record struct Password
 {
-    private readonly Regex hasMinimum8Chars = new(@".{8,}");
+    private readonly Regex hasMinimum8Chars = new(@"^.{8,40}$");
+    //private readonly Regex hasMinimum8Chars = new(@"\s*\S.{8,}\S\s*");
     private readonly Regex hasNumber = new(@"[0-9]+");
     private readonly Regex hasUpperChar = new(@"[A-Z]+");
 
@@ -12,13 +13,24 @@ public record struct Password
     {
         if (value == null) throw new ArgumentNullException("value");
 
-        if (hasNumber.IsMatch(value) /*&& hasUpperChar.IsMatch(value)*/ && hasMinimum8Chars.IsMatch(value))
+        if (hasNumber.IsMatch(value))
             Value = value;
         else
             Value = "";
-       //throw new Exception("Password Invalid!");
+        
+    }
+    public Password(string value, bool hashPass = false)
+    {
+        if (hashPass)
+        {
+            Value = value;
+        }
+        else
+        {
+            throw new Exception("Password Invalid!");
+        }
     }
 
     public string Value { get; set; }
-    
+
 }

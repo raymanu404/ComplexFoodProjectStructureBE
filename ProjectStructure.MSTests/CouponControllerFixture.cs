@@ -2,15 +2,18 @@
 using System;
 using Moq;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Features.Coupons.Queries.GetCouponsByBuyerId;
 using Application.Features.Coupons.Commands.CreateCoupon;
 using Application.DtoModels.Coupon;
-
+using System.Collections.Generic;
 using WebApiComplexFood.Controllers;
 using Microsoft.Extensions.Logging;
+using Domain.Models.Enums;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ProjectStructure.UnitTests
 {
@@ -38,15 +41,25 @@ namespace ProjectStructure.UnitTests
             //ARANGE
             _mockMediator
                 .Setup(m => m.Send(It.IsAny<GetCouponsByBuyerIdQuery>(), It.IsAny<CancellationToken>()))
-                .Verifiable();
+                .ReturnsAsync(new List<CouponDto>()
+                {
+                    new CouponDto
+                    {
+                        BuyerId = 1,
+                        Code = "12314a",
+                        DateCreated = DateTime.UtcNow,
+                        Type = Domain.Models.Enums.TypeCoupons.TenProcent,
+                    }
+                });
 
 
             //ACT
             var controller = new CouponController(_mockMediator.Object, _mockLogger.Object);
-            await controller.GetAllCouponsByBuyerId(1);
+            var result = await controller.GetAllCouponsByBuyerId(1);
+            var okResult = result.Result as OkObjectResult;
 
             //ASSERT
-            _mockMediator.Verify(x => x.Send(It.IsAny<GetCouponsByBuyerIdQuery>(), It.IsAny<CancellationToken>()), Times.Once());
+            Assert.AreEqual((int)HttpStatusCode.OK, okResult.StatusCode);
         }
 
         [TestMethod]
@@ -55,20 +68,20 @@ namespace ProjectStructure.UnitTests
             //ARANGE
             var coupons = new CouponCreateDto
             {
-                Type = Domain.Models.Enums.TypeCoupons.ThirtyProcent
+                Type = TypeCoupons.TenProcent
             };
 
             _mockMediator
                 .Setup(m => m.Send(It.IsAny<CreateCouponCommand>(), It.IsAny<CancellationToken>()))
-                .Verifiable();
-
+                .ReturnsAsync("Successfully");
 
             //ACT
             var controller = new CouponController(_mockMediator.Object, _mockLogger.Object);
-            await controller.CreateCoupons(1, coupons);
+            var result = await controller.CreateCoupons(1, coupons);
+            var createdResult = result.Result as CreatedAtRouteResult;
 
             //ASSERT
-            _mockMediator.Verify(x => x.Send(It.IsAny<CreateCouponCommand>(), It.IsAny<CancellationToken>()), Times.Once());
+            Assert.AreEqual((int)HttpStatusCode.Created, createdResult.StatusCode);
         }
 
     }

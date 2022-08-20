@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="WebApiComplexFood20220620170623" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^E:\\Anul\ 4\\Work-internship\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\obj\\Release\\net6\.0\\PubTmp\\Out\\$" />
+  </parameter>
+  <parameter name="Infrastructure.ApplicationContext" description="" value="Data Source=tcp:webapicomplexfooddbserver.database.windows.net,1433;Initial Catalog=WebApiComplexFood_db;User Id=emanuelcaprariu@webapicomplexfooddbserver;Password=2013manooH" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^E:\\Anul\ 4\\Work-internship\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\obj\\Release\\net6\.0\\PubTmp\\EFSQLScripts\\Infrastructure\.ApplicationContext\.sql$" />
+  </parameter>
+</parameters>

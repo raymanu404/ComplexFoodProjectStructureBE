@@ -40,65 +40,53 @@ namespace WebApiComplexFood.Controllers
             }
             
         }
+  
+        //// POST : products/create
+        //[HttpPost("create")]
+        //public async Task<ActionResult<ProductDto>> CreateProduct([FromBody] ProductDto product)
+        //{
+        //    var command = new CreateProductCommand
+        //    {
+        //        Product = product
+        //    };
 
-        //GET : products/{productId}
-        [HttpGet("{productId}")]
-        public async Task<ActionResult<ProductDto>> GetProductById(int productId)
-        {
-            var queryGetProductById = new GetProductByIdQuery
-            {
-                ProductId = productId
-            };
-            var product = await _mediator.Send(queryGetProductById);
-            return Ok(product);
-        }
-
-        // POST : products/create
-        [HttpPost("create")]
-        public async Task<ActionResult<ProductDto>> CreateProduct([FromBody] ProductDto product)
-        {
-            var command = new CreateProductCommand
-            {
-                Product = product
-            };
-
-            string response = await _mediator.Send(command);
-            if (response.Equals("Product was created successfully!")){
-                return CreatedAtRoute(new { title = product.Title }, product);
-            }
-            else
-            {
-                return BadRequest(response);
-            }
+        //    string response = await _mediator.Send(command);
+        //    if (response.Equals("Product was created successfully!")){
+        //        return CreatedAtRoute(new { title = product.Title }, product);
+        //    }
+        //    else
+        //    {
+        //        return BadRequest(response);
+        //    }
            
-        }
+        //}
 
-        //DELETE : products/{id}
-        [HttpDelete("{productId}")]
-        public async Task<NoContentResult> DeleteProductById(int productId)
-        {
-            var command = new DeleteProductCommand
-            {
-                ProductId = productId
-            };
+        ////DELETE : products/{id}
+        //[HttpDelete("{productId}")]
+        //public async Task<NoContentResult> DeleteProductById(int productId)
+        //{
+        //    var command = new DeleteProductCommand
+        //    {
+        //        ProductId = productId
+        //    };
 
-            await _mediator.Send(command);
-            return NoContent();
-        } 
+        //    await _mediator.Send(command);
+        //    return NoContent();
+        //} 
 
-        //PUT : products/{id}
-        [HttpPut("{productId}")]
-        public async Task<ActionResult<ProductDto>> UpdateProduct(int productId, [FromBody] ProductDto updateProduct)
-        {
-            var command = new UpdateProductCommand
-            {
-                ProductId = productId,
-                Product = updateProduct
-            };
+        ////PUT : products/{id}
+        //[HttpPut("{productId}")]
+        //public async Task<ActionResult<ProductDto>> UpdateProduct(int productId, [FromBody] ProductDto updateProduct)
+        //{
+        //    var command = new UpdateProductCommand
+        //    {
+        //        ProductId = productId,
+        //        Product = updateProduct
+        //    };
 
-            var updateP = await _mediator.Send(command);
-            return CreatedAtRoute(new { title = updateP.Title}, updateP);
-        }
+        //    var updateP = await _mediator.Send(command);
+        //    return CreatedAtRoute(new { title = updateP.Title}, updateP);
+        //}
         
     }
 }

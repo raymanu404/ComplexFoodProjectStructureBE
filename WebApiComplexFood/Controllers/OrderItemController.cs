@@ -12,7 +12,7 @@ namespace WebApiComplexFood.Controllers
     {
         private readonly ILogger<OrderItemController> _logger;
         private readonly IMediator _mediator;
-        public OrderItemController(ILogger<OrderItemController> logger, IMediator mediator)
+        public OrderItemController(IMediator mediator, ILogger<OrderItemController> logger)
         {
             _logger = logger;
             _mediator = mediator;
@@ -35,7 +35,7 @@ namespace WebApiComplexFood.Controllers
             }
         }
 
-        //GET: /rders/{buyerId}
+        //GET: orderItems/{buyerId}
         [HttpGet("{orderId}")]
         public async Task<ActionResult<IList<OrderItemDto>>> GetAllOrderItemsByOrderId(int orderId)
         {

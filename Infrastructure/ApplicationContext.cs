@@ -16,7 +16,6 @@ public class ApplicationContext : DbContext
     public DbSet<Buyer> Buyers => Set<Buyer>();
     public DbSet<Coupon> Coupons => Set<Coupon>();
     public DbSet<ShoppingCart> ShoppingCarts => Set<ShoppingCart>();
-    public DbSet<Admin> Admins => Set<Admin>();
     public DbSet<Product> Products => Set<Product>();
     public DbSet<OrderItem> OrderItems => Set<OrderItem>();
     public DbSet<Order> Orders => Set<Order>();
@@ -26,7 +25,6 @@ public class ApplicationContext : DbContext
     {
         //daca nu specificam nimic aici, inseamna ca se creeaza ori by convention ori pe tipul de adnotari
 
-        modelBuilder.ApplyConfiguration(new AdminEntityTypeConfiguration());
         modelBuilder.ApplyConfiguration(new BuyerEntityTypeConfiguration());
         modelBuilder.ApplyConfiguration(new CartEntityTypeConfiguration());
         modelBuilder.ApplyConfiguration(new CouponEntityTypeConfiguration());

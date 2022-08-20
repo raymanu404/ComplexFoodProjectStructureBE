@@ -1,0 +1,1406 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ProjectStructure.Api",
+    "version": "v1"
+  },
+  "paths": {
+    "/buyers/login": {
+      "post": {
+        "tags": [
+          "Buyer"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/BuyerLoginDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BuyerDto"
+            }
+          }
+        }
+      }
+    },
+    "/buyers/{buyerId}": {
+      "get": {
+        "tags": [
+          "Buyer"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "buyerId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BuyerDto"
+            }
+          }
+        }
+      }
+    },
+    "/buyers": {
+      "get": {
+        "tags": [
+          "Buyer"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BuyerDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/buyers/register": {
+      "post": {
+        "tags": [
+          "Buyer"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/BuyerRegisterDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/BuyerRegisterDto"
+            }
+          }
+        }
+      }
+    },
+    "/buyers/{id}": {
+      "delete": {
+        "tags": [
+          "Buyer"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/buyers/update/{buyerId}": {
+      "put": {
+        "tags": [
+          "Buyer"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "buyerId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/BuyerUpdateDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "/buyers/confirm/{buyerId}": {
+      "patch": {
+        "tags": [
+          "Buyer"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "buyerId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/BuyerConfirmDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/buyers/deposit-balance/{buyerId}": {
+      "patch": {
+        "tags": [
+          "Buyer"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "buyerId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/BuyerDepositBalanceDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/buyers/update-password/{buyerId}": {
+      "patch": {
+        "tags": [
+          "Buyer"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "buyerId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/BuyerUpdatePasswordDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/buyers/forgot-password": {
+      "post": {
+        "tags": [
+          "Buyer"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/BuyerForgotPasswordDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/buyers/change-password/{buyerId}": {
+      "patch": {
+        "tags": [
+          "Buyer"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "buyerId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/BuyerChangePasswordDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/coupons/{buyerId}": {
+      "get": {
+        "tags": [
+          "Coupon"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "buyerId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CouponDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/coupons/buy_coupons/{buyerId}": {
+      "post": {
+        "tags": [
+          "Coupon"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "buyerId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CouponCreateDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "/orders": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/OrderDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/{buyerId}": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "buyerId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/OrderDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orderItems": {
+      "get": {
+        "tags": [
+          "OrderItem"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/OrderItemDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orderItems/{orderId}": {
+      "get": {
+        "tags": [
+          "OrderItem"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/OrderItemDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/payment/publishableKey": {
+      "get": {
+        "tags": [
+          "PaymentItent"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/payment/create-payment-intent": {
+      "post": {
+        "tags": [
+          "PaymentItent"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/CustomerDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/products": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ProductDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/carts/confirm/{buyerId}": {
+      "patch": {
+        "tags": [
+          "ShoppingCart"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "buyerId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ShoppingCartConfirmDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ShoppingCartConfirmDto"
+            }
+          }
+        }
+      }
+    },
+    "/carts/delete/{buyerId}": {
+      "delete": {
+        "tags": [
+          "ShoppingCart"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "buyerId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/shoppingItems/create/{buyerId}": {
+      "post": {
+        "tags": [
+          "ShoppingItem"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "buyerId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ShoppingCartItemDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ShoppingCartItem"
+            }
+          }
+        }
+      }
+    },
+    "/shoppingItems/get_items/{buyerId}": {
+      "get": {
+        "tags": [
+          "ShoppingItem"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "buyerId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ProductFromCartDto"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Balance": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "Buyer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "email": {
+          "$ref": "#/definitions/Email"
+        },
+        "password": {
+          "$ref": "#/definitions/Password"
+        },
+        "firstName": {
+          "$ref": "#/definitions/Name"
+        },
+        "lastName": {
+          "$ref": "#/definitions/Name"
+        },
+        "phoneNumber": {
+          "$ref": "#/definitions/PhoneNumber"
+        },
+        "gender": {
+          "$ref": "#/definitions/Gender"
+        },
+        "confirmed": {
+          "type": "boolean"
+        },
+        "balance": {
+          "$ref": "#/definitions/Balance"
+        },
+        "confirmationCode": {
+          "$ref": "#/definitions/UniqueCode"
+        },
+        "coupons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Coupon"
+          }
+        }
+      }
+    },
+    "BuyerChangePasswordDto": {
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "BuyerConfirmDto": {
+      "type": "object",
+      "properties": {
+        "confirmationCode": {
+          "type": "string"
+        }
+      }
+    },
+    "BuyerDepositBalanceDto": {
+      "type": "object",
+      "properties": {
+        "balance": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "BuyerDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "confirmed": {
+          "type": "boolean"
+        },
+        "balance": {
+          "format": "double",
+          "type": "number"
+        },
+        "confirmationCode": {
+          "type": "string"
+        },
+        "coupons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Coupon"
+          }
+        }
+      }
+    },
+    "BuyerForgotPasswordDto": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "BuyerLoginDto": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "BuyerRegisterDto": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        }
+      }
+    },
+    "BuyerUpdateDto": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "BuyerUpdatePasswordDto": {
+      "type": "object",
+      "properties": {
+        "oldPassword": {
+          "type": "string"
+        },
+        "newPassword": {
+          "type": "string"
+        }
+      }
+    },
+    "Cantity": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "Categories": {
+      "format": "int32",
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "type": "integer"
+    },
+    "Coupon": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "type": {
+          "$ref": "#/definitions/TypeCoupons"
+        },
+        "dateCreated": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "code": {
+          "$ref": "#/definitions/UniqueCode"
+        },
+        "buyer": {
+          "$ref": "#/definitions/Buyer"
+        },
+        "buyerId": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "CouponCreateDto": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/TypeCoupons"
+        }
+      }
+    },
+    "CouponDto": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/TypeCoupons"
+        },
+        "dateCreated": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "buyerId": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "CustomerDto": {
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "addressLine1": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "amount": {
+          "format": "int64",
+          "type": "integer"
+        }
+      }
+    },
+    "Discount": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "Email": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "Gender": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "Name": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "OrderDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPrice": {
+          "format": "double",
+          "type": "number"
+        },
+        "datePlaced": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/OrderStatus"
+        },
+        "discount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "code": {
+          "type": "string"
+        },
+        "buyerId": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "OrderItemDto": {
+      "type": "object",
+      "properties": {
+        "orderItemId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "cantity": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "category": {
+          "$ref": "#/definitions/Categories"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "price": {
+          "format": "double",
+          "type": "number"
+        },
+        "orderId": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "OrderStatus": {
+      "format": "int32",
+      "enum": [
+        1,
+        2,
+        3
+      ],
+      "type": "integer"
+    },
+    "Password": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "PhoneNumber": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "Price": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "Product": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "category": {
+          "$ref": "#/definitions/Categories"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "$ref": "#/definitions/Price"
+        },
+        "image": {
+          "type": "string"
+        },
+        "dateCreated": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "dateUpdated": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "isInStock": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProductDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "category": {
+          "$ref": "#/definitions/Categories"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "format": "double",
+          "type": "number"
+        },
+        "image": {
+          "type": "string"
+        },
+        "dateCreated": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "dateUpdated": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "isInStock": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProductFromCartDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "category": {
+          "$ref": "#/definitions/Categories"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "format": "double",
+          "type": "number"
+        },
+        "image": {
+          "type": "string"
+        },
+        "dateCreated": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "cantity": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "ShoppingCart": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPrice": {
+          "$ref": "#/definitions/Price"
+        },
+        "datePlaced": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "discount": {
+          "$ref": "#/definitions/Discount"
+        },
+        "code": {
+          "$ref": "#/definitions/UniqueCode"
+        },
+        "buyer": {
+          "$ref": "#/definitions/Buyer"
+        },
+        "buyerId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ShoppingCartItem"
+          }
+        }
+      }
+    },
+    "ShoppingCartConfirmDto": {
+      "type": "object",
+      "properties": {
+        "couponCart": {
+          "type": "string"
+        }
+      }
+    },
+    "ShoppingCartItem": {
+      "type": "object",
+      "properties": {
+        "shoppingCart": {
+          "$ref": "#/definitions/ShoppingCart"
+        },
+        "shoppingCartId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "product": {
+          "$ref": "#/definitions/Product"
+        },
+        "productId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "cantity": {
+          "$ref": "#/definitions/Cantity"
+        }
+      }
+    },
+    "ShoppingCartItemDto": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "cantity": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "TypeCoupons": {
+      "format": "int32",
+      "enum": [
+        1,
+        2,
+        3
+      ],
+      "type": "integer"
+    },
+    "UniqueCode": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

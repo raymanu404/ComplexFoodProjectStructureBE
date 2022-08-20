@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\ProjectStructure.MSTests.csproj": {}
+    "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\ProjectStructure.MSTests.csproj": {}
   },
   "projects": {
-    "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Application\\Application.csproj": {
+    "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Application\\Application.csproj",
+        "projectUniqueName": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Application\\Application.csproj",
+        "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Application\\obj\\",
+        "outputPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -33,8 +33,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj": {
-                "projectPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj"
+              "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj": {
+                "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj"
               }
             }
           }
@@ -64,6 +64,10 @@
             "MediatR": {
               "target": "Package",
               "version": "[10.0.1, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.28.0, )"
             }
           },
           "imports": [
@@ -81,18 +85,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj": {
+    "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj",
+        "projectUniqueName": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj",
+        "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Domain\\obj\\",
+        "outputPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -140,18 +144,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj": {
+    "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Infrastructure\\obj\\",
+        "outputPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -173,11 +177,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Application\\Application.csproj": {
-                "projectPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Application\\Application.csproj"
+              "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj": {
+                "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj"
               },
-              "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj": {
-                "projectPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj"
+              "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj": {
+                "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj"
               }
             }
           }
@@ -212,18 +216,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\ProjectStructure.MSTests.csproj": {
+    "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\ProjectStructure.MSTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\ProjectStructure.MSTests.csproj",
+        "projectUniqueName": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\ProjectStructure.MSTests.csproj",
         "projectName": "ProjectStructure.MSTests",
-        "projectPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\ProjectStructure.MSTests.csproj",
+        "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\ProjectStructure.MSTests.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\obj\\",
+        "outputPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -245,11 +249,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Application\\Application.csproj": {
-                "projectPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Application\\Application.csproj"
+              "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj": {
+                "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj"
               },
-              "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj": {
-                "projectPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj"
+              "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj": {
+                "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj"
               }
             }
           }
@@ -300,18 +304,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj": {
+    "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj",
+        "projectUniqueName": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj",
         "projectName": "WebApiComplexFood",
-        "projectPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj",
+        "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\obj\\",
+        "outputPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -333,14 +337,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Application\\Application.csproj": {
-                "projectPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Application\\Application.csproj"
+              "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj": {
+                "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj"
               },
-              "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj": {
-                "projectPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj"
+              "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj": {
+                "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj"
               },
-              "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "E:\\Anul 4\\Work-internship\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj"
+              "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -387,6 +391,10 @@
               "target": "Package",
               "version": "[6.0.4, )"
             },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.28.0, )"
+            },
             "Stripe.net": {
               "target": "Package",
               "version": "[39.114.0, )"
@@ -414,7 +422,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     }

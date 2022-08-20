@@ -62,31 +62,9 @@ namespace WebApiComplexFood.Controllers
                     Source = customerOptions.Source,
                 };
 
-                //var cardNestedOptions = new CardCreateNestedOptions
-                //{
 
-                //    AddressCity = customerOptions.Address.City,
-                //    AddressState = customerOptions.Address.State,
-                //    AddressCountry = customerOptions.Address.Country,
-                //    AddressLine1 = customerOptions.Address.Line1,
-
-                //};
 
                 var customer = await customerService.CreateAsync(customerOptions);
-
-                //var card = await cardService.CreateAsync(customer.Id, cardOptions);
-
-                //var chargeOptions = new ChargeCreateOptions
-                //{
-                //    Amount = paymentIntentDto.Amount * 100,
-                //    Currency = "ron",
-                //    Customer = customer.Id,
-                //    Source = customerOptions.Source,
-
-                //};
-
-
-                //var charge = await chargerService.CreateAsync(chargeOptions);
 
                 var paymentIntent = await paymentIntentService.CreateAsync(new PaymentIntentCreateOptions
                 {
@@ -95,11 +73,6 @@ namespace WebApiComplexFood.Controllers
                     PaymentMethodTypes = new List<string> { "card" },
                     Customer = customer.Id,
                     SetupFutureUsage = "off_session",
-                   
-                    //AutomaticPaymentMethods = new PaymentIntentAutomaticPaymentMethodsOptions { Enabled  = true},
-                    //PaymentMethod = card.Id,
-                    //UseStripeSdk = true,
-                    //ConfirmationMethod = "automatic",
 
                 });
 
@@ -127,88 +100,5 @@ namespace WebApiComplexFood.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Index()
-        {
-            var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
-
-            try
-            {
-                var stripeEvent = EventUtility.ParseEvent(json);
-
-                // Handle the event
-                if (stripeEvent.Type == Events.PaymentIntentSucceeded)
-                {
-                    var paymentIntent = stripeEvent.Data.Object as PaymentIntent;
-                    Console.WriteLine("PaymentIntent was successful!");
-                }
-                else if (stripeEvent.Type == Events.PaymentMethodAttached)
-                {
-                    var paymentMethod = stripeEvent.Data.Object as PaymentMethod;
-                    Console.WriteLine("PaymentMethod was attached to a Customer!");
-                }
-                // ... handle other event types
-                else
-                {
-                    Console.WriteLine("Unhandled event type: {0}", stripeEvent.Type);
-                }
-
-                return Ok();
-            }
-            catch (StripeException)
-            {
-                return BadRequest();
-            }
-        }
-
-        [HttpPost("create-checkout-session")]
-        public async Task<IActionResult> CreateCheckoutSession()
-        {
-            try
-            {
-                var domain = "http://localhost:4242";
-                var options = new SessionCreateOptions
-                {
-                    LineItems = new List<SessionLineItemOptions>
-                   
-                {
-                  new SessionLineItemOptions
-                  {
-
-                    Price = "price_1L4QNwGSnWTvEvr5XrehHxqb",
-                    Quantity = 1,
-                    
-                  },
-                },
-                    Mode = "subscription",
-                    PaymentMethodTypes = new List<string>
-                    {
-                        "card"
-                    },
-                    SuccessUrl = domain + "/success.html",
-                    CancelUrl = domain + "/cancel.html",
-                };
-                var service = new SessionService();
-                Session session = await  service.CreateAsync(options);
-                return Ok(new
-                {
-                    SessionId = session.Id
-                });
-
-            }
-            catch(StripeException error)
-            {
-                return BadRequest(new
-                {
-                    Error = new
-                    {
-                        Message = error.Message
-                    }
-                });
-            }catch(Exception exception)
-            {
-                return BadRequest();
-            }
-        }
     }
 }

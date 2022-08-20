@@ -37,8 +37,10 @@ namespace Application.Features.Buyers.Queries.GetBuyerByEmail
                     string body = $"Codul dumneavoastra : {checkBuyerIfExists.ConfirmationCode.Value} pentru resetare parola!";
                     string nameTo = checkBuyerIfExists.FirstName.Value + " " + checkBuyerIfExists.LastName.Value;
 
-                    var mailStatus = StmpGmail.SendMail(mailFrom, _emailSettings.Password, request.EmailBuyer.Email, subject, body, nameTo);
-                    if (mailStatus.Equals("OK"))
+
+                    var getResultFromSendingEmail = 200; /* await SendEmailGrid.SendMail(mailFrom, checkBuyerIfExists.Email.Value, subject, body, nameTo);*/
+                    var mailStatus = StmpGmail.SendMail(mailFrom, _emailSettings.Password, checkBuyerIfExists.Email.Value, subject, body, nameTo);
+                    if (getResultFromSendingEmail == 200)
                     {
                         returnMessage = $"A fost trimis mailul!{checkBuyerIfExists.Id}";
                     }

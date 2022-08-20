@@ -29,7 +29,7 @@ namespace Application.Features.Buyers.Commands.UpdateBuyer
                 }
 
                 var encodeNewPassoword = EncodePassword.ComputeSha256Hash(request.Buyer.Password);
-                buyer.Password = new Password(encodeNewPassoword);
+                buyer.Password = new Password(encodeNewPassoword, true);
 
                 await _unitOfWork.CommitAsync(cancellationToken);
                 returnMessage = "Password was updated successfully!";

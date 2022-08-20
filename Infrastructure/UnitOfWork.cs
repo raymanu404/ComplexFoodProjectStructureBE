@@ -11,7 +11,6 @@ public class UnitOfWork : IUnitOfWork
             IBuyerRepository buyers,
             ICouponRepository coupons,
             IProductRepository products,
-            IAdminRepository admins,
             IShoppingCartRepository carts,
             IShoppingItemRepository shoppingItems,
             IOrderRepository orders,
@@ -21,7 +20,6 @@ public class UnitOfWork : IUnitOfWork
         Buyers = buyers;
         Coupons = coupons;
         Products = products;
-        Admins = admins;
         OrderItems = items;
         ShoppingCarts = carts;
         Orders = orders;
@@ -31,8 +29,6 @@ public class UnitOfWork : IUnitOfWork
     public IBuyerRepository Buyers { get; }
     public ICouponRepository Coupons { get; }
     public IProductRepository Products { get; }
-
-    public IAdminRepository Admins { get; }
 
     public IOrderItemsRepository OrderItems { get; }
 
