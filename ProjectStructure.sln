@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiComplexFood", "WebApi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectStructure.MSTests", "ProjectStructure.MSTests\ProjectStructure.MSTests.csproj", "{87FF7024-D28B-48C4-BB58-523A1D3B165D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiComplexFoodAdmin", "WebApiComplexFoodAdmin\WebApiComplexFoodAdmin.csproj", "{F14EA0F8-F050-4099-8278-ABF5BA139EEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{87FF7024-D28B-48C4-BB58-523A1D3B165D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87FF7024-D28B-48C4-BB58-523A1D3B165D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87FF7024-D28B-48C4-BB58-523A1D3B165D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F14EA0F8-F050-4099-8278-ABF5BA139EEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F14EA0F8-F050-4099-8278-ABF5BA139EEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F14EA0F8-F050-4099-8278-ABF5BA139EEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F14EA0F8-F050-4099-8278-ABF5BA139EEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

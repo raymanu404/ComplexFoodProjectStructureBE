@@ -4,17 +4,17 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:16570",
-      "sslPort": 44323
+      "applicationUrl": "http://localhost:30260",
+      "sslPort": 44356
     }
   },
   "profiles": {
-    "WebApiComplexFood": {
+    "WebApiComplexFoodAdmin": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:5020;http://localhost:5021",
+      "applicationUrl": "https://localhost:5022;http://localhost:5023",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
