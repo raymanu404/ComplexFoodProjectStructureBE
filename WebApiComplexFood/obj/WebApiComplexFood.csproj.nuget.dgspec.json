@@ -1,25 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj": {}
+    "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj": {}
   },
   "projects": {
-    "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj": {
+    "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\obj\\",
+        "projectPath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\Manu Caprariu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Application\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Manu Caprariu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -33,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj": {
-                "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj"
+              "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj"
               }
             }
           }
@@ -43,6 +38,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -76,35 +76,45 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.28, 6.0.28]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.28, 6.0.28]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.28, 6.0.28]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj": {
+    "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\Manu Caprariu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Manu Caprariu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -124,6 +134,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -135,35 +150,45 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.28, 6.0.28]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.28, 6.0.28]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.28, 6.0.28]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Manu Caprariu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Manu Caprariu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -177,11 +202,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj": {
-                "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj"
+              "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Application\\Application.csproj"
               },
-              "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj": {
-                "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj"
+              "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj"
               }
             }
           }
@@ -190,6 +215,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -207,35 +237,45 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.28, 6.0.28]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.28, 6.0.28]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.28, 6.0.28]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj": {
+    "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj",
+        "projectUniqueName": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj",
         "projectName": "WebApiComplexFood",
-        "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\obj\\",
+        "projectPath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\WebApiComplexFood.csproj",
+        "packagesPath": "C:\\Users\\Manu Caprariu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\WebApiComplexFood\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Manu Caprariu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -249,14 +289,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj": {
-                "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Application\\Application.csproj"
+              "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Application\\Application.csproj"
               },
-              "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj": {
-                "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj"
+              "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj"
               },
-              "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "E:\\Anul 4\\LICENTA\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -265,6 +305,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -322,7 +367,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -334,7 +380,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

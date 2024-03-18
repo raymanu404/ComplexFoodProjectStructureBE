@@ -19,6 +19,7 @@ using Infrastructure.FileUtils;
 using Application.Models;
 using Microsoft.Extensions.Options;
 using Stripe;
+using WebApiComplexFood.Extensions;
 
 namespace WebApiComplexFood
 {
@@ -34,12 +35,18 @@ namespace WebApiComplexFood
         public  void ConfigureServices(IServiceCollection services)
         {
             string defaultConnectionString = Configuration.GetConnectionString("DefaultConnection");
+            
 
             services.Configure<EmailSettings>(Configuration.GetSection(nameof(EmailSettings)));
             services.Configure<StripeSettings>(Configuration.GetSection(nameof(StripeSettings)));
             
 
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(defaultConnectionString));
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(defaultConnectionString, options => 
+            options.EnableRetryOnFailure(
+                    maxRetryCount: 3,
+                    maxRetryDelay: TimeSpan.FromSeconds(30),
+                    errorNumbersToAdd: null))
+            );
           
             // ----- repositories
             services.AddScoped<IBuyerRepository, BuyerRepository>();
@@ -76,8 +83,8 @@ namespace WebApiComplexFood
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProjectStructure.Api v1"));
+                app.UseSwaggerUI();
+                app.UseRedirectSwaggerPath();
             }
             else
             {
@@ -93,7 +100,7 @@ namespace WebApiComplexFood
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
+            }).ApplyMigrations();
 
            
         }
