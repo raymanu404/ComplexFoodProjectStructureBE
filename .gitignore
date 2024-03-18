@@ -96,6 +96,9 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+**/bin/
+**/obj/
+packages
 
 # Chutzpah Test files
 _Chutzpah*
@@ -226,9 +229,6 @@ _pkginfo.txt
 # but keep track of directories ending in .cache
 !?*.[Cc]ache/
 
-bin
-obj
-packages
 
 # Others
 ClientBin/
