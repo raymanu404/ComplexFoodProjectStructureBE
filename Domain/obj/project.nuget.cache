@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sHsgH5eBiPUMcZH31lY1lh7qCAB/YFNiPZup8R1wOslG22FEWJ/1wDIKGag5P+TtOa4NvA0sAuLBdVRF2RleEg==",
+  "dgSpecHash": "WybDk3xwg/w2wR5g8Up73OjnJd2FKKWKBroNnKPK00MGI3IMRYyPMCtZIz1o7eIFcgWe2f76djs301bZ+RCy7w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Domain\\Domain.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Manu Caprariu\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.28\\microsoft.netcore.app.ref.6.0.28.nupkg.sha512",
-    "C:\\Users\\Manu Caprariu\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.28\\microsoft.windowsdesktop.app.ref.6.0.28.nupkg.sha512",
-    "C:\\Users\\Manu Caprariu\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.28\\microsoft.aspnetcore.app.ref.6.0.28.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

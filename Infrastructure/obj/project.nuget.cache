@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "L4RSXsI9LRNc/YYG4ViBzKjHP/I+SQ5UVFf7YJ1+D1RL8F8g7z8FYIw46n5npfSvXjTAGbxvyUcawXAN6z2HgQ==",
+  "dgSpecHash": "IjX6GPyfX7mbZppVesf6D2I9+HEevIXbsHmY4Y6YgavWZoe1JsOJdhu7U1NtQ2i6EYfzddOvDR3Ht51Us3Ai+A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -55,10 +55,7 @@
     "C:\\Users\\Manu Caprariu\\.nuget\\packages\\system.security.permissions\\4.7.0\\system.security.permissions.4.7.0.nupkg.sha512",
     "C:\\Users\\Manu Caprariu\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\Manu Caprariu\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
-    "C:\\Users\\Manu Caprariu\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
-    "C:\\Users\\Manu Caprariu\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.28\\microsoft.netcore.app.ref.6.0.28.nupkg.sha512",
-    "C:\\Users\\Manu Caprariu\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.28\\microsoft.windowsdesktop.app.ref.6.0.28.nupkg.sha512",
-    "C:\\Users\\Manu Caprariu\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.28\\microsoft.aspnetcore.app.ref.6.0.28.nupkg.sha512"
+    "C:\\Users\\Manu Caprariu\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

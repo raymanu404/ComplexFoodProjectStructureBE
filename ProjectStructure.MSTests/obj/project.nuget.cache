@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NRYLGv/ktqew2yDyo3/KM2lNECgKoEHvL3X8SYMDm17OIAsVIH8dZBEn8JfeZU8qqa+GJUu2XAShFaxSSRl1Sg==",
+  "dgSpecHash": "8jXr7goiOytSPD6VIixey9ba55yAv2sDBv67h+7QaPUSlDqYsoIBNY6fc/3TYhBxHJqES4pZbjsEfMISO2Iffg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Manu Caprariu\\Documents\\Projects\\Master anul2\\DISERTATIE\\ComplexFoodProjectStructureBE\\ProjectStructure.MSTests\\ProjectStructure.MSTests.csproj",
   "expectedPackageFiles": [
@@ -153,10 +153,7 @@
     "C:\\Users\\Manu Caprariu\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\Manu Caprariu\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Manu Caprariu\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Manu Caprariu\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Manu Caprariu\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.28\\microsoft.windowsdesktop.app.ref.6.0.28.nupkg.sha512",
-    "C:\\Users\\Manu Caprariu\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.28\\microsoft.netcore.app.ref.6.0.28.nupkg.sha512",
-    "C:\\Users\\Manu Caprariu\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.28\\microsoft.aspnetcore.app.ref.6.0.28.nupkg.sha512"
+    "C:\\Users\\Manu Caprariu\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }
