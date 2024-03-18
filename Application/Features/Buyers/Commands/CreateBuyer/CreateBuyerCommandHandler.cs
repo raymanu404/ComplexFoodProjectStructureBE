@@ -78,22 +78,22 @@ public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, str
            
 
             //send mail
-            string mailFrom = _emailSettings.Sender;
-            string subject = _emailSettings.Subject;
-            string body = $"Salut, {buyer.FirstName.Value}  {buyer.LastName.Value}!\nContul dumneavoastră a fost creat cu succes!\nCodul pentru confirmarea contului este: {buyer.ConfirmationCode.Value}";
-            string nameTo = buyer.FirstName.Value + " " + buyer.LastName.Value;
+            //string mailFrom = _emailSettings.Sender;
+            //string subject = _emailSettings.Subject;
+            //string body = $"Salut, {buyer.FirstName.Value}  {buyer.LastName.Value}!\nContul dumneavoastră a fost creat cu succes!\nCodul pentru confirmarea contului este: {buyer.ConfirmationCode.Value}";
+            //string nameTo = buyer.FirstName.Value + " " + buyer.LastName.Value;
 
-            var mailStatus = StmpGmail.SendMail(mailFrom, _emailSettings.Password, buyer.Email.Value, subject, body, nameTo);
-            if (mailStatus.Equals("OK"))
-            {
+            //var mailStatus = StmpGmail.SendMail(mailFrom, _emailSettings.Password, buyer.Email.Value, subject, body, nameTo);
+            //if (mailStatus.Equals("OK"))
+            //{
                 returnMessage = $"{buyer.Email.Value}";
                 await _unitOfWork.CommitAsync(cancellationToken);
 
-            }
-            else
-            {
-                return "Error appeared in deliver the email";
-            }
+            //}
+            //else
+            //{
+            //    return "Error appeared in deliver the email";
+            //}
         }
         else
         {

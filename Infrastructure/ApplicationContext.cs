@@ -36,4 +36,12 @@ public class ApplicationContext : DbContext
         //sau varianta a doua, aplica toate configurariile
         //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-LKHTR3I;Initial Catalog=ComplexFoodDatabase;Integrated Security=True");
+        }
+    }
+
 }

@@ -11,7 +11,8 @@ public record struct PhoneNumber
     {
         if (value == null) throw new ArgumentNullException(nameof(value));
 
-        Value = pattern2.IsMatch(value) ? value : "";
+        //Value = pattern2.IsMatch(value) ? value : "";
+        Value = value;
     }
 
     public string Value { get; set; }
