@@ -1,8 +1,10 @@
 ﻿using Domain.Models.Roles;
 using Domain.Models.Ordering;
 using Domain.Models.Shopping;
-using Infrastructure.EnitityConfigurations;
 using Microsoft.EntityFrameworkCore;
+using Infrastructure.EnitityConfigurations.Roles;
+using Infrastructure.EnitityConfigurations.Orders;
+using Infrastructure.EnitityConfigurations.Products;
 
 namespace Infrastructure;
 
