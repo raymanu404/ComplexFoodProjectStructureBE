@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Domain.ValueObjects;
 
-namespace Infrastructure.EnitityConfigurations;
+namespace Infrastructure.EnitityConfigurations.Products;
 
 public class ShoppingCartItemEntityTypeConfiguration : IEntityTypeConfiguration<ShoppingCartItem>
 {

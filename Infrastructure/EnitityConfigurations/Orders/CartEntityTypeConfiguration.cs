@@ -4,12 +4,12 @@ using Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.EnitityConfigurations
+namespace Infrastructure.EnitityConfigurations.Orders
 {
     public class CartEntityTypeConfiguration : IEntityTypeConfiguration<ShoppingCart>
     {
         public void Configure(EntityTypeBuilder<ShoppingCart> cartBuilder)
-        {          
+        {
             cartBuilder
                .Property(x => x.TotalPrice)
                .HasConversion(v => v.Value, v => new Price(v))
@@ -32,8 +32,8 @@ namespace Infrastructure.EnitityConfigurations
 
             cartBuilder
             .HasIndex(c => c.Code)
-            .IsUnique();         
-           
+            .IsUnique();
+
         }
     }
 }

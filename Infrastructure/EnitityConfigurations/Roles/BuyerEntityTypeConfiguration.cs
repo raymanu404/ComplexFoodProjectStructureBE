@@ -3,7 +3,7 @@ using Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.EnitityConfigurations;
+namespace Infrastructure.EnitityConfigurations.Roles;
 
 public class BuyerEntityTypeConfiguration : IEntityTypeConfiguration<Buyer>
 {
@@ -12,7 +12,7 @@ public class BuyerEntityTypeConfiguration : IEntityTypeConfiguration<Buyer>
         buyerConfiguration
               .Property(c => c.Email)
               .HasConversion(v => v.Value, v => new Email(v))
-              .HasColumnName("Email")              
+              .HasColumnName("Email")
               .HasMaxLength(255);
 
         buyerConfiguration
@@ -55,7 +55,7 @@ public class BuyerEntityTypeConfiguration : IEntityTypeConfiguration<Buyer>
         buyerConfiguration
           .Property(c => c.Balance)
           .HasConversion(v => v.Value, v => new Balance(v))
-          .HasPrecision(18,2)
+          .HasPrecision(18, 2)
           .HasColumnName("Balance")
           .HasDefaultValue(new Balance(0));
 

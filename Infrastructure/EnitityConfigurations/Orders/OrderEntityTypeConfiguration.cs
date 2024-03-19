@@ -4,7 +4,7 @@ using Domain.Models.Ordering;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Domain.ValueObjects;
 
-namespace Infrastructure.EnitityConfigurations
+namespace Infrastructure.EnitityConfigurations.Orders
 {
     public class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
     {
@@ -31,7 +31,7 @@ namespace Infrastructure.EnitityConfigurations
                .HasIndex(c => c.Code)
                .IsUnique();
 
-            
+
         }
     }
 }
