@@ -2,12 +2,12 @@
 
 namespace Domain.ValueObjects;
 
-public record struct MatriculationNumber
+public record struct MatrNumber
 {
     //MO23232
     private readonly Regex onlyLetters = new(@"^(MO|LO|DO)\d{4}$");
 
-    public MatriculationNumber(string value)
+    public MatrNumber(string value)
     {
         if (value == null) throw new ArgumentNullException(nameof(value));
         Value = onlyLetters.IsMatch(value) ? value : "";

@@ -4,7 +4,7 @@ using Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.EnitityConfigurations.Orders
+namespace Infrastructure.EntityConfigurations.Orders
 {
     public class CartEntityTypeConfiguration : IEntityTypeConfiguration<ShoppingCart>
     {

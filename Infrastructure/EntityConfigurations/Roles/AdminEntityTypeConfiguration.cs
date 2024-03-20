@@ -2,16 +2,12 @@
 using Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Infrastructure.EnitityConfigurations.Roles;
-internal class StudentEntityTypeConfiguration : IEntityTypeConfiguration<Student>
+
+namespace Infrastructure.EntityConfigurations.Roles;
+internal class AdminEntityTypeConfiguration : IEntityTypeConfiguration<Admin>
 {
-    public void Configure(EntityTypeBuilder<Student> config)
+    public void Configure(EntityTypeBuilder<Admin> config)
     {
         config
               .Property(c => c.Email)
@@ -39,7 +35,7 @@ internal class StudentEntityTypeConfiguration : IEntityTypeConfiguration<Student
              .HasConversion(v => v.Value, v => new Name(v))
              .HasColumnName("LastName")
              .HasMaxLength(255);
-       
+
     }
 }
 
