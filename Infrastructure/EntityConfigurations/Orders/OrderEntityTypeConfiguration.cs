@@ -4,7 +4,7 @@ using Domain.Models.Ordering;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Domain.ValueObjects;
 
-namespace Infrastructure.EnitityConfigurations.Orders
+namespace Infrastructure.EntityConfigurations.Orders
 {
     public class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
     {

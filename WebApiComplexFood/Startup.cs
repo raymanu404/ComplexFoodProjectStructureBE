@@ -20,6 +20,7 @@ using Application.Models;
 using Microsoft.Extensions.Options;
 using Stripe;
 using WebApiComplexFood.Extensions;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApiComplexFood
 {
@@ -39,10 +40,9 @@ namespace WebApiComplexFood
 
             services.Configure<EmailSettings>(Configuration.GetSection(nameof(EmailSettings)));
             services.Configure<StripeSettings>(Configuration.GetSection(nameof(StripeSettings)));
-            
 
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(defaultConnectionString, options => 
-            options.EnableRetryOnFailure(
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(defaultConnectionString, opt =>
+                opt.EnableRetryOnFailure(
                     maxRetryCount: 3,
                     maxRetryDelay: TimeSpan.FromSeconds(30),
                     errorNumbersToAdd: null))
@@ -101,7 +101,6 @@ namespace WebApiComplexFood
             {
                 endpoints.MapControllers();
             }).ApplyMigrations();
-
            
         }
     }

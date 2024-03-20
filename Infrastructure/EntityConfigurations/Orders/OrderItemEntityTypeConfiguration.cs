@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Domain.ValueObjects;
 
-namespace Infrastructure.EnitityConfigurations.Orders;
+namespace Infrastructure.EntityConfigurations.Orders;
 
 public class OrderItemEntityTypeConfiguration : IEntityTypeConfiguration<OrderItem>
 {

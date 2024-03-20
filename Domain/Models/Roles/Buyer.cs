@@ -13,11 +13,15 @@ public class Buyer : User
     public bool Confirmed { get; set; }
     public Balance Balance { get; set; }
     public UniqueCode ConfirmationCode { get; set; }
+
     //adaugam rolul in plus, daca un user are rol de student, vom avea referinta dupa email
     public RoleNameEnum Role { get; set; } = RoleNameEnum.User;
 
+    //one to one
+    public virtual Student Student { get; set; } = null!;
+
     //one to many
-    public ICollection<Coupon> Coupons { get; set; }
-   
+    public ICollection<Coupon> Coupons { get; set; } = null!;
+
 
 }

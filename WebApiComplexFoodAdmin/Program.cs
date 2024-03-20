@@ -1,3 +1,7 @@
+using WebApiComplexFoodAdmin.Extensions;
+
+const string CORS_POLICY = "CorsPolicy";
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.RegisterServices(builder.Configuration);
+builder.Services.AddControllers();
+builder.Services.AddCors(options => options.AddPolicy(CORS_POLICY, builder => builder.SetIsOriginAllowed(origin => true).AllowAnyMethod().AllowAnyHeader()));
+
 
 var app = builder.Build();
 
@@ -16,10 +24,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseCors(CORS_POLICY);
+
+app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+}).ApplyMigrations();
 
 app.Run();
