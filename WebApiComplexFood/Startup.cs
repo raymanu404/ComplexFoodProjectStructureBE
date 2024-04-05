@@ -1,26 +1,21 @@
 ﻿#region MY IMPORTS
 using Infrastructure;
-using Application.Contracts.Persistence;
-using Infrastructure.Repositories;
-using Application.Features.Buyers.Queries.GetBuyersList;
 using Application.Profiles;
 #endregion
 
 using MediatR;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+
 using Microsoft.OpenApi.Models;
 using Application.Contracts.FileUtils;
 using Infrastructure.FileUtils;
 using Application.Models;
-using Microsoft.Extensions.Options;
 using Stripe;
 using WebApiComplexFood.Extensions;
-using Microsoft.AspNetCore.Mvc;
+using Application.Contracts.Persistence.Customer;
+using Application.Features.Customer.Buyers.Queries.GetBuyersList;
+using Infrastructure.Repositories.Customer;
 
 namespace WebApiComplexFood
 {
@@ -64,7 +59,7 @@ namespace WebApiComplexFood
             // ---- mapping
             services.AddAutoMapper(typeof(MappingProfile));
 
-            // ---- mediatr
+            // ---- mediatrv
             services.AddMediatR(typeof(GetBuyersListQuery));
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -83,7 +78,7 @@ namespace WebApiComplexFood
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwaggerUI();
+                app.UseSwaggerUiExtension();
                 app.UseRedirectSwaggerPath();
             }
             else

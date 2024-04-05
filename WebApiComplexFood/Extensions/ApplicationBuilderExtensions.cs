@@ -5,7 +5,7 @@ namespace WebApiComplexFood.Extensions;
 
 public static class ApplicationBuilderExtensions
 {
-    public static IApplicationBuilder UseSwaggerUI(this IApplicationBuilder app)
+    public static IApplicationBuilder UseSwaggerUiExtension(this IApplicationBuilder app)
         => app
             .UseSwagger()
             .UseSwaggerUI(options =>

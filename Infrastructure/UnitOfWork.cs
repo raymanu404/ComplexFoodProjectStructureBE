@@ -1,5 +1,4 @@
-﻿using Application.Contracts.Persistence;
-
+﻿using Application.Contracts.Persistence.Customer;
 namespace Infrastructure;
 
 public class UnitOfWork : IUnitOfWork

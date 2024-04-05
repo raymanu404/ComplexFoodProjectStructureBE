@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Features.Coupons.Queries.GetCouponsByBuyerId;
-using Application.Features.Coupons.Commands.CreateCoupon;
 using Application.DtoModels.Coupon;
 using System.Collections.Generic;
 using WebApiComplexFood.Controllers;
 using Microsoft.Extensions.Logging;
 using Domain.Models.Enums;
 using Microsoft.AspNetCore.Mvc;
+using Application.Features.Customer.Coupons.Commands.CreateCoupon;
+using Application.Features.Customer.Coupons.Queries.GetCouponsByBuyerId;
 
 namespace ProjectStructure.UnitTests
 {

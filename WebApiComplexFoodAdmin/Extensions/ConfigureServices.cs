@@ -1,10 +1,12 @@
-﻿using Application.Contracts.Persistence;
-using Application.Features.Buyers.Queries.GetBuyersList;
-using Application.Features.Products.Queries.GetAllProducts;
+﻿using System.Reflection;
+using Application.Contracts.Persistence.Admin;
+using Application.Features.Admin.Products.Queries.GetAllProducts;
 using Infrastructure;
-using Infrastructure.Repositories;
+using Infrastructure.Repositories.Admin;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using IBuyerRepository = Application.Contracts.Persistence.Admin.IBuyerRepository;
+using IProductRepository = Application.Contracts.Persistence.Admin.IProductRepository;
 
 namespace WebApiComplexFoodAdmin.Extensions;
 
@@ -15,22 +17,17 @@ public static class ConfigureServices
         var defaultConnectionString = Configuration.GetConnectionString("DefaultConnection");
 
         var localServices =
-                services
-                    .AddDbContext<ApplicationContext>(options => options.UseSqlServer(defaultConnectionString, opt =>
-                        opt.EnableRetryOnFailure(
-                            maxRetryCount: 3,
-                            maxRetryDelay: TimeSpan.FromSeconds(30),
-                            errorNumbersToAdd: null))
-                    )
-                    .AddScoped<IBuyerRepository, BuyerRepository>()
-                    //.AddScoped<ICouponRepository, CouponRepository>()
-                    .AddScoped<IProductRepository, ProductRepository>()
-            //.AddScoped<IOrderRepository, OrderRepository>()
-            //.AddScoped<IOrderItemsRepository, OrderItemRepository>()
-            //.AddScoped<IUnitOfWork, UnitOfWork>()
-            //adding mappers
-            .AddMediatR(typeof(GetAllProductsQuery))
-            ;
+            services
+                .AddDbContext<ApplicationContext>(options => options.UseSqlServer(defaultConnectionString, opt =>
+                    opt.EnableRetryOnFailure(
+                        maxRetryCount: 3,
+                        maxRetryDelay: TimeSpan.FromSeconds(30),
+                        errorNumbersToAdd: null))
+                )
+                .AddMediatR(typeof(Program))
+                .AddScoped<IBuyerRepository, BuyerRepository>()
+                .AddScoped<IProductRepository, ProductRepository>()
+                .AddScoped<IUnitOfWorkAdmin, UnitOfWorkAdmin>();
 
 
         return localServices;

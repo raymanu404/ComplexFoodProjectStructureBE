@@ -1,5 +1,5 @@
 ﻿
-namespace Application.Components.RandomCode
+namespace Application.Components
 {
     public static class RandomCode
     {

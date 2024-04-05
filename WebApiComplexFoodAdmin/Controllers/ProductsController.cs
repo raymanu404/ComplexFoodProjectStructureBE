@@ -1,5 +1,5 @@
 ﻿using Application.DtoModels.Product;
-using Application.Features.Products.Queries.GetAllProducts;
+using Application.Features.Admin.Products.Queries.GetAllProducts;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,17 +23,15 @@ public class ProductsController : Controller
         [HttpGet]
         public async Task<ActionResult<IList<ProductDto>>> GetAllProducts()
         {
-            var quyeryGetAllProducts = new GetAllProductsQuery();
-            var products = await _mediator.Send(quyeryGetAllProducts);
+            var queryGetAllProducts = new GetAllProductsQuery();
+            var products = await _mediator.Send(queryGetAllProducts);
             if (products.Count > 0)
             {
                 return Ok(products);
 
             }
-            else
-            {
-                return NotFound();
-            }
+
+            return NotFound();
 
         }
 

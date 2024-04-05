@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Features.Orders.Queries.GetAllOrders;
-using Application.Features.Orders.Queries.GetOrdersByBuyer;
 using Application.DtoModels.Order;
 using System.Collections.Generic;
 using WebApiComplexFood.Controllers;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc;
 using Domain.Models.Enums;
+using Application.Features.Customer.Orders.Queries.GetAllOrders;
+using Application.Features.Customer.Orders.Queries.GetOrdersByBuyer;
 
 
 namespace ProjectStructure.UnitTests

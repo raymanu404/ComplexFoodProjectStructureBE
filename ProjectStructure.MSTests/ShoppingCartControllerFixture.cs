@@ -7,10 +7,10 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.DtoModels.ShoppingCart;
-using Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand;
-using Application.Features.ShoppingCarts.Commands.DeleteShoppingCartCommand;
 using WebApiComplexFood.Controllers;
 using Microsoft.Extensions.Logging;
+using Application.Features.Customer.ShoppingCarts.Commands.DeleteShoppingCartCommand;
+using Application.Features.Customer.ShoppingCarts.Commands.UpdateShoppingCartCommand;
 
 namespace ProjectStructure.UnitTests
 {

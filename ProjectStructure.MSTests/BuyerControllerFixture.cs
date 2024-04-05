@@ -6,17 +6,15 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.DtoModels.Buyer;
-using Application.Features.Buyers.Queries.GetBuyersList;
-using Application.Features.Buyers.Commands.CreateBuyer;
-using Application.Features.Buyers.Commands.DeleteBuyer;
-using Application.Features.Buyers.Commands.UpdateBuyer;
-using Application.Features.Buyers.Queries.GetBuyerByEmail;
-using Domain.ValueObjects;
 using WebApiComplexFood.Controllers;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc;
 using Domain.Models.Roles;
-using Application.Features.Buyers.Queries.LoginBuyer;
+using Application.Features.Customer.Buyers.Commands.CreateBuyer;
+using Application.Features.Customer.Buyers.Commands.DeleteBuyer;
+using Application.Features.Customer.Buyers.Commands.UpdateBuyer;
+using Application.Features.Customer.Buyers.Queries.GetBuyerByEmail;
+using Application.Features.Customer.Buyers.Queries.LoginBuyer;
 
 namespace ProjectStructure.UnitTests
 {

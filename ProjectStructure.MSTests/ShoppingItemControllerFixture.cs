@@ -6,15 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.DtoModels.ShoppingCartItemDto;
 using Application.DtoModels.Product;
-using Application.Features.ShoppingItems.Commands;
-using Application.Features.ShoppingItems.Queries.GetAllProductsByCartId;
-using Application.Features.ShoppingItems.Queries.GetAllProductsByBuyerId;
 using System.Collections.Generic;
+using Application.DtoModels.ShoppingCartItem;
 using WebApiComplexFood.Controllers;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc;
+using Application.Features.Customer.ShoppingItems.Commands.CreateShoppingItem;
+using Application.Features.Customer.ShoppingItems.Queries.GetAllProductsByBuyerId;
 
 
 namespace ProjectStructure.UnitTests

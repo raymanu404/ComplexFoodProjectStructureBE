@@ -1,12 +1,11 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Application.Features.ShoppingItems.Commands;
 using Domain.Models.Shopping;
-using Application.DtoModels.ShoppingCartItemDto;
 using Application.DtoModels.Product;
-using Application.Features.ShoppingItems.Queries.GetAllProductsByCartId;
-using Application.Features.ShoppingItems.Queries.GetAllProductsByBuyerId;
+using Application.DtoModels.ShoppingCartItem;
+using Application.Features.Customer.ShoppingItems.Commands.CreateShoppingItem;
+using Application.Features.Customer.ShoppingItems.Queries.GetAllProductsByBuyerId;
+
 
 namespace WebApiComplexFood.Controllers
 {

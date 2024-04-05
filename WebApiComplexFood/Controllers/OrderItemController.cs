@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using Application.DtoModels.OrderItem;
-using Application.Features.OrderItems.Queries.GetAllItems;
-using Application.Features.OrderItems.Queries.GetALLItemsByOrderId;
+using Application.Features.Customer.OrderItems.Queries.GetAllItems;
+using Application.Features.Customer.OrderItems.Queries.GetALLItemsByOrderId;
+
 
 namespace WebApiComplexFood.Controllers
 {
@@ -22,7 +23,7 @@ namespace WebApiComplexFood.Controllers
         [HttpGet]
         public async Task<ActionResult<IList<OrderItemDto>>> GetAllOrderItems()
         {
-            var command = new GetALLItemsQuery() { };
+            var command = new GetAllItemsQuery() { };
 
             var items = await _mediator.Send(command);
             if (items.Count != 0)
@@ -39,7 +40,7 @@ namespace WebApiComplexFood.Controllers
         [HttpGet("{orderId}")]
         public async Task<ActionResult<IList<OrderItemDto>>> GetAllOrderItemsByOrderId(int orderId)
         {
-            var command = new GetALLItemsByOrderIdQuery()
+            var command = new GetAllItemsByOrderIdQuery()
             {
                OrderId = orderId
             };

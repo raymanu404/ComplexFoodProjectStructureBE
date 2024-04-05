@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Features.Products.Queries.GetAllProducts;
 
 using Application.DtoModels.Product;
 using System.Collections.Generic;
 using WebApiComplexFood.Controllers;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc;
+using Application.Features.Customer.Products.Queries.GetAllProducts;
 
 
 namespace ProjectStructure.UnitTests

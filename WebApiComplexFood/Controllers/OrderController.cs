@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using Application.DtoModels.Order;
-using Application.Features.Orders.Queries.GetAllOrders;
-using Application.Features.Orders.Queries.GetOrdersByBuyer;
+using Application.Features.Customer.Orders.Queries.GetAllOrders;
+using Application.Features.Customer.Orders.Queries.GetOrdersByBuyer;
+
 
 namespace WebApiComplexFood.Controllers
 {
