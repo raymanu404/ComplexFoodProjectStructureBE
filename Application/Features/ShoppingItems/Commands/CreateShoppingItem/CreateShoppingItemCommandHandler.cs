@@ -1,15 +1,15 @@
-﻿using MediatR;
-using Application.Contracts.Persistence;
-using Application.DtoModels.Cart;
+﻿using Application.Components;
+using MediatR;
 using Domain.ValueObjects;
-using Application.Features.ShoppingCarts.Commands.CreateShoppingCartCommand;
-using Application.Components.RandomCode;
 using Domain.Models.Shopping;
-using Application.DtoModels.ShoppingCartItemDto;
 using AutoMapper;
+using Application.DtoModels.ShoppingCart;
+using Application.DtoModels.ShoppingCartItem;
+using Application.Features.ShoppingCarts.Commands.CreateShoppingCartCommand;
+using Application.Features.ShoppingItems.Commands.UpdateShoppingItem;
+using Application.Contracts.Persistence;
 
-
-namespace Application.Features.ShoppingItems.Commands
+namespace Application.Features.ShoppingItems.Commands.CreateShoppingItem
 {
     public class CreateShoppingItemCommandHandler : IRequestHandler<CreateShoppingItemCommand, int>
     {
@@ -33,10 +33,10 @@ namespace Application.Features.ShoppingItems.Commands
                 var buyer = await _unitOfWork.Buyers.GetByIdAsync(command.BuyerId);
                 var product = await _unitOfWork.Products.GetByIdAsync(command.ProductId);
 
-                if(buyer != null && product != null)
+                if (buyer != null && product != null)
                 {
-                    var total_price = (command.Cantity * product.Price.Value);
-                    if(buyer.Balance.Value >= total_price)
+                    var total_price = command.Cantity * product.Price.Value;
+                    if (buyer.Balance.Value >= total_price)
                     {
                         var shoppingCartId = 0;
                         var getCart = await _unitOfWork.ShoppingCarts.GetCartByBuyerIdAsync(buyer.Id);
@@ -64,18 +64,18 @@ namespace Application.Features.ShoppingItems.Commands
                             totalPriceFromCart = getCart.TotalPrice.Value;
                             //getCart.TotalPrice = new Price(totalPriceFromCart + total_price);
                         }
-                      
+
                         var shoppingItemDto = new ShoppingCartItemDto
                         {
-                           
-                            ProductId = product.Id,                         
+
+                            ProductId = product.Id,
                             Cantity = command.Cantity
 
                         };
                         //verificat productId daca exista facem update cantitate, daca nu adaugam normal
 
                         var getItem = await _unitOfWork.ShoppingItems.GetShoppingItemByIds(shoppingCartId, shoppingItemDto.ProductId);
-                        if(getItem != null) //update
+                        if (getItem != null) //update
                         {
                             if (buyer.Balance.Value >= totalPriceFromCart)
                             {
@@ -88,7 +88,7 @@ namespace Application.Features.ShoppingItems.Commands
                                 };
 
                                 var responseId = await _mediator.Send(updateCommand);
-                                if(responseId > 0)
+                                if (responseId > 0)
                                 {
                                     id = updateCommand.ShoppingCartId;
                                 }
@@ -96,7 +96,7 @@ namespace Application.Features.ShoppingItems.Commands
                                 {
                                     id = responseId;
                                 }
-                                
+
 
                             }
                             else
@@ -120,15 +120,15 @@ namespace Application.Features.ShoppingItems.Commands
                             //nu are rost sa scadem de aici ca oricum scadem cu tot cu discount din orders
                             id = shoppingItem.ShoppingCartId;
                         }
-                                       
+
                         await _unitOfWork.CommitAsync(cancellationToken);
-                        
+
                     }
                     else
                     {
                         id = -2;
                     }
-                
+
                 }
                 else
                 {
@@ -138,12 +138,12 @@ namespace Application.Features.ShoppingItems.Commands
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return  -1;
+                return -1;
             }
 
             return id;
         }
 
-      
+
     }
 }

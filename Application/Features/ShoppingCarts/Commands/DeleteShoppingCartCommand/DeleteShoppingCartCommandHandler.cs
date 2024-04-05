@@ -28,7 +28,8 @@ namespace Application.Features.ShoppingCarts.Commands.DeleteShoppingCartCommand
                     returnMessage = "Cart doesn't exists!";
                 }
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return "Exception on Delete";

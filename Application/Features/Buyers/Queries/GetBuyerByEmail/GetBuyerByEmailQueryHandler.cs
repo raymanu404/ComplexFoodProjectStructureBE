@@ -1,11 +1,10 @@
 ﻿using MediatR;
-using Application.Contracts.Persistence;
 using Application.DtoModels.Buyer;
 using Application.Components;
 using Application.Models;
 using Microsoft.Extensions.Options;
 using Domain.ValueObjects;
-using Application.Components.RandomCode;
+using Application.Contracts.Persistence;
 
 namespace Application.Features.Buyers.Queries.GetBuyerByEmail
 {
@@ -25,7 +24,7 @@ namespace Application.Features.Buyers.Queries.GetBuyerByEmail
             try
             {
                 var checkBuyerIfExists = await _unitOfWork.Buyers.GetBuyerByEmailAsync(new Email(request.EmailBuyer.Email));
-                if(checkBuyerIfExists != null)
+                if (checkBuyerIfExists != null)
                 {
 
                     checkBuyerIfExists.ConfirmationCode = new UniqueCode(RandomCode.GetRandomCode(6));
@@ -49,9 +48,9 @@ namespace Application.Features.Buyers.Queries.GetBuyerByEmail
                 {
                     return "Emailul nu exista!";
                 }
-               
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 returnMessage = $"Eroare: {ex.Message}";
             }

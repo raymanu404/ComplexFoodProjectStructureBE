@@ -15,7 +15,7 @@ namespace Application.Features.Buyers.Commands.DeleteBuyer
         public async Task<Unit> Handle(DeleteBuyerByIdCommand request, CancellationToken cancellationToken)
         {
             var buyerToDelete = await _unitOfWork.Buyers.GetByIdAsync(request.BuyerId);
-            if(buyerToDelete != null)
+            if (buyerToDelete != null)
             {
                 _unitOfWork.Buyers.Delete(buyerToDelete);
                 await _unitOfWork.CommitAsync(cancellationToken);

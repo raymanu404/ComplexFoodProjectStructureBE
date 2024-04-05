@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using Application.Contracts.Persistence;
 using Domain.ValueObjects;
+using Application.Contracts.Persistence;
 
-namespace Application.Features.ShoppingItems.Commands
+namespace Application.Features.ShoppingItems.Commands.UpdateShoppingItem
 {
     public class UpdateCantityShoppingItemCommandHandler : IRequestHandler<UpdateCantityShoppingItemCommand, int>
     {
@@ -17,9 +17,9 @@ namespace Application.Features.ShoppingItems.Commands
             var getShoppingItem = await _unitOfWork.ShoppingItems.GetShoppingItemByIds(command.ShoppingCartId, command.ProductId);
             var getProduct = await _unitOfWork.Products.GetByIdAsync(command.ProductId);
 
-            if(getShoppingItem != null && getProduct != null)
+            if (getShoppingItem != null && getProduct != null)
             {
-                if(command.Cantity == getShoppingItem.Cantity.Value)
+                if (command.Cantity == getShoppingItem.Cantity.Value)
                 {
                     return getShoppingItem.ShoppingCartId;
                     //daca sunt egale cantitatile sa nu facem nimic
@@ -29,8 +29,8 @@ namespace Application.Features.ShoppingItems.Commands
                 //var getBuyer = await _unitOfWork.Buyers.GetByIdAsync(command.BuyerId); //nu mai trebuie sa actualizam balance-ul pentru buyer ca facem asta la confirmarea comenzii!!!
                 if (command.Cantity != 0)
                 {
-                                     
-                    if(getShoppingCart != null)
+
+                    if (getShoppingCart != null)
                     {
                         var totalPrice = 0.0;
                         //var buyerTotalBalance = 0.0;
@@ -46,7 +46,7 @@ namespace Application.Features.ShoppingItems.Commands
                         }
 
                         getShoppingItem.Cantity = new Cantity(command.Cantity);
-                        getShoppingCart.TotalPrice = new Price(totalPrice);        
+                        getShoppingCart.TotalPrice = new Price(totalPrice);
                         //getBuyer.Balance = new Balance(buyerTotalBalance);
 
                         id = getShoppingItem.ShoppingCartId;
@@ -55,16 +55,16 @@ namespace Application.Features.ShoppingItems.Commands
                     {
                         id = -3;
                     }
-                   
+
                 }
                 else
                 {
                     //stergere shopping item dupa acel produs sau cartul in sine daca era ultimul element din lista de itemuri pentru acel cart
                     var totalPrice = 0.0;
-                    totalPrice =  getShoppingItem.Cantity.Value * getProduct.Price.Value;
-                   
+                    totalPrice = getShoppingItem.Cantity.Value * getProduct.Price.Value;
+
                     var itemsInCart = await _unitOfWork.ShoppingItems.GetAllShoppingItemsByShoppingCartId(getShoppingCart.Id);
-                    if(itemsInCart.Count > 1)
+                    if (itemsInCart.Count > 1)
                     {
                         getShoppingCart.TotalPrice = new Price(getShoppingCart.TotalPrice.Value - totalPrice);
                         _unitOfWork.ShoppingItems.Delete(getShoppingItem);
@@ -72,8 +72,8 @@ namespace Application.Features.ShoppingItems.Commands
                     else
                     {
                         _unitOfWork.ShoppingCarts.Delete(getShoppingCart);
-                    } 
-                    
+                    }
+
                     //getBuyer.Balance = new Balance(getBuyer.Balance.Value + totalPrice);
                     id = -4;
 

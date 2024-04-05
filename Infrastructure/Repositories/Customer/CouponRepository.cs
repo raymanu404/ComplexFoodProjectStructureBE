@@ -1,9 +1,9 @@
-﻿using Application.Contracts.Persistence;
-using Domain.Models.Shopping;
+﻿using Domain.Models.Shopping;
 using Microsoft.EntityFrameworkCore;
 using Domain.ValueObjects;
+using Application.Contracts.Persistence;
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories.Customer
 {
     public class CouponRepository : ICouponRepository
     {
@@ -24,7 +24,7 @@ namespace Infrastructure.Repositories
 
         public async Task<Coupon?> GetByUniqueCodeAsync(UniqueCode code, int buyerId) => await _context.Coupons.Where(c => c.BuyerId == buyerId && c.Code == code).FirstOrDefaultAsync();
 
-     
+
 
     }
 }

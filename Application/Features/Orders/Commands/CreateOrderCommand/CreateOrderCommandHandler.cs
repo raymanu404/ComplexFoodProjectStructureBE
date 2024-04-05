@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using Application.Contracts.Persistence;
 using AutoMapper;
 using Domain.Models.Ordering;
+using Application.Contracts.Persistence;
 
-namespace Application.Features.Orders.Commands.CreateOrder;
+namespace Application.Features.Orders.Commands.CreateOrderCommand;
 
 public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, int>
 {
@@ -33,7 +33,7 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, int
             else
             {
                 return -1;
-            }        
+            }
 
         }
         catch (Exception ex)

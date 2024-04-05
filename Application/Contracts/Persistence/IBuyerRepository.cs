@@ -1,5 +1,4 @@
 ﻿using Domain.Models.Roles;
-using Application.DtoModels.Buyer;
 using Domain.ValueObjects;
 
 namespace Application.Contracts.Persistence;

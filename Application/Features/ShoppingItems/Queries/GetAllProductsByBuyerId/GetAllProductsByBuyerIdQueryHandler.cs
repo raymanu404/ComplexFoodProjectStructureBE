@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Application.DtoModels.Product;
+using AutoMapper;
 using Application.Contracts.Persistence;
 using Application.Features.Products.Queries.GetProductById;
-using AutoMapper;
 
 namespace Application.Features.ShoppingItems.Queries.GetAllProductsByBuyerId
 {
@@ -22,7 +22,7 @@ namespace Application.Features.ShoppingItems.Queries.GetAllProductsByBuyerId
         {
             List<ProductFromCartDto> products = new List<ProductFromCartDto>();
             var getCartByBuyerId = await _unitOfWork.ShoppingCarts.GetCartByBuyerIdAsync(request.BuyerId);
-            if(getCartByBuyerId != null)
+            if (getCartByBuyerId != null)
             {
                 var shoppingItemsByCartId = await _unitOfWork.ShoppingItems.GetAllShoppingItemsByShoppingCartId(getCartByBuyerId.Id);
                 if (shoppingItemsByCartId.Count != 0)
@@ -41,7 +41,7 @@ namespace Application.Features.ShoppingItems.Queries.GetAllProductsByBuyerId
                     }
                 }
             }
-           
+
 
             return products;
         }

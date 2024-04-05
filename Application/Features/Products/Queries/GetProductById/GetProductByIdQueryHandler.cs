@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using Application.Contracts.Persistence;
 using Application.DtoModels.Product;
 using AutoMapper;
 using Domain.Models.Shopping;
+using Application.Contracts.Persistence;
 
 namespace Application.Features.Products.Queries.GetProductById
 {

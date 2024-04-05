@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Application.DtoModels.Buyer;
-using Application.Contracts.Persistence;
 using Application.Components;
 using Domain.ValueObjects;
+using Application.Contracts.Persistence;
 
 
 namespace Application.Features.Buyers.Commands.UpdateBuyer
@@ -19,7 +19,7 @@ namespace Application.Features.Buyers.Commands.UpdateBuyer
         {
             string returnMessage = "";
             var buyer = await _unitOfWork.Buyers.GetByIdAsync(request.BuyerId);
-            if(buyer != null)
+            if (buyer != null)
             {
 
                 var validatePassword = new Password(request.BuyerUpdatePassword.OldPassword);

@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using Application.Contracts.Persistence;
 using Application.DtoModels.Product;
 using AutoMapper;
 using Domain.Models.Shopping;
 using Domain.ValueObjects;
+using Application.Contracts.Persistence;
 namespace Application.Features.Products.Commands.UpdateProduct
 {
     public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, ProductDto>
@@ -65,7 +65,7 @@ namespace Application.Features.Products.Commands.UpdateProduct
                 productToUpdate.DateCreated = request.Product.DateCreated;
                 productToUpdate.DateUpdated = request.Product.DateUpdated;
                 productToUpdate.IsInStock = request.Product.IsInStock;
-                        
+
                 await _unitOfWork.CommitAsync(cancellationToken);
             }
 

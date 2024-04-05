@@ -1,7 +1,7 @@
-﻿using Application.Contracts.Persistence;
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
 using Application.DtoModels.Buyer;
+using Application.Contracts.Persistence;
 
 namespace Application.Features.Buyers.Queries.GetBuyersList;
 
@@ -17,8 +17,8 @@ public class GetBuyersListQueryHandler : IRequestHandler<GetBuyersListQuery, Lis
     }
 
     public async Task<List<BuyerDto>> Handle(GetBuyersListQuery request, CancellationToken cancellationToken)
-    {  
-        
+    {
+
         var buyers = await _unitOfWork.Buyers.GetAllAsync();
         return _mapper.Map<List<BuyerDto>>(buyers);
     }

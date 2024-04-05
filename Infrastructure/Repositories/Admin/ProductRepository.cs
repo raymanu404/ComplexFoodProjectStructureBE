@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Application.Contracts.Persistence;
 using Domain.Models.Shopping;
-using Application.DtoModels.Product;
+using ApplicationAdmin.Contracts.Persistence;
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories.Admin
 {
     public class ProductRepository : IProductRepository
     {

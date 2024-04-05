@@ -1,6 +1,6 @@
-﻿using Application.Contracts.Persistence;
-using MediatR;
+﻿using MediatR;
 using Domain.ValueObjects;
+using Application.Contracts.Persistence;
 
 namespace Application.Features.Buyers.Commands.UpdateBuyer
 {
@@ -36,7 +36,7 @@ namespace Application.Features.Buyers.Commands.UpdateBuyer
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return "Tranzactia de depunere a fost esuata...";

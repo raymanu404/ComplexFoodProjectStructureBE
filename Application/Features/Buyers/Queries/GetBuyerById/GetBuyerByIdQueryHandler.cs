@@ -1,9 +1,9 @@
-﻿using Application.Contracts.Persistence;
-using MediatR;
+﻿using MediatR;
 using AutoMapper;
 using Application.DtoModels.Buyer;
 using Application.Models;
 using Microsoft.Extensions.Options;
+using Application.Contracts.Persistence;
 
 namespace Application.Features.Buyers.Queries.GetBuyerById
 {
@@ -16,17 +16,17 @@ namespace Application.Features.Buyers.Queries.GetBuyerById
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-            
+
         }
         public async Task<BuyerDto> Handle(GetBuyerByIdQuery command, CancellationToken cancellationToken)
         {
-           var buyer = await _unitOfWork.Buyers.GetByIdAsync(command.BuyerId);
-           if(buyer == null)
-           {
+            var buyer = await _unitOfWork.Buyers.GetByIdAsync(command.BuyerId);
+            if (buyer == null)
+            {
                 return new BuyerDto() { };
-           }
+            }
 
-           return _mapper.Map<BuyerDto>(buyer);
+            return _mapper.Map<BuyerDto>(buyer);
         }
     }
 

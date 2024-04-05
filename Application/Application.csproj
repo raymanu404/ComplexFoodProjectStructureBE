@@ -9,16 +9,19 @@
 	<ItemGroup>
 		<Compile Remove="Assets\**" />
 		<Compile Remove="Commands\**" />
+		<Compile Remove="Contracts\ThirdParty\**" />
 		<Compile Remove="Features\PaymentIntent\**" />
 		<Compile Remove="Handlers\**" />
 		<Compile Remove="Queries\**" />
 		<EmbeddedResource Remove="Assets\**" />
 		<EmbeddedResource Remove="Commands\**" />
+		<EmbeddedResource Remove="Contracts\ThirdParty\**" />
 		<EmbeddedResource Remove="Features\PaymentIntent\**" />
 		<EmbeddedResource Remove="Handlers\**" />
 		<EmbeddedResource Remove="Queries\**" />
 		<None Remove="Assets\**" />
 		<None Remove="Commands\**" />
+		<None Remove="Contracts\ThirdParty\**" />
 		<None Remove="Features\PaymentIntent\**" />
 		<None Remove="Handlers\**" />
 		<None Remove="Queries\**" />
@@ -33,10 +36,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Contracts\ThirdParty\" />
-		<Folder Include="Features\Buyers\Commands\CreateBuyer\" />
-		<Folder Include="Features\Buyers\Queries\GetBuyersList\" />
-		<Folder Include="Features\Orders\Commands\CreateOrderCommand\" />
 		<Folder Include="Profiles\" />
 	</ItemGroup>
 

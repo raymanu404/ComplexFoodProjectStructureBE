@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Application.DtoModels.Cart;
-using Application.Contracts.Persistence;
 using AutoMapper;
+using Application.DtoModels.ShoppingCart;
+using Application.Contracts.Persistence;
 
 namespace Application.Features.ShoppingCarts.Queries.GetShoppingCartByBuyerIdQuery
 {

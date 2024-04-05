@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using AutoMapper;
-using Application.Contracts.Persistence;
 using Domain.Models.Shopping;
 using Application.DtoModels.Product;
 using Domain.Models.Enums;
+using Application.Contracts.Persistence;
 
 
 namespace Application.Features.Products.Commands.CreateProduct
@@ -35,10 +35,10 @@ namespace Application.Features.Products.Commands.CreateProduct
                 {
                     returnMessage = "Out of range in Categories";
                 }
-               
-               
+
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 returnMessage = "Error in Create Product";
@@ -53,5 +53,5 @@ namespace Application.Features.Products.Commands.CreateProduct
             return value >= values.First() && value <= values.Last();
         }
     }
-   
+
 }

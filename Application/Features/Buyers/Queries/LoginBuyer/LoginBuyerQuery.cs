@@ -4,8 +4,8 @@ using Domain.Models.Roles;
 
 namespace Application.Features.Buyers.Queries.LoginBuyer
 {
-    public class LoginBuyerQuery: IRequest<BuyerDto>
+    public class LoginBuyerQuery : IRequest<BuyerDto>
     {
-        public BuyerLoginDto BuyerLogin { get; set; }       
+        public BuyerLoginDto BuyerLogin { get; set; }
     }
 }

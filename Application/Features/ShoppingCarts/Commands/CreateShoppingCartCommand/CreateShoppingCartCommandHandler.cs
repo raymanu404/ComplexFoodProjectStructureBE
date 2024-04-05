@@ -1,10 +1,9 @@
-﻿using Application.Contracts.Persistence;
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
 using Domain.Models.Shopping;
 using Domain.ValueObjects;
 using Application.DtoModels.Buyer;
-using Application.DtoModels.Cart;
+using Application.Contracts.Persistence;
 
 namespace Application.Features.ShoppingCarts.Commands.CreateShoppingCartCommand
 {
@@ -28,6 +27,6 @@ namespace Application.Features.ShoppingCarts.Commands.CreateShoppingCartCommand
 
             return cart;
         }
-   
+
     }
 }

@@ -1,6 +1,4 @@
-﻿using Domain.ValueObjects;
-
-namespace Application.DtoModels.Cart
+﻿namespace Application.DtoModels.ShoppingCart
 {
     public class ShoppingCartDto
     {     

@@ -1,17 +1,17 @@
-﻿using MediatR;
-using Application.Contracts.Persistence;
+﻿using Application.Contracts.Persistence;
+using MediatR;
 
-namespace Application.Features.Orders.Commands.UpdateOrderComand
+namespace Application.Features.Orders.Commands.UpdateOrderCommand
 {
-    public class UpdateStatusOrderCommandHandler :IRequestHandler<UpdateStatusOrderComand, int>
+    public class UpdateStatusOrderCommandHandler : IRequestHandler<UpdateStatusOrderCommand, int>
     {
         private readonly IUnitOfWork _unitOfWork;
-        public UpdateStatusOrderCommandHandler(IUnitOfWork unitOfWork) 
-        { 
-            _unitOfWork = unitOfWork; 
+        public UpdateStatusOrderCommandHandler(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
         }
 
-        public async Task<int> Handle(UpdateStatusOrderComand command, CancellationToken cancellationToken)
+        public async Task<int> Handle(UpdateStatusOrderCommand command, CancellationToken cancellationToken)
         {
             try
             {
@@ -26,12 +26,12 @@ namespace Application.Features.Orders.Commands.UpdateOrderComand
                     return 0;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return -1;
             }
-            
+
             return 1;
         }
     }

@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Application.DtoModels.Order;
-using Application.Contracts.Persistence;
 using AutoMapper;
+using Application.Contracts.Persistence;
 
 namespace Application.Features.Orders.Queries.GetAllOrders
 {
-    public class GetAllOrdersQueryHandler : IRequestHandler<GetAllOrdersQuery,List<OrderDto>>
+    public class GetAllOrdersQueryHandler : IRequestHandler<GetAllOrdersQuery, List<OrderDto>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;

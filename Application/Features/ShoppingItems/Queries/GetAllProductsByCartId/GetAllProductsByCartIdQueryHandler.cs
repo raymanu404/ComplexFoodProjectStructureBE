@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Application.DtoModels.Product;
-using Application.Contracts.Persistence;
-using Application.Features.Products.Queries.GetProductById;
 using AutoMapper;
+using Application.Features.Products.Queries.GetProductById;
+using Application.Contracts.Persistence;
 
 namespace Application.Features.ShoppingItems.Queries.GetAllProductsByCartId
 {
@@ -22,7 +22,7 @@ namespace Application.Features.ShoppingItems.Queries.GetAllProductsByCartId
         {
             List<ProductFromCartDto> products = new List<ProductFromCartDto>();
             var shoppingItemsByCartId = await _unitOfWork.ShoppingItems.GetAllShoppingItemsByShoppingCartId(request.ShoppingCartId);
-            if(shoppingItemsByCartId.Count != 0)
+            if (shoppingItemsByCartId.Count != 0)
             {
                 foreach (var shoppingItem in shoppingItemsByCartId)
                 {
@@ -30,7 +30,7 @@ namespace Application.Features.ShoppingItems.Queries.GetAllProductsByCartId
                     {
                         ProductId = shoppingItem.ProductId
                     };
-                    
+
                     var productsByCartId = await _mediator.Send(commandGetProduct);
                     var productFromCartDto = _mapper.Map<ProductFromCartDto>(productsByCartId);
                     productFromCartDto.Cantity = shoppingItem.Cantity.Value;

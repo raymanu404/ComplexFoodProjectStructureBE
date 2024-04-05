@@ -1,7 +1,7 @@
-﻿using Application.Contracts.Persistence;
-using Application.DtoModels.Coupon;
+﻿using Application.DtoModels.Coupon;
 using MediatR;
 using AutoMapper;
+using Application.Contracts.Persistence;
 
 namespace Application.Features.Coupons.Queries.GetCouponsByBuyerId
 {
@@ -21,20 +21,21 @@ namespace Application.Features.Coupons.Queries.GetCouponsByBuyerId
             try
             {
                 var buyer = await _unitOfWork.Buyers.GetByIdAsync(request.BuyerId);
-                if(buyer != null)
+                if (buyer != null)
                 {
                     var couponsByBuyerId = await _unitOfWork.Coupons.GetAllCouponsByBuyerIdAsync(buyer.Id);
                     coupons = _mapper.Map<List<CouponDto>>(couponsByBuyerId);
 
                 }
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-               
+
             }
 
-            return coupons;          
+            return coupons;
         }
     }
 }

@@ -1,14 +1,14 @@
-﻿using Application.Contracts.Persistence;
+﻿using Application.Components;
 using MediatR;
 using Domain.Models.Shopping;
 using Domain.Models.Enums;
 using Domain.ValueObjects;
-using Application.Components.RandomCode;
+using Application.Contracts.Persistence;
 
 
 namespace Application.Features.Coupons.Commands.CreateCoupon
 {
-   
+
     public class CreateCouponCommandHandler : IRequestHandler<CreateCouponCommand, string>
     {
 
@@ -17,7 +17,7 @@ namespace Application.Features.Coupons.Commands.CreateCoupon
         const int PRICE_TICKET_TYPE3 = 50;
 
         private readonly IUnitOfWork _unitOfWork;
-        
+
         public CreateCouponCommandHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -84,16 +84,16 @@ namespace Application.Features.Coupons.Commands.CreateCoupon
                     returnMessage = "Buyer doesn't exists!";
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 returnMessage = "Error in Create Coupons";
-                
+
             }
             return returnMessage;
-            
+
         }
 
-    }  
+    }
 
 }

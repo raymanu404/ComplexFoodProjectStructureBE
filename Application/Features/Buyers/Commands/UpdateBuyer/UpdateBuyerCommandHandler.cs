@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Features.Buyers.Commands.UpdateBuyer;
 
-public class UpdateBuyerCommandHandler : IRequestHandler<UpdateBuyerCommand,int>
+public class UpdateBuyerCommandHandler : IRequestHandler<UpdateBuyerCommand, int>
 {
     private readonly IUnitOfWork _unitOfWork;
     public UpdateBuyerCommandHandler(IUnitOfWork unitOfWork)
@@ -15,7 +15,7 @@ public class UpdateBuyerCommandHandler : IRequestHandler<UpdateBuyerCommand,int>
     public async Task<int> Handle(UpdateBuyerCommand command, CancellationToken cancellationToken)
     {
         var buyer = await _unitOfWork.Buyers.GetByIdAsync(command.BuyerId);
-    
+
         if (buyer != null)
         {
 

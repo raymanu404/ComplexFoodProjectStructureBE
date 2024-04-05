@@ -1,13 +1,13 @@
 ﻿using MediatR;
 using Application.DtoModels.Buyer;
-using Application.Contracts.Persistence;
 using Application.Components;
 using Domain.ValueObjects;
+using Application.Contracts.Persistence;
 
 
 namespace Application.Features.Buyers.Commands.UpdateBuyer
 {
-    public class ChangePasswordBuyerCommandHandler : IRequestHandler<ChangePasswordBuyerCommand,string>
+    public class ChangePasswordBuyerCommandHandler : IRequestHandler<ChangePasswordBuyerCommand, string>
     {
         private readonly IUnitOfWork _unitOfWork;
         public ChangePasswordBuyerCommandHandler(IUnitOfWork unitOfWork)

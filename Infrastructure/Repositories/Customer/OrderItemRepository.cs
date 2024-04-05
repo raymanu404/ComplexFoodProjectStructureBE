@@ -2,7 +2,7 @@
 using Domain.Models.Ordering;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories.Customer
 {
     public class OrderItemRepository : IOrderItemsRepository
     {

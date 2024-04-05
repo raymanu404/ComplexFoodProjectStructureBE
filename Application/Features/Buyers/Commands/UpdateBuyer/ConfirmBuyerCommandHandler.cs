@@ -1,6 +1,6 @@
-﻿using Application.Contracts.Persistence;
-using MediatR;
+﻿using MediatR;
 using Domain.ValueObjects;
+using Application.Contracts.Persistence;
 
 namespace Application.Features.Buyers.Commands.UpdateBuyer
 {
@@ -44,9 +44,9 @@ namespace Application.Features.Buyers.Commands.UpdateBuyer
                     return "Buyer-ul nu exista!";
                 }
 
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return "Nu s-a putut confirma!";

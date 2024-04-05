@@ -5,12 +5,12 @@ namespace WebApiComplexFoodAdmin.Extensions;
 
 public static class ApplicationBuilderExtensions
 {
-    public static IApplicationBuilder UseSwaggerUIA(this IApplicationBuilder app)
+    public static IApplicationBuilder UseSwaggerUiExtension(this IApplicationBuilder app)
         => app
             .UseSwagger()
             .UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "ProjectStructure.Api v1");
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApiComplexFoodAdmin.Api v1");
                 options.RoutePrefix = string.Empty;
             });
 

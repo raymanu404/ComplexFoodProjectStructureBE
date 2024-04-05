@@ -1,21 +1,18 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using Moq;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.DtoModels.OrderItem;
 using Application.Features.OrderItems.Queries.GetAllItems;
 using Application.Features.OrderItems.Queries.GetALLItemsByOrderId;
-using Application.DtoModels.OrderItem;
-using System.Collections.Generic;
-using WebApiComplexFood.Controllers;
-using Microsoft.Extensions.Logging;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using WebApiComplexFood.Controllers;
 
-
-namespace ProjectStructure.UnitTests
+namespace ProjectStructure.MSTests
 {
     [TestClass]
     public class OrderItemControllerFixture
@@ -38,7 +35,7 @@ namespace ProjectStructure.UnitTests
         {
             //ARANGE
             _mockMediator
-                .Setup(m => m.Send(It.IsAny<GetALLItemsQuery>(), It.IsAny<CancellationToken>()))
+                .Setup(m => m.Send(It.IsAny<GetAllItemsQuery>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new List<OrderItemDto>
                 {
                     new OrderItemDto
@@ -62,7 +59,7 @@ namespace ProjectStructure.UnitTests
         {
             //ARANGE
             _mockMediator
-                .Setup(m => m.Send(It.IsAny<GetALLItemsQuery>(), It.IsAny<CancellationToken>()))
+                .Setup(m => m.Send(It.IsAny<GetAllItemsQuery>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new List<OrderItemDto>()
                 );
 
@@ -81,7 +78,7 @@ namespace ProjectStructure.UnitTests
         {
             //ARANGE
             _mockMediator
-                .Setup(m => m.Send(It.IsAny<GetALLItemsByOrderIdQuery>(), It.IsAny<CancellationToken>()))
+                .Setup(m => m.Send(It.IsAny<GetAllItemsByOrderIdQuery>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new List<OrderItemDto>()
                 {
                     new OrderItemDto
@@ -104,7 +101,7 @@ namespace ProjectStructure.UnitTests
         {
             //ARANGE
             _mockMediator
-                .Setup(m => m.Send(It.IsAny<GetALLItemsByOrderIdQuery>(), It.IsAny<CancellationToken>()))
+                .Setup(m => m.Send(It.IsAny<GetAllItemsByOrderIdQuery>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new List<OrderItemDto>()
                 );
 

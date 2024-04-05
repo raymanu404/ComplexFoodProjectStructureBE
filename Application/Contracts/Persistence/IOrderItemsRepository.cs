@@ -4,8 +4,8 @@ namespace Application.Contracts.Persistence
 {
     public interface IOrderItemsRepository
     {
-         Task AddAsync(OrderItem orderItem);
-         Task<List<OrderItem>> GetAllItemsByOrderId(int orderId);
-         Task<List<OrderItem>> GetAllItems();
+        Task AddAsync(OrderItem orderItem);
+        Task<List<OrderItem>> GetAllItemsByOrderId(int orderId);
+        Task<List<OrderItem>> GetAllItems();
     }
 }

@@ -1,8 +1,7 @@
 ﻿using MediatR;
-using Application.Contracts.Persistence;
 using Application.DtoModels.Product;
 using AutoMapper;
-using Domain.Models.Shopping;
+using Application.Contracts.Persistence;
 
 namespace Application.Features.Products.Queries.GetAllProducts
 {
@@ -15,7 +14,7 @@ namespace Application.Features.Products.Queries.GetAllProducts
             _unitOfWork = unitOfWork;
             _mapper = mapper;
 
-         }
+        }
         public async Task<List<ProductDto>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
             var products = await _unitOfWork.Products.GetAllAsync();

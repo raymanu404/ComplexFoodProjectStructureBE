@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Features.ShoppingItems.Commands
+namespace Application.Features.ShoppingItems.Commands.UpdateShoppingItem
 {
     public class UpdateCantityShoppingItemCommand : IRequest<int>
     {

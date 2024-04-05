@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Application.DtoModels.Order;
-using Application.Contracts.Persistence;
 using AutoMapper;
+using Application.Contracts.Persistence;
 
-namespace Application.Features.Orders.Queries.GetOrderByBuyerId
+namespace Application.Features.Orders.Queries.GetOrderById
 {
     public class GetOrderByIdQueryHandler : IRequestHandler<GetOrderByIdQuery, OrderDto>
     {

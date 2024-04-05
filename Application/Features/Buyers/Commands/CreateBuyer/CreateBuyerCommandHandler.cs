@@ -1,14 +1,13 @@
-﻿using Application.Contracts.Persistence;
-using AutoMapper;
+﻿using AutoMapper;
 using Domain.Models.Roles;
 using MediatR;
 using Application.DtoModels.Buyer;
 using Application.Components;
-using Application.Components.RandomCode;
 using Application.Contracts.FileUtils;
 using Domain.ValueObjects;
 using Application.Models;
 using Microsoft.Extensions.Options;
+using Application.Contracts.Persistence;
 
 namespace Application.Features.Buyers.Commands.CreateBuyer;
 
@@ -32,16 +31,17 @@ public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, str
         var checkBuyerIfExists = await _unitOfWork.Buyers.GetBuyerByEmail(new Email(command.Buyer.Email));
         if (!checkBuyerIfExists)
         {
-                   
+
             var checkNewPassword = new Password(command.Buyer.Password);
             if (checkNewPassword.Value.Equals(""))
             {
                 return "Password Invalid!";
             }
-    
+
             command.Buyer.Password = EncodePassword.ComputeSha256Hash(command.Buyer.Password);
             var buyer = _mapper.Map<Buyer>(command.Buyer);
-            if (buyer.Password.Value.Equals("")){
+            if (buyer.Password.Value.Equals(""))
+            {
                 return "Password invalid!";
             }
 
@@ -58,14 +58,14 @@ public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, str
             if (buyer.LastName.Value.Equals(""))
             {
                 return "LastName invalid!";
-            } 
-            
+            }
+
             if (buyer.PhoneNumber.Value.Equals(""))
             {
                 return "PhoneNumber invalid!";
             }
 
-           
+
             if (buyer.Gender.Value.Equals(""))
             {
                 return "Gender invalid!";
@@ -75,7 +75,7 @@ public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, str
 
             buyer.ConfirmationCode = new UniqueCode(randomConfirmationCode);
             await _unitOfWork.Buyers.AddAsync(buyer);
-           
+
 
             //send mail
             //string mailFrom = _emailSettings.Sender;
@@ -86,8 +86,8 @@ public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, str
             //var mailStatus = StmpGmail.SendMail(mailFrom, _emailSettings.Password, buyer.Email.Value, subject, body, nameTo);
             //if (mailStatus.Equals("OK"))
             //{
-                returnMessage = $"{buyer.Email.Value}";
-                await _unitOfWork.CommitAsync(cancellationToken);
+            returnMessage = $"{buyer.Email.Value}";
+            await _unitOfWork.CommitAsync(cancellationToken);
 
             //}
             //else
@@ -103,7 +103,7 @@ public class CreateBuyerCommandHandler : IRequestHandler<CreateBuyerCommand, str
         return returnMessage;
     }
 
-   
+
 
 
 }

@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Domain.Models.Roles;
-using Application.Contracts.Persistence;
 using Application.DtoModels.Buyer;
 using Domain.ValueObjects;
 using AutoMapper;
 using Application.Components;
 using Domain.Models.Roles;
+using Application.Contracts.Persistence;
 
 namespace Application.Features.Buyers.Queries.LoginBuyer
 {
