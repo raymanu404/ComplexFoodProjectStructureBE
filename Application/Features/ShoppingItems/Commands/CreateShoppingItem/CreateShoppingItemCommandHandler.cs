@@ -1,13 +1,13 @@
 ﻿using Application.Components;
 using MediatR;
 using Domain.ValueObjects;
-using Domain.Models.Shopping;
 using AutoMapper;
 using Application.DtoModels.ShoppingCart;
 using Application.DtoModels.ShoppingCartItem;
 using Application.Features.ShoppingCarts.Commands.CreateShoppingCartCommand;
 using Application.Features.ShoppingItems.Commands.UpdateShoppingItem;
 using Application.Contracts.Persistence;
+using Domain.Models.Shopping;
 
 namespace Application.Features.ShoppingItems.Commands.CreateShoppingItem
 {

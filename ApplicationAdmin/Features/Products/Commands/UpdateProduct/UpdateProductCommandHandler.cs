@@ -57,14 +57,14 @@ namespace ApplicationAdmin.Features.Products.Commands.UpdateProduct
                     request.Product.IsInStock = productToUpdate.IsInStock;
                 }
 
-                productToUpdate.Category = request.Product.Category;
-                productToUpdate.Title = request.Product.Title;
-                productToUpdate.Description = request.Product.Description;
-                productToUpdate.Price = new Price(request.Product.Price);
-                productToUpdate.Image = request.Product.Image;
-                productToUpdate.DateCreated = request.Product.DateCreated;
-                productToUpdate.DateUpdated = request.Product.DateUpdated;
-                productToUpdate.IsInStock = request.Product.IsInStock;
+                //productToUpdate.Category = request.Product.Category;
+                //productToUpdate.Title = request.Product.Title;
+                //productToUpdate.Description = request.Product.Description;
+                //productToUpdate.Price = new Price(request.Product.Price);
+                //productToUpdate.Image = request.Product.Image;
+                //productToUpdate.DateCreated = request.Product.DateCreated;
+                //productToUpdate.DateUpdated = request.Product.DateUpdated;
+                //productToUpdate.IsInStock = request.Product.IsInStock;
 
                 await _unitOfWork.CommitAsync(cancellationToken);
             }

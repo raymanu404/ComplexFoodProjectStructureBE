@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Domain.Models.Roles;
 using MediatR;
 using Application.DtoModels.Buyer;
 using Application.Components;
@@ -8,6 +7,7 @@ using Domain.ValueObjects;
 using Application.Models;
 using Microsoft.Extensions.Options;
 using Application.Contracts.Persistence;
+using Domain.Models.Roles;
 
 namespace Application.Features.Buyers.Commands.CreateBuyer;
 

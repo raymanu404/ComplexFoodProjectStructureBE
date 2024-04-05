@@ -1,6 +1,5 @@
 ﻿using Domain.Models.Abstractions;
 using Domain.Models.Enums;
-using Domain.ValueObjects;
 
 namespace Domain.Models.Roles;
 public class Admin : User

@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
 using ApplicationAdmin.Contracts.Persistence;
-using ApplicationAdmin.Features.Products.Queries.GetAllProducts;
 using ApplicationAdmin.Profiles;
 using Infrastructure;
 using Infrastructure.Repositories.Admin;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WebApiComplexFoodAdmin.Extensions;
 
@@ -24,7 +24,10 @@ public static class ConfigureServices
                         errorNumbersToAdd: null))
                 )
                 .AddAutoMapper(typeof(MappingProfile))
-                .AddMediatR(typeof(GetAllProductsQuery))
+                .AddMediatR(config =>
+                {
+                    config.RegisterServicesFromAssembly(typeof(Program).Assembly);
+                })
                 .AddScoped<IBuyerRepository, BuyerRepository>()
                 .AddScoped<IProductRepository, ProductRepository>()
                 .AddScoped<IUnitOfWorkAdmin, UnitOfWorkAdmin>();

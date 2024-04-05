@@ -1,5 +1,5 @@
-﻿using Domain.Models.Roles;
-using Domain.Models.Ordering;
+﻿using Domain.Models.Ordering;
+using Domain.Models.Roles;
 using Domain.Models.Shopping;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.EntityConfigurations.Roles;

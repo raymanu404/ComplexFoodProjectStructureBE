@@ -6,9 +6,9 @@ using Application.DtoModels.Order;
 using Application.DtoModels.ShoppingCart;
 using Application.DtoModels.ShoppingCartItem;
 using AutoMapper;
+using Domain.Models.Ordering;
 using Domain.Models.Roles;
 using Domain.Models.Shopping;
-using Domain.Models.Ordering;
 
 namespace Application.Profiles;
 
