@@ -1,12 +1,11 @@
 ﻿using System.Reflection;
-using Application.Contracts.Persistence.Admin;
-using Application.Features.Admin.Products.Queries.GetAllProducts;
+using ApplicationAdmin.Contracts.Persistence;
+using ApplicationAdmin.Features.Products.Queries.GetAllProducts;
+using ApplicationAdmin.Profiles;
 using Infrastructure;
 using Infrastructure.Repositories.Admin;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using IBuyerRepository = Application.Contracts.Persistence.Admin.IBuyerRepository;
-using IProductRepository = Application.Contracts.Persistence.Admin.IProductRepository;
 
 namespace WebApiComplexFoodAdmin.Extensions;
 
@@ -24,7 +23,8 @@ public static class ConfigureServices
                         maxRetryDelay: TimeSpan.FromSeconds(30),
                         errorNumbersToAdd: null))
                 )
-                .AddMediatR(typeof(Program))
+                .AddAutoMapper(typeof(MappingProfile))
+                .AddMediatR(typeof(GetAllProductsQuery))
                 .AddScoped<IBuyerRepository, BuyerRepository>()
                 .AddScoped<IProductRepository, ProductRepository>()
                 .AddScoped<IUnitOfWorkAdmin, UnitOfWorkAdmin>();

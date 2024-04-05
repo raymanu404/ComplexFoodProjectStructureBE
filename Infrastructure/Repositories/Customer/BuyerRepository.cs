@@ -1,9 +1,9 @@
-﻿using Application.Contracts.Persistence.Customer;
-using Domain.Models.Roles;
+﻿using Domain.Models.Roles;
 using Microsoft.EntityFrameworkCore;
 using Application.DtoModels.Buyer;
 using AutoMapper;
 using Domain.ValueObjects;
+using Application.Contracts.Persistence;
 
 namespace Infrastructure.Repositories.Customer;
 

@@ -1,22 +1,20 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using Moq;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.DtoModels.Order;
-using System.Collections.Generic;
-using WebApiComplexFood.Controllers;
-using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Mvc;
+using Application.Features.Orders.Queries.GetAllOrders;
+using Application.Features.Orders.Queries.GetOrdersByBuyer;
 using Domain.Models.Enums;
-using Application.Features.Customer.Orders.Queries.GetAllOrders;
-using Application.Features.Customer.Orders.Queries.GetOrdersByBuyer;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using WebApiComplexFood.Controllers;
 
-
-namespace ProjectStructure.UnitTests
+namespace ProjectStructure.MSTests
 {
     [TestClass]
     public class OrderControllerFixture

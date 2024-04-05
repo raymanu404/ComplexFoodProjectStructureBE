@@ -1,18 +1,17 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using Moq;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
+﻿using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.DtoModels.ShoppingCart;
-using WebApiComplexFood.Controllers;
+using Application.Features.ShoppingCarts.Commands.DeleteShoppingCartCommand;
+using Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Application.Features.Customer.ShoppingCarts.Commands.DeleteShoppingCartCommand;
-using Application.Features.Customer.ShoppingCarts.Commands.UpdateShoppingCartCommand;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using WebApiComplexFood.Controllers;
 
-namespace ProjectStructure.UnitTests
+namespace ProjectStructure.MSTests
 {
     [TestClass]
     public class ShoppingCartControllerFixture

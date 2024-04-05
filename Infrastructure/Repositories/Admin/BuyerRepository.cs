@@ -1,4 +1,4 @@
-﻿using Application.Contracts.Persistence.Admin;
+﻿using ApplicationAdmin.Contracts.Persistence;
 using Domain.Models.Roles;
 using Microsoft.EntityFrameworkCore;
 using Domain.ValueObjects;

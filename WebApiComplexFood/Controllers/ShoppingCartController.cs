@@ -2,8 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using Application.DtoModels.ShoppingCart;
-using Application.Features.Customer.ShoppingCarts.Commands.DeleteShoppingCartCommand;
-using Application.Features.Customer.ShoppingCarts.Commands.UpdateShoppingCartCommand;
+
+using Application.Features.ShoppingCarts.Commands.DeleteShoppingCartCommand;
+using Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand;
 
 
 namespace WebApiComplexFood.Controllers

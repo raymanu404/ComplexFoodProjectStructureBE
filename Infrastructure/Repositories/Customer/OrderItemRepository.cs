@@ -1,4 +1,4 @@
-﻿using Application.Contracts.Persistence.Customer;
+﻿using Application.Contracts.Persistence;
 using Domain.Models.Ordering;
 using Microsoft.EntityFrameworkCore;
 

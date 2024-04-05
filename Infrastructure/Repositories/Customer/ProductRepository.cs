@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Domain.Models.Shopping;
-using Application.Contracts.Persistence.Customer;
+using Application.Contracts.Persistence;
 
 namespace Infrastructure.Repositories.Customer
 {

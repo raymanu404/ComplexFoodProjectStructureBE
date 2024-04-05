@@ -1,22 +1,19 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using Moq;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.DtoModels.Product;
-using System.Collections.Generic;
 using Application.DtoModels.ShoppingCartItem;
-using WebApiComplexFood.Controllers;
-using Microsoft.Extensions.Logging;
+using Application.Features.ShoppingItems.Commands.CreateShoppingItem;
+using Application.Features.ShoppingItems.Queries.GetAllProductsByBuyerId;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Application.Features.Customer.ShoppingItems.Commands.CreateShoppingItem;
-using Application.Features.Customer.ShoppingItems.Queries.GetAllProductsByBuyerId;
+using Microsoft.Extensions.Logging;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using WebApiComplexFood.Controllers;
 
-
-namespace ProjectStructure.UnitTests
+namespace ProjectStructure.MSTests
 {
     [TestClass]
     public class ShoppingItemControllerFixture

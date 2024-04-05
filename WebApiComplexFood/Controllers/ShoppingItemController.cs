@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Domain.Models.Shopping;
 using Application.DtoModels.Product;
 using Application.DtoModels.ShoppingCartItem;
-using Application.Features.Customer.ShoppingItems.Commands.CreateShoppingItem;
-using Application.Features.Customer.ShoppingItems.Queries.GetAllProductsByBuyerId;
+
+using Application.Features.ShoppingItems.Commands.CreateShoppingItem;
+using Application.Features.ShoppingItems.Queries.GetAllProductsByBuyerId;
 
 
 namespace WebApiComplexFood.Controllers

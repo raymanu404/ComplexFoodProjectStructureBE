@@ -6,13 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using Domain.Models.Roles;
 using System.Net;
-using Application.Features.Customer.Buyers.Commands.CreateBuyer;
-using Application.Features.Customer.Buyers.Commands.DeleteBuyer;
-using Application.Features.Customer.Buyers.Commands.UpdateBuyer;
-using Application.Features.Customer.Buyers.Queries.GetBuyerByEmail;
-using Application.Features.Customer.Buyers.Queries.GetBuyerById;
-using Application.Features.Customer.Buyers.Queries.GetBuyersList;
-using Application.Features.Customer.Buyers.Queries.LoginBuyer;
+using Application.Features.Buyers.Commands.CreateBuyer;
+using Application.Features.Buyers.Commands.DeleteBuyer;
+using Application.Features.Buyers.Commands.UpdateBuyer;
+using Application.Features.Buyers.Queries.GetBuyerByEmail;
+using Application.Features.Buyers.Queries.GetBuyerById;
+using Application.Features.Buyers.Queries.GetBuyersList;
+using Application.Features.Buyers.Queries.LoginBuyer;
+
 
 namespace WebApiComplexFood.Controllers
 {

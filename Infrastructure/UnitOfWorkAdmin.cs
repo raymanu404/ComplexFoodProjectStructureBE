@@ -1,6 +1,6 @@
-﻿using Application.Contracts.Persistence.Admin;
-using IBuyerRepository = Application.Contracts.Persistence.Admin.IBuyerRepository;
-using IProductRepository = Application.Contracts.Persistence.Admin.IProductRepository;
+﻿
+
+using ApplicationAdmin.Contracts.Persistence;
 
 namespace Infrastructure;
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Domain.Models.Shopping;
-using Application.Contracts.Persistence.Admin;
+using ApplicationAdmin.Contracts.Persistence;
 
 namespace Infrastructure.Repositories.Admin
 {

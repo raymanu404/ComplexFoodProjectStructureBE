@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Application.DtoModels.Product;
+using Application.Features.Products.Queries.GetAllProducts;
 using MediatR;
 
-using Application.Features.Customer.Products.Queries.GetAllProducts;
 
 namespace WebApiComplexFood.Controllers
 {

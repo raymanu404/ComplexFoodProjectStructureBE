@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using Application.DtoModels.OrderItem;
-using Application.Features.Customer.OrderItems.Queries.GetAllItems;
-using Application.Features.Customer.OrderItems.Queries.GetALLItemsByOrderId;
+
+using Application.Features.OrderItems.Queries.GetAllItems;
+using Application.Features.OrderItems.Queries.GetALLItemsByOrderId;
 
 
 namespace WebApiComplexFood.Controllers

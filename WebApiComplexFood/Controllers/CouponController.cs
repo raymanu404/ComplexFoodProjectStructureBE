@@ -2,8 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using Application.DtoModels.Coupon;
-using Application.Features.Customer.Coupons.Commands.CreateCoupon;
-using Application.Features.Customer.Coupons.Queries.GetCouponsByBuyerId;
+using Application.Features.Coupons.Commands.CreateCoupon;
+using Application.Features.Coupons.Queries.GetCouponsByBuyerId;
+
 
 
 namespace WebApiComplexFood.Controllers

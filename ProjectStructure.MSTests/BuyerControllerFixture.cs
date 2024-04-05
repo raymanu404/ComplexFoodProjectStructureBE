@@ -1,22 +1,20 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using Moq;
-using MediatR;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.DtoModels.Buyer;
-using WebApiComplexFood.Controllers;
-using Microsoft.Extensions.Logging;
+using Application.Features.Buyers.Commands.CreateBuyer;
+using Application.Features.Buyers.Commands.DeleteBuyer;
+using Application.Features.Buyers.Commands.UpdateBuyer;
+using Application.Features.Buyers.Queries.GetBuyerByEmail;
+using Application.Features.Buyers.Queries.LoginBuyer;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Domain.Models.Roles;
-using Application.Features.Customer.Buyers.Commands.CreateBuyer;
-using Application.Features.Customer.Buyers.Commands.DeleteBuyer;
-using Application.Features.Customer.Buyers.Commands.UpdateBuyer;
-using Application.Features.Customer.Buyers.Queries.GetBuyerByEmail;
-using Application.Features.Customer.Buyers.Queries.LoginBuyer;
+using Microsoft.Extensions.Logging;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using WebApiComplexFood.Controllers;
 
-namespace ProjectStructure.UnitTests
+namespace ProjectStructure.MSTests
 {
     [TestClass]
     public class BuyerControllerFixture

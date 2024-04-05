@@ -13,9 +13,9 @@ using Infrastructure.FileUtils;
 using Application.Models;
 using Stripe;
 using WebApiComplexFood.Extensions;
-using Application.Contracts.Persistence.Customer;
-using Application.Features.Customer.Buyers.Queries.GetBuyersList;
 using Infrastructure.Repositories.Customer;
+using Application.Features.Buyers.Queries.GetBuyersList;
+using Application.Contracts.Persistence;
 
 namespace WebApiComplexFood
 {
@@ -59,7 +59,7 @@ namespace WebApiComplexFood
             // ---- mapping
             services.AddAutoMapper(typeof(MappingProfile));
 
-            // ---- mediatrv
+            // ---- mediatr
             services.AddMediatR(typeof(GetBuyersListQuery));
             services.AddControllers();
             services.AddSwaggerGen(c =>
