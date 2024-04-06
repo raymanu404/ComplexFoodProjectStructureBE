@@ -62,7 +62,7 @@ namespace WebApiComplexFood
             // ---- mediatr
             services.AddMediatR(config =>
             {
-                config.RegisterServicesFromAssembly(typeof(Program).Assembly);
+                config.RegisterServicesFromAssembly(typeof(GetBuyersListQuery).Assembly);
             });
             services.AddControllers();
             services.AddSwaggerGen(c =>
