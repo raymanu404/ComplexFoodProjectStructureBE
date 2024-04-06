@@ -1,7 +1,7 @@
-﻿using Domain.Models.Shopping;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Domain.ValueObjects;
+using Domain.Models.Shopping;
 
 namespace Infrastructure.EntityConfigurations.Products;
 

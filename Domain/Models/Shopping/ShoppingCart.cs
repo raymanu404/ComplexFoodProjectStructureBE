@@ -1,5 +1,5 @@
-﻿using Domain.ValueObjects;
-using Domain.Models.Roles;
+﻿using Domain.Models.Roles;
+using Domain.ValueObjects;
 
 namespace Domain.Models.Shopping
 {

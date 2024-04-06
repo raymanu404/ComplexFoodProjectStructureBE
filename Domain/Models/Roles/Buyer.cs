@@ -1,6 +1,5 @@
 ﻿using Domain.Models.Abstractions;
 using Domain.Models.Enums;
-using Domain.Models.Ordering;
 using Domain.Models.Shopping;
 using Domain.ValueObjects;
 

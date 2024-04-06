@@ -3,7 +3,6 @@ using Infrastructure;
 using Application.Profiles;
 #endregion
 
-using MediatR;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +15,7 @@ using WebApiComplexFood.Extensions;
 using Infrastructure.Repositories.Customer;
 using Application.Features.Buyers.Queries.GetBuyersList;
 using Application.Contracts.Persistence;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WebApiComplexFood
 {
@@ -60,7 +60,10 @@ namespace WebApiComplexFood
             services.AddAutoMapper(typeof(MappingProfile));
 
             // ---- mediatr
-            services.AddMediatR(typeof(GetBuyersListQuery));
+            services.AddMediatR(config =>
+            {
+                config.RegisterServicesFromAssembly(typeof(GetBuyersListQuery).Assembly);
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

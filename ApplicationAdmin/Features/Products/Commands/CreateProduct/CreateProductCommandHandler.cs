@@ -47,7 +47,6 @@ namespace ApplicationAdmin.Features.Products.Commands.CreateProduct
         private bool IsInRangeCategories(int value)
         {
             var values = Enum.GetValues(typeof(Categories)).Cast<int>().OrderBy(x => x);
-
             return value >= values.First() && value <= values.Last();
         }
     }
