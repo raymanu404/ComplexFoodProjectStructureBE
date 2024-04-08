@@ -22,5 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\HelperLibrary\HelperLibrary.csproj" />
   </ItemGroup>
 </Project>

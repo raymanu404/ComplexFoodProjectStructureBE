@@ -13,5 +13,8 @@ public class MappingProfile : Profile
             .ForMember(x => x.Price, dest => dest.MapFrom(x => x.Price.Value))
             .ReverseMap();
 
+        CreateMap<ProductUpdateDto, ProductDto>()
+            .ReverseMap();
+
     }
 }

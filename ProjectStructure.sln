@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiComplexFoodAdmin", "W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationAdmin", "ApplicationAdmin\ApplicationAdmin.csproj", "{430B3C5E-C5F0-47F6-908E-8384A2E7496D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateData", "GenerateData\GenerateData.csproj", "{DEF92B96-49B0-4C55-A69D-D8A671B33200}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateData", "GenerateData\GenerateData.csproj", "{DEF92B96-49B0-4C55-A69D-D8A671B33200}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperLibrary", "HelperLibrary\HelperLibrary.csproj", "{9FF07A89-36D2-435E-A46E-04E0317A0DA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{DEF92B96-49B0-4C55-A69D-D8A671B33200}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEF92B96-49B0-4C55-A69D-D8A671B33200}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEF92B96-49B0-4C55-A69D-D8A671B33200}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FF07A89-36D2-435E-A46E-04E0317A0DA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FF07A89-36D2-435E-A46E-04E0317A0DA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FF07A89-36D2-435E-A46E-04E0317A0DA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FF07A89-36D2-435E-A46E-04E0317A0DA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,6 @@
-﻿using ApplicationAdmin.Contracts.Persistence;
+﻿using ApplicationAdmin._Utils;
+using ApplicationAdmin.Contracts.Persistence;
 using AutoMapper;
-using Domain.Models.Enums;
 using Domain.Models.Shopping;
 using MediatR;
 
@@ -22,7 +22,7 @@ namespace ApplicationAdmin.Features.Products.Commands.CreateProduct
             string returnMessage = "";
             try
             {
-                if (IsInRangeCategories((int)command.Product.Category))
+                if (HelpersFn.IsInRangeCategories((int)command.Product.Category))
                 {
                     var product = _mapper.Map<Product>(command.Product);
                     await _unitOfWork.Products.AddAsync(product);
@@ -44,11 +44,7 @@ namespace ApplicationAdmin.Features.Products.Commands.CreateProduct
             return returnMessage;
         }
 
-        private bool IsInRangeCategories(int value)
-        {
-            var values = Enum.GetValues(typeof(Categories)).Cast<int>().OrderBy(x => x);
-            return value >= values.First() && value <= values.Last();
-        }
+       
     }
 
 }
