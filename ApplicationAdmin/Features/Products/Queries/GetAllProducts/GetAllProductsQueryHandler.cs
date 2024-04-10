@@ -9,6 +9,9 @@ using System.Text.Json;
 using Domain.Models.Shopping;
 using Microsoft.EntityFrameworkCore;
 using ApplicationAdmin.Contracts.Abstractions;
+using Domain.ValueObjects;
+using System.Reflection;
+using HelperLibrary.Methods;
 
 namespace ApplicationAdmin.Features.Products.Queries.GetAllProducts
 {
@@ -26,15 +29,24 @@ namespace ApplicationAdmin.Features.Products.Queries.GetAllProducts
         public async Task<ResponseData<ProductDto>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
             var req = request.SearchParams;
-            //TODO: add searchTerm + sorting
-            Expression<Func<Product, bool>> filters = null;
-            List<ColumnFilter> columnFilters = new List<ColumnFilter>();
+            Expression<Func<Product, bool>>? filters = null;
+
+            //TODO:think about sorting for other props like Price, double... PRIORITY:4
+            Expression<Func<Product, dynamic>>? orderByKeySelector = null;
+            
+            var columnFilters = new List<ColumnFilter>();
+           
+            if (!string.IsNullOrWhiteSpace(req.SearchTerm))
+            {
+                filters = item => item.Title.ToLower().Contains(req.SearchTerm) || 
+                                  item.Description.ToLower().Contains(req.SearchTerm);
+            }
 
             if (!string.IsNullOrEmpty(req.ColumnFilters))
             {
                 try
                 {
-                    columnFilters.AddRange(JsonSerializer.Deserialize<List<ColumnFilter>>(req.ColumnFilters));
+                    columnFilters.AddRange(JsonSerializer.Deserialize<List<ColumnFilter>>(req.ColumnFilters) ?? new List<ColumnFilter>());
                 }
                 catch (Exception)
                 {
@@ -47,8 +59,15 @@ namespace ApplicationAdmin.Features.Products.Queries.GetAllProducts
                 filters = CustomExpressionFilter<Product>.CustomFilter(columnFilters, "Product");
             }
 
+            if (!string.IsNullOrWhiteSpace(req.OrderBy))
+            {
+                orderByKeySelector = CustomExpressionFilter<Product>.CreateOrderByFunc<Product, dynamic>(req.OrderBy, "Product");
+            }
+
             var productsQuery = _unitOfWork.Products.GetQueryable();
-            var query = productsQuery.CustomQuery(filters);
+            var query = productsQuery
+                .CustomQuery(filters)
+                .CustomOrderBy(orderByKeySelector, req.Asc);
             var count = query.Count();
             var filteredData = await query.CustomPagination(req.PageNumber, req.PageSize).ToListAsync(cancellationToken);
 
@@ -59,6 +78,7 @@ namespace ApplicationAdmin.Features.Products.Queries.GetAllProducts
                 CurrentPage = req.PageNumber
             };
         }
+
     }
 }
 
