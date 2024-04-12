@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using Application.Features.Products.Queries.GetAllProducts;
 using ApplicationAdmin.Contracts.Persistence;
 using ApplicationAdmin.Profiles;
 using Infrastructure;
@@ -8,6 +7,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using GetAllProductsQuery = ApplicationAdmin.Features.Products.Queries.GetAllProducts.GetAllProductsQuery;
+using GetAllOrdersQuery = ApplicationAdmin.Features.Orders.Queries.GetAllOrders.GetAllOrdersQuery;
 
 namespace WebApiComplexFoodAdmin.Extensions;
 
@@ -30,9 +30,11 @@ public static class ConfigureServices
                 .AddMediatR(config =>
                 {
                     config.RegisterServicesFromAssembly(typeof(GetAllProductsQuery).Assembly);
+                    config.RegisterServicesFromAssembly(typeof(GetAllOrdersQuery).Assembly);
                 })
                 .AddScoped<IBuyerRepository, BuyerRepository>()
                 .AddScoped<IProductRepository, ProductRepository>()
+                .AddScoped<IOrderRepository, OrderRepository>()
                 .AddScoped<IUnitOfWorkAdmin, UnitOfWorkAdmin>();
 
 

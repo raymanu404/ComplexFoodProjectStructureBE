@@ -5,12 +5,12 @@ using Application.Contracts.Persistence;
 
 namespace Application.Features.Orders.Queries.GetOrdersByBuyer
 {
-    public class GetOrdersByBuyerIdQueryyHandler : IRequestHandler<GetOrdersByBuyerIdQuery, List<OrderDto>>
+    public class GetOrdersByBuyerIdQueryHandler : IRequestHandler<GetOrdersByBuyerIdQuery, List<OrderDto>>
     {
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public GetOrdersByBuyerIdQueryyHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public GetOrdersByBuyerIdQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;

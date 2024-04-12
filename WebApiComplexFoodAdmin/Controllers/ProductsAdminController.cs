@@ -3,13 +3,19 @@ using ApplicationAdmin.Features.Products.Commands.CreateProduct;
 using ApplicationAdmin.Features.Products.Commands.DeleteProduct;
 using ApplicationAdmin.Features.Products.Commands.UpdateProduct;
 using ApplicationAdmin.Features.Products.Queries.GetAllProducts;
+using ApplicationAdmin.Profiles;
+using HelperLibrary.Classes;
+using HelperLibrary.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace WebApiComplexFoodAdmin.Controllers;
 
+
+
 [ApiController]
-[Route("admin/products")]
+[Route($"{Constants.AdminApiBase}/products")]
 public class ProductsAdminController : Controller
 {
     private readonly ILogger<ProductsAdminController> _logger;
@@ -23,16 +29,15 @@ public class ProductsAdminController : Controller
 
     // GET: products
     [HttpGet]
-    public async Task<ActionResult<IList<ProductDto>>> GetAllProducts()
+    public async Task<ActionResult<IList<ProductDto>>> GetAllProducts([FromQuery]SearchParams searchParams)
     {
-        var queryGetAllProducts = new GetAllProductsQuery();
-        var products = await _mediator.Send(queryGetAllProducts);
-        if (products.Count > 0)
+        var queryGetAllProducts = new GetAllProductsQuery
         {
-            return Ok(products);
-        }
+            SearchParams = searchParams
+        };
 
-        return NotFound();
+        var products = await _mediator.Send(queryGetAllProducts);
+        return Ok(products);
     }
 
     // POST : products/create
@@ -51,7 +56,7 @@ public class ProductsAdminController : Controller
         }
         else
         {
-            return BadRequest(response);
+            return NoContent();
         }
 
     }
@@ -71,7 +76,7 @@ public class ProductsAdminController : Controller
 
     //PUT : products/{id}
     [HttpPut("{productId}")]
-    public async Task<ActionResult<ProductDto>> UpdateProduct(int productId, [FromBody] ProductDto updateProduct)
+    public async Task<ActionResult<ProductDto>> UpdateProduct(int productId, [FromBody] ProductUpdateDto updateProduct)
     {
         var command = new UpdateProductCommand
         {
@@ -80,6 +85,8 @@ public class ProductsAdminController : Controller
         };
 
         var updateP = await _mediator.Send(command);
-        return CreatedAtRoute(new { title = updateP.Title }, updateP);
+        if (updateP == StatusCodeEnum.Success) return Ok();
+        if (updateP == StatusCodeEnum.NotFound) return NotFound();
+        return BadRequest();
     }
 }
