@@ -1,12 +1,11 @@
 ﻿using ApplicationAdmin._Utils;
 using ApplicationAdmin.Contracts.Persistence;
-using ApplicationAdmin.DtoModels.Product;
-using ApplicationAdmin.Profiles;
+
 using AutoMapper;
 using Domain.Models.Enums;
 using Domain.ValueObjects;
+using HelperLibrary.Constants;
 using MediatR;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace ApplicationAdmin.Features.Products.Commands.UpdateProduct
 {

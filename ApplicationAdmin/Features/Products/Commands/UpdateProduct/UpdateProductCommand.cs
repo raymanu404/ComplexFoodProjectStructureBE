@@ -1,5 +1,6 @@
 ﻿using ApplicationAdmin.DtoModels.Product;
 using ApplicationAdmin.Profiles;
+using HelperLibrary.Constants;
 using MediatR;
 
 namespace ApplicationAdmin.Features.Products.Commands.UpdateProduct

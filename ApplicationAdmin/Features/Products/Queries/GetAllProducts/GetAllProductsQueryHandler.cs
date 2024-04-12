@@ -38,6 +38,7 @@ namespace ApplicationAdmin.Features.Products.Queries.GetAllProducts
            
             if (!string.IsNullOrWhiteSpace(req.SearchTerm))
             {
+                //filter products by title and description for now
                 filters = item => item.Title.ToLower().Contains(req.SearchTerm) || 
                                   item.Description.ToLower().Contains(req.SearchTerm);
             }

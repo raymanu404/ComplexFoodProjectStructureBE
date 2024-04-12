@@ -1,6 +1,7 @@
 ﻿using HelperLibrary.Classes;
 using System;
 using System.Linq.Expressions;
+using Domain.ValueObjects;
 using HelperLibrary.Methods;
 
 public static class CustomExpressionFilter<T> where T : class
@@ -10,7 +11,7 @@ public static class CustomExpressionFilter<T> where T : class
         public string ColumnName { get; set; }
         public string Value { get; set; }
     }
-   
+
     public static Expression<Func<T, bool>> CustomFilter(List<ColumnFilter> columnFilters, string className)
     {
         Expression<Func<T, bool>> filters = null;
@@ -21,6 +22,7 @@ public static class CustomExpressionFilter<T> where T : class
             {
                 expressionFilters.Add(new ExpressionFilter() { ColumnName = item.Id, Value = item.Value });
             }
+
             // Create the parameter expression for the input data
             var parameter = Expression.Parameter(typeof(T), className);
 
@@ -37,13 +39,13 @@ public static class CustomExpressionFilter<T> where T : class
             }
 
             // Create the lambda expression with the parameter and the filter expression
-            filters =  Expression.Lambda<Func<T, bool>>(filterExpression, parameter);
-
+            filters = Expression.Lambda<Func<T, bool>>(filterExpression, parameter);
         }
         catch (Exception)
         {
             filters = null;
         }
+
         return filters;
     }
 
@@ -59,11 +61,12 @@ public static class CustomExpressionFilter<T> where T : class
         {
             throw new ArgumentException($"Property '{orderBy}' not found in type {typeof(T).FullName}");
         }
+
         // Create property access expression
         var propertyAccess = Expression.Property(parameter, property);
 
         // Create lambda expression
-        var lambda = Expression.Lambda<Func<T, TKey >>(propertyAccess, parameter);
+        var lambda = Expression.Lambda<Func<T, TKey>>(propertyAccess, parameter);
 
         // Compile lambda expression to create the Func<T, TKey>
         return lambda;
@@ -87,6 +90,66 @@ public static class CustomExpressionFilter<T> where T : class
             var constant = Expression.Constant(Guid.Parse(value));
             comparison = Expression.Equal(property, constant);
         }
+        else if (property.Type == typeof(Price))
+        {
+            var constant = Expression.Constant(new Price(Convert.ToDouble(value)));
+            comparison = Expression.Equal(property, constant);
+        }
+        else if (property.Type == typeof(PhoneNumber))
+        {
+            var constant = Expression.Constant(new PhoneNumber(value));
+            comparison = Expression.Equal(property, constant);
+        }
+        else if (property.Type == typeof(Password))
+        {
+            var constant = Expression.Constant(new Password(value));
+            comparison = Expression.Equal(property, constant);
+        }
+        else if (property.Type == typeof(Name))
+        {
+            var constant = Expression.Constant(new Name(value));
+            comparison = Expression.Equal(property, constant);
+        }
+        else if (property.Type == typeof(MatrNumber))
+        {
+            var constant = Expression.Constant(new MatrNumber(value));
+            comparison = Expression.Equal(property, constant);
+        }
+        else if (property.Type == typeof(Gender))
+        {
+            var constant = Expression.Constant(new Gender(value));
+            comparison = Expression.Equal(property, constant);
+        }
+        else if (property.Type == typeof(Email))
+        {
+            var constant = Expression.Constant(new Email(value));
+            comparison = Expression.Equal(property, constant);
+        }
+        else if (property.Type == typeof(Discount))
+        {
+            var constant = Expression.Constant(new Discount(Convert.ToInt32(value)));
+            comparison = Expression.Equal(property, constant);
+        }
+        else if (property.Type == typeof(Cantity))
+        {
+            var constant = Expression.Constant(new Cantity(Convert.ToInt32(value)));
+            comparison = Expression.Equal(property, constant);
+        }
+        else if (property.Type == typeof(Balance))
+        {
+            var constant = Expression.Constant(new Balance(Convert.ToDouble(value)));
+            comparison = Expression.Equal(property, constant);
+        }
+        else if (property.Type == typeof(AcademicYear))
+        {
+            var constant = Expression.Constant(new AcademicYear(Convert.ToInt32(value)));
+            comparison = Expression.Equal(property, constant);
+        }
+        else if (property.Type == typeof(UniqueCode))
+        {
+            var constant = Expression.Constant(new UniqueCode(value));
+            comparison = Expression.Equal(property, constant);
+        }
         else
         {
             var constant = Expression.Constant(Convert.ToInt32(value));
@@ -95,5 +158,4 @@ public static class CustomExpressionFilter<T> where T : class
 
         return comparison;
     }
-
 }

@@ -1,5 +1,6 @@
 ﻿
 
+using System;
 using System.Reflection;
 
 namespace HelperLibrary.Methods;
@@ -28,4 +29,14 @@ public static class Helpers
 
         return property.PropertyType;
     }
+
+    public static T ConvertToEnum<T>(this int value, T backup) where T : struct, Enum
+    {
+        if (Enum.TryParse<T>(value.ToString(), out T enumValue) && Enum.IsDefined(typeof(T), enumValue))
+        {
+            return enumValue;
+        }
+
+        return backup;
+    } 
 }

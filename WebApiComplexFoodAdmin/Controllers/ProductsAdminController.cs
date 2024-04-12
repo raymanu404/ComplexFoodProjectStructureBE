@@ -5,13 +5,17 @@ using ApplicationAdmin.Features.Products.Commands.UpdateProduct;
 using ApplicationAdmin.Features.Products.Queries.GetAllProducts;
 using ApplicationAdmin.Profiles;
 using HelperLibrary.Classes;
+using HelperLibrary.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace WebApiComplexFoodAdmin.Controllers;
 
+
+
 [ApiController]
-[Route("admin/products")]
+[Route($"{Constants.AdminApiBase}/products")]
 public class ProductsAdminController : Controller
 {
     private readonly ILogger<ProductsAdminController> _logger;
@@ -30,7 +34,6 @@ public class ProductsAdminController : Controller
         var queryGetAllProducts = new GetAllProductsQuery
         {
             SearchParams = searchParams
-
         };
 
         var products = await _mediator.Send(queryGetAllProducts);

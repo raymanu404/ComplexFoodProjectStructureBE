@@ -24,9 +24,4 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\HelperLibrary\HelperLibrary.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Features\Orders\Commands\" />
-    <Folder Include="Features\Orders\Queries\" />
-  </ItemGroup>
 </Project>
