@@ -35,6 +35,7 @@ public static class ConfigureServices
                 .AddScoped<IBuyerRepository, BuyerRepository>()
                 .AddScoped<IProductRepository, ProductRepository>()
                 .AddScoped<IOrderRepository, OrderRepository>()
+                .AddScoped<IOrderItemsRepository, OrderItemRepository>()
                 .AddScoped<IUnitOfWorkAdmin, UnitOfWorkAdmin>();
 
 

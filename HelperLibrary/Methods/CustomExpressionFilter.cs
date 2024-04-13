@@ -1,6 +1,7 @@
 ﻿using HelperLibrary.Classes;
 using System;
 using System.Linq.Expressions;
+using Domain.Models.Enums;
 using Domain.ValueObjects;
 using HelperLibrary.Methods;
 
@@ -148,6 +149,36 @@ public static class CustomExpressionFilter<T> where T : class
         else if (property.Type == typeof(UniqueCode))
         {
             var constant = Expression.Constant(new UniqueCode(value));
+            comparison = Expression.Equal(property, constant);
+        }
+        else if (property.Type == typeof(OrderStatus))
+        {
+            var convertToEnum = Convert.ToInt32(value).ConvertToEnum(OrderStatus.Placed);
+            var constant = Expression.Constant(convertToEnum);
+            comparison = Expression.Equal(property, constant);
+        }
+        else if (property.Type == typeof(AcademicDegree))
+        {
+            var convertToEnum = Convert.ToInt32(value).ConvertToEnum(AcademicDegree.Bachelor);
+            var constant = Expression.Constant(convertToEnum);
+            comparison = Expression.Equal(property, constant);
+        }
+        else if (property.Type == typeof(Categories))
+        {
+            var convertToEnum = Convert.ToInt32(value).ConvertToEnum(Categories.Soup);
+            var constant = Expression.Constant(convertToEnum);
+            comparison = Expression.Equal(property, constant);
+        }
+        else if (property.Type == typeof(RoleNameEnum))
+        {
+            var convertToEnum = Convert.ToInt32(value).ConvertToEnum(RoleNameEnum.User);
+            var constant = Expression.Constant(convertToEnum);
+            comparison = Expression.Equal(property, constant);
+        }
+        else if (property.Type == typeof(TypeCoupons))
+        {
+            var convertToEnum = Convert.ToInt32(value).ConvertToEnum(TypeCoupons.TenProcent);
+            var constant = Expression.Constant(convertToEnum);
             comparison = Expression.Equal(property, constant);
         }
         else

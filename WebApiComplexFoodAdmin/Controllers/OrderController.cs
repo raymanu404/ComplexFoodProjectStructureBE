@@ -1,7 +1,6 @@
 ﻿using ApplicationAdmin.DtoModels.Order;
 using ApplicationAdmin.Features.Orders.Commands.UpdateOrderCommand;
 using ApplicationAdmin.Features.Orders.Queries.GetAllOrders;
-using ApplicationAdmin.Features.Orders.Queries.GetOrderByBuyerId;
 using ApplicationAdmin.Features.Orders.Queries.GetOrderById;
 using ApplicationAdmin.Features.Orders.Queries.GetOrdersByBuyer;
 using HelperLibrary.Classes;
@@ -36,19 +35,6 @@ namespace WebApiComplexFoodAdmin.Controllers
             return Ok(orders);
         }
 
-        [HttpGet("buyer-order/{buyerId}")]
-        public async Task<ActionResult<OrderDto>> GetOrderByBuyerId(int buyerId)
-        {
-            var command = new GetOrderByBuyerIdQuery() 
-            {
-                BuyerId = buyerId
-            };
-
-            var order = await _mediator.Send(command);
-            return Ok(order);
-
-        }
-
         [HttpGet("buyer-orders/{buyerId}")]
         public async Task<ActionResult<IList<OrderDto>>> GetAllBuyerOrders(int buyerId, [FromQuery] SearchParams searchParams)
         {
@@ -75,12 +61,12 @@ namespace WebApiComplexFoodAdmin.Controllers
 
         }
 
-        [HttpPut("update-status/{buyerId}")]
-        public async Task<ActionResult<OrderDto>> UpdateStatusOrderByBuyerId(int buyerId, [FromQuery] int orderStatus)
+        [HttpPut("update-status/{orderId}")]
+        public async Task<ActionResult<OrderDto>> UpdateStatusOrderByBuyerId(int orderId, [FromQuery] int orderStatus)
         {
             var command = new UpdateStatusOrderCommand()
             {
-              BuyerId = buyerId,
+              OrderId = orderId,
               Status = orderStatus
             };
 

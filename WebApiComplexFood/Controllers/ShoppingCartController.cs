@@ -29,7 +29,7 @@ namespace WebApiComplexFood.Controllers
             var command = new ConfirmShoppingCartCommand
             {
                 BuyerId = buyerId,
-                CouponCode = confirmCart.CouponCart
+                CouponCode = confirmCart.CouponCode
             };
             var response = await _mediator.Send(command);
             if (response.StartsWith("OrderCode"))

@@ -38,5 +38,11 @@ public static class Helpers
         }
 
         return backup;
-    } 
+    }
+
+    public static bool IsNotSmallerThan(this int status, int thresholdStatus) 
+    {
+        
+        return status >= thresholdStatus;
+    }
 }
