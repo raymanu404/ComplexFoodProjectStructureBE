@@ -20,7 +20,7 @@ namespace ApplicationAdmin.Features.Orders.Commands.UpdateOrderCommand
         {
             try
             {
-                var getOrderByBuyerIdQuery =  _unitOfWork.Orders.GetOrderByBuyerIdQuery(command.BuyerId);
+                var getOrderByBuyerIdQuery =  _unitOfWork.Orders.GetOrderByIdQuery(command.OrderId);
                 var getOrderByBuyerId = await getOrderByBuyerIdQuery.FirstOrDefaultAsync(cancellationToken);
 
                 if (getOrderByBuyerId != null)

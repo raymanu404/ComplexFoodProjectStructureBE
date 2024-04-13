@@ -72,8 +72,8 @@ namespace Application.Features.ShoppingItems.Commands.CreateShoppingItem
                             Cantity = command.Cantity
 
                         };
-                        //verificat productId daca exista facem update cantitate, daca nu adaugam normal
 
+                        //verificat productId daca exista facem update cantitate, daca nu adaugam normal
                         var getItem = await _unitOfWork.ShoppingItems.GetShoppingItemByIds(shoppingCartId, shoppingItemDto.ProductId);
                         if (getItem != null) //update
                         {

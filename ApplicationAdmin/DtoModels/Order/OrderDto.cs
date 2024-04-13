@@ -1,4 +1,5 @@
-﻿using Domain.Models.Enums;
+﻿using ApplicationAdmin.DtoModels.OrderItem;
+using Domain.Models.Enums;
 
 namespace ApplicationAdmin.DtoModels.Order
 {
@@ -11,6 +12,7 @@ namespace ApplicationAdmin.DtoModels.Order
         public int Discount { get; set; }
         public string Code { get; set; }
         public int BuyerId { get; set; }
+        public IList<OrderItemDto> OrderItems { get; set; } = new List<OrderItemDto>();
 
     }
 }

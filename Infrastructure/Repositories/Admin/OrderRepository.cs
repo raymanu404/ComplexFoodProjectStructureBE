@@ -16,7 +16,6 @@ namespace Infrastructure.Repositories.Admin
 
         public void DeleteOrder(Order order) => _context.Orders.Remove(order);
 
-
         public  IQueryable<Order> GetOrderByIdQuery(int id) =>  _context.Orders.Where(x => x.Id == id);
 
         public IQueryable<Order> GetOrderByBuyerIdQuery(int buyerId) =>  _context.Orders.Where(x => x.BuyerId == buyerId);

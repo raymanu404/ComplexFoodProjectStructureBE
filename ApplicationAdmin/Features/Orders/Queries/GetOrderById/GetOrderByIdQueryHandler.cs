@@ -19,7 +19,10 @@ namespace ApplicationAdmin.Features.Orders.Queries.GetOrderById
 
         public async Task<OrderDto> Handle(GetOrderByIdQuery query, CancellationToken cancellationToken)
         {
-            var orderByBuyerQuery = _unitOfWork.Orders.GetOrderByBuyerIdQuery(query.OrderId);
+            var orderByBuyerQuery = _unitOfWork.Orders
+                .GetOrderByIdQuery(query.OrderId)
+                .Include(item => item.OrderItems);
+
             var order = await orderByBuyerQuery.FirstOrDefaultAsync(cancellationToken);
 
             return _mapper.Map<OrderDto>(order);

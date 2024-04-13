@@ -35,7 +35,7 @@ namespace ProjectStructure.MSTests
             //ARANGE
             var confirmCart = new ShoppingCartConfirmDto
             {
-                CouponCart = "asfasf1"
+                CouponCode = "asfasf1"
             };
 
             _mockMediator
@@ -58,7 +58,7 @@ namespace ProjectStructure.MSTests
             //ARANGE
             var confirmCart = new ShoppingCartConfirmDto
             {
-                CouponCart = "asfasf1"
+                CouponCode = "asfasf1"
             };
 
             _mockMediator

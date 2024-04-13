@@ -59,6 +59,7 @@ namespace ApplicationAdmin.Features.Orders.Queries.GetAllOrders
             var ordersQuery = _unitOfWork.Orders.GetQueryable();
             var query = ordersQuery
                 .CustomQuery(filters)
+                .Include(item => item.OrderItems)
                 .CustomOrderBy(orderByKeySelector, req.Asc);
 
             var count = query.Count();
