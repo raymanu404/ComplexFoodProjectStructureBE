@@ -17,6 +17,7 @@ namespace ApplicationAdmin.Features.Orders.Queries.GetAllOrders
     {
         private readonly IUnitOfWorkAdmin _unitOfWork;
         private readonly IMapper _mapper;
+        //inject mediatr here
 
         public GetAllOrdersQueryHandler(IUnitOfWorkAdmin unitOfWork, IMapper mapper)
         {
@@ -26,6 +27,7 @@ namespace ApplicationAdmin.Features.Orders.Queries.GetAllOrders
 
         public async Task<ResponseData<OrderDto>> Handle(GetAllOrdersQuery request, CancellationToken cancellationToken)
         {
+            //TODO: Get also its order items, everywhere in order feature
             var req = request.SearchParams;
             Expression<Func<Order, bool>>? filters = null;
             Expression<Func<Order, dynamic>>? orderByKeySelector = null;

@@ -25,10 +25,10 @@ namespace ApplicationAdmin.Features.Orders.Commands.UpdateOrderCommand
 
                 if (getOrderByBuyerId != null)
                 {
-                    //TODO: check what status was before and try to update depends on this status Placed -> Progress -> Done
-                    var status = command.Status.ConvertToEnum(OrderStatus.InProgress);
+                    var status = command.Status.ConvertToEnum(backup:getOrderByBuyerId.Status);
+                    var checkStatus = command.Status.IsNotSmallerThan((int)getOrderByBuyerId.Status);
 
-                    if (getOrderByBuyerId.Status != status)
+                    if (checkStatus)
                     {
                         getOrderByBuyerId.Status = status;
                         await _unitOfWork.CommitAsync(cancellationToken);

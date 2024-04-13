@@ -12,18 +12,22 @@ public class UnitOfWorkAdmin : IUnitOfWorkAdmin
         ApplicationContext context,
         IBuyerRepository buyers,
         IProductRepository products,
-        IOrderRepository orders
+        IOrderRepository orders,
+        IOrderItemsRepository orderItems
         )
     {
         _context = context;
         Buyers = buyers;
         Products = products;
         Orders = orders;
+        OrderItems = orderItems;
+
     }
 
     public IBuyerRepository Buyers { get; }
     public IProductRepository Products { get; }
     public IOrderRepository Orders { get; }
+    public IOrderItemsRepository OrderItems { get; }
 
     public async Task<int> CommitAsync(CancellationToken cancellationToken) =>
         await _context.SaveChangesAsync(cancellationToken);
