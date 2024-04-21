@@ -27,7 +27,7 @@ namespace ApplicationAdmin.Features.Orders.Queries.GetAllOrders
 
         public async Task<ResponseData<OrderDto>> Handle(GetAllOrdersQuery request, CancellationToken cancellationToken)
         {
-            //TODO: Get also its order items, everywhere in order feature
+            //TODO: figure out how to sort by buyer name from order
             var req = request.SearchParams;
             Expression<Func<Order, bool>>? filters = null;
             Expression<Func<Order, dynamic>>? orderByKeySelector = null;
