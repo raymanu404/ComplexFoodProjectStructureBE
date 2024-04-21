@@ -21,7 +21,8 @@ namespace ApplicationAdmin.Features.Orders.Queries.GetOrderById
         {
             var orderByBuyerQuery = _unitOfWork.Orders
                 .GetOrderByIdQuery(query.OrderId)
-                .Include(item => item.OrderItems);
+                .Include(item => item.OrderItems)
+                .Include(item => item.Buyer);
 
             var order = await orderByBuyerQuery.FirstOrDefaultAsync(cancellationToken);
 

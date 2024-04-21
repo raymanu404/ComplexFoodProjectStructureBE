@@ -57,6 +57,7 @@ namespace ApplicationAdmin.Features.Orders.Queries.GetOrdersByBuyer
             var query = orderByBuyerQuery
                 .CustomQuery(filters)
                 .Include(item => item.OrderItems)
+                .Include(item => item.Buyer)
                 .CustomOrderBy(orderByKeySelector, req.Asc);
 
             var count = query.Count();
