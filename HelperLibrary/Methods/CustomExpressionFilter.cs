@@ -21,7 +21,7 @@ public static class CustomExpressionFilter<T> where T : class
             var expressionFilters = new List<ExpressionFilter>();
             foreach (var item in columnFilters)
             {
-                expressionFilters.Add(new ExpressionFilter() { ColumnName = item.Id, Value = item.Value });
+                expressionFilters.Add(new ExpressionFilter() { ColumnName = item.id, Value = item.value });
             }
 
             // Create the parameter expression for the input data
@@ -66,8 +66,10 @@ public static class CustomExpressionFilter<T> where T : class
         // Create property access expression
         var propertyAccess = Expression.Property(parameter, property);
 
+        var convertExpression = Expression.Convert(propertyAccess, typeof(object));
+
         // Create lambda expression
-        var lambda = Expression.Lambda<Func<T, TKey>>(propertyAccess, parameter);
+        var lambda = Expression.Lambda<Func<T, TKey>>(convertExpression, parameter);
 
         // Compile lambda expression to create the Func<T, TKey>
         return lambda;
