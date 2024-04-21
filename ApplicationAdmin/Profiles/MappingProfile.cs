@@ -24,6 +24,7 @@ public class MappingProfile : Profile
             .ForMember(x => x.Code, dest => dest.MapFrom(x => x.Code.Value))
             .ForMember(x => x.Discount, dest => dest.MapFrom(x => x.Discount.Value))
             .ForMember(x => x.TotalPrice, dest => dest.MapFrom(x => x.TotalPrice.Value))
+            .ForMember(x => x.BuyerFullName, dest => dest.MapFrom(x =>$"{x.Buyer.FirstName.Value} {x.Buyer.LastName.Value}"))
             .ReverseMap();
 
         CreateMap<OrderItem, OrderItemDto>()

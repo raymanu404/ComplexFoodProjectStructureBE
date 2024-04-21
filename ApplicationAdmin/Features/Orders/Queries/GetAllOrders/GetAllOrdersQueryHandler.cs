@@ -60,6 +60,7 @@ namespace ApplicationAdmin.Features.Orders.Queries.GetAllOrders
             var query = ordersQuery
                 .CustomQuery(filters)
                 .Include(item => item.OrderItems)
+                .Include(item => item.Buyer)
                 .CustomOrderBy(orderByKeySelector, req.Asc);
 
             var count = query.Count();
@@ -67,9 +68,11 @@ namespace ApplicationAdmin.Features.Orders.Queries.GetAllOrders
                 .CustomPagination(req.PageNumber, req.PageSize)
                 .ToListAsync(cancellationToken);
 
+            var dataMapped = _mapper.Map<List<OrderDto>>(filteredData);
+
             return new ResponseData<OrderDto>
             {
-                Data = _mapper.Map<List<OrderDto>>(filteredData),
+                Data = dataMapped,
                 TotalCount = count,
                 CurrentPage = req.PageNumber
             };
