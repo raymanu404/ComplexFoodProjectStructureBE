@@ -23,6 +23,8 @@ public class OrderItemEntityTypeConfiguration : IEntityTypeConfiguration<OrderIt
             .HasConversion(v => v.Value, v => new Price(v))
             .HasColumnName("Price");
 
+
+        //TODO: add productId in this table, create migration etc 
         //orderItemBuilder
         //   .HasOne(orderItem => orderItem.Buyer)
         //   .WithMany(buyer => buyer.OrderItems)
