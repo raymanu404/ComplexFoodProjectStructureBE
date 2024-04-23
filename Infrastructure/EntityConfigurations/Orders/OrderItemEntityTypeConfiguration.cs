@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Domain.ValueObjects;
+using Domain.Models.Shopping;
 
 namespace Infrastructure.EntityConfigurations.Orders;
 
@@ -23,14 +24,10 @@ public class OrderItemEntityTypeConfiguration : IEntityTypeConfiguration<OrderIt
             .HasConversion(v => v.Value, v => new Price(v))
             .HasColumnName("Price");
 
-
-        //TODO: add productId in this table, create migration etc 
-        //orderItemBuilder
-        //   .HasOne(orderItem => orderItem.Buyer)
-        //   .WithMany(buyer => buyer.OrderItems)
-        //   .HasForeignKey(orderItem => orderItem.BuyerId)
-        //   .IsRequired()
-        //   .OnDelete(DeleteBehavior.Cascade);
-
+        orderItemBuilder
+            .HasOne(x => x.Product)
+            .WithOne()
+            .HasForeignKey<OrderItem>(x => x.ProductId);
+       
     }
 }

@@ -115,7 +115,8 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
                                     Description = getProduct.Description,
                                     Price = getProduct.Price.Value,
                                     Image = getProduct.Image,
-                                    OrderId = responseOrderId
+                                    OrderId = responseOrderId,
+                                    ProductId = getProduct.Id
 
                                 };
 

@@ -1,5 +1,6 @@
 ﻿using Domain.ValueObjects;
 using Domain.Models.Enums;
+using Domain.Models.Shopping;
 
 namespace Domain.Models.Ordering;
 
@@ -13,5 +14,9 @@ public class OrderItem
     public string Image { get; set; } = null!;
     public Price Price { get; set; }
     public int OrderId { get; set; }
+
+    //reference only one to one
+    public Product Product { get; set; } = null!;
+    public int ProductId { get; set; }
 
 }
