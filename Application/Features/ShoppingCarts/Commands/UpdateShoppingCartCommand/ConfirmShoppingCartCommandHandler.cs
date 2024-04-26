@@ -91,7 +91,7 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
                     totalPriceInCaseOfException = newOrder.TotalPrice;
                     var createOrderCommand = new CreateOrderCommand
                     {
-                        Order = newOrder
+                        Order = newOrder,
 
                     };
 

@@ -15,7 +15,7 @@ public class OrderItem
     public Price Price { get; set; }
     public int OrderId { get; set; }
 
-    //reference only one to one
+    //reference only one to many
     public Product Product { get; set; } = null!;
     public int ProductId { get; set; }
 
