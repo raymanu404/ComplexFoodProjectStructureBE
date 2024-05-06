@@ -42,7 +42,7 @@ public class ProductsAdminController : Controller
 
     // POST : products/create
     [HttpPost("create")]
-    public async Task<ActionResult<ProductDto>> CreateProduct([FromBody] ProductDto product)
+    public async Task<ActionResult<ProductCreateDto>> CreateProduct([FromBody] ProductCreateDto product)
     {
         var command = new CreateProductCommand
         {
@@ -56,7 +56,7 @@ public class ProductsAdminController : Controller
         }
         else
         {
-            return NoContent();
+            return BadRequest(response);
         }
 
     }
