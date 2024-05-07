@@ -25,12 +25,12 @@ public static class QueryExtensions
 
     public static IQueryable<T> CustomPagination<T>(this IQueryable<T> query, int? page = 0, int? pageSize = null)
     {
-        if (page != null)
+        if (page != null && page != 0)
         {
             query = query.Skip(((int)page - 1) * (int)pageSize);
         }
 
-        if (pageSize != null)
+        if (pageSize != null && pageSize != 0)
         {
             query = query.Take((int)pageSize);
         }

@@ -13,10 +13,11 @@ namespace Domain.Models.Shopping
         public string Description { get; set; } = null!;
         public Price Price { get; set; }
         public string Image { get; set; } = null!;
-        public DateTime DateCreated { get; set; }
-        public DateTime DateUpdated { get; set; }
+        public DateTime DateCreated { get; set; } = DateTime.Now;
+        public DateTime DateUpdated { get; set; } = DateTime.Now;
         public bool IsInStock { get; set; }
-        
 
+        //one to many
+        public ICollection<OrderItem> OrderItems { get; set; } = null!;
     }
 }

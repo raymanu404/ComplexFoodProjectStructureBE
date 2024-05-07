@@ -5,6 +5,6 @@ namespace ApplicationAdmin.Features.Products.Commands.CreateProduct
 {
     public class CreateProductCommand : IRequest<string>
     {
-        public ProductDto Product { get; set; }
+        public ProductCreateDto Product { get; set; }
     }
 }

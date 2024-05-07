@@ -19,7 +19,7 @@ namespace ApplicationAdmin.Features.Products.Commands.CreateProduct
 
         public async Task<string> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
-            string returnMessage = "";
+            var returnMessage = "";
             try
             {
                 if (HelpersFn.IsInRangeCategories((int)command.Product.Category))

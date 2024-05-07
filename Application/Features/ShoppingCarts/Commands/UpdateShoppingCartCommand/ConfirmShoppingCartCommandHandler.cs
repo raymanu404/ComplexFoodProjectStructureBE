@@ -91,7 +91,7 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
                     totalPriceInCaseOfException = newOrder.TotalPrice;
                     var createOrderCommand = new CreateOrderCommand
                     {
-                        Order = newOrder
+                        Order = newOrder,
 
                     };
 
@@ -115,7 +115,8 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
                                     Description = getProduct.Description,
                                     Price = getProduct.Price.Value,
                                     Image = getProduct.Image,
-                                    OrderId = responseOrderId
+                                    OrderId = responseOrderId,
+                                    ProductId = getProduct.Id
 
                                 };
 

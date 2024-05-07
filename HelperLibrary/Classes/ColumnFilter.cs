@@ -1,6 +1,6 @@
 ﻿namespace HelperLibrary.Classes;
 public class ColumnFilter
 {
-    public string Id { get; set; }
-    public string Value { get; set; }
+    public string id { get; set; }
+    public string value { get; set; }
 }

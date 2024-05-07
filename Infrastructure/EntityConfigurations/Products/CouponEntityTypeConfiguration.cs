@@ -8,7 +8,6 @@ public class CouponEntityTypeConfiguration : IEntityTypeConfiguration<Coupon>
 {
     public void Configure(EntityTypeBuilder<Coupon> couponBuilder)
     {
-
         couponBuilder
            .Property(x => x.Code)
            .HasConversion(v => v.Value, v => new UniqueCode(v))

@@ -12,5 +12,6 @@ namespace Application.DtoModels.OrderItem
         public string Image { get; set; }
         public double Price { get; set; }   
         public int OrderId { get; set; }
+        public int ProductId { get; set; }
     }
 }

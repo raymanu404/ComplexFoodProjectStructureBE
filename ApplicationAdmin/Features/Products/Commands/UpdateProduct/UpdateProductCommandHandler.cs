@@ -58,7 +58,7 @@ namespace ApplicationAdmin.Features.Products.Commands.UpdateProduct
                 productToUpdate.IsInStock = request.Product.IsInStock ?? false;
             }
 
-            if (HelpersFn.IsInRangeCategories((int)request.Product.Category))
+            if (request.Product.Category != null && HelpersFn.IsInRangeCategories((int)request.Product.Category))
             {
                 productToUpdate.Category = request.Product.Category ?? Categories.Soup;
             }

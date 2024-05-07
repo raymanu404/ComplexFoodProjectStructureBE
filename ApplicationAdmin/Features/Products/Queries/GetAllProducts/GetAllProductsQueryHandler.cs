@@ -30,8 +30,6 @@ namespace ApplicationAdmin.Features.Products.Queries.GetAllProducts
         {
             var req = request.SearchParams;
             Expression<Func<Product, bool>>? filters = null;
-
-            //TODO:think about sorting for other props like Price, double... PRIORITY:4
             Expression<Func<Product, dynamic>>? orderByKeySelector = null;
             
             var columnFilters = new List<ColumnFilter>();

@@ -12,6 +12,7 @@ namespace ApplicationAdmin.DtoModels.Order
         public int Discount { get; set; }
         public string Code { get; set; }
         public int BuyerId { get; set; }
+        public string BuyerFullName { get; set; }
         public IList<OrderItemDto> OrderItems { get; set; } = new List<OrderItemDto>();
 
     }
