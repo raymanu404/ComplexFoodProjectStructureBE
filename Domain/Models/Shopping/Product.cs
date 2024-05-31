@@ -16,6 +16,7 @@ namespace Domain.Models.Shopping
         public DateTime DateCreated { get; set; } = DateTime.Now;
         public DateTime DateUpdated { get; set; } = DateTime.Now;
         public bool IsInStock { get; set; }
+        public Price SellingPrice { get; set; }
 
         //one to many
         public ICollection<OrderItem> OrderItems { get; set; } = null!;
