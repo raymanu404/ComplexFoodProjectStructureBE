@@ -14,4 +14,5 @@ public class ProductCreateDto
     public double Price { get; set; }
     public string Image { get; set; } = null!;
     public bool IsInStock { get; set; }
+    public double SellingPrice { get; set; }
 }

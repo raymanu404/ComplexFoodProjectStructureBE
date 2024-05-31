@@ -48,6 +48,11 @@ namespace ApplicationAdmin.Features.Products.Commands.UpdateProduct
             {
                 productToUpdate.Price = new Price(request.Product.Price ?? 0);
             }
+
+            if (request.Product.SellingPrice > 0 && request.Product.SellingPrice != null)
+            {
+                productToUpdate.SellingPrice = new Price(request.Product.SellingPrice);
+            }
             if (!string.IsNullOrWhiteSpace(request.Product.Image))
             {
                 productToUpdate.Image = request.Product.Image;

@@ -40,6 +40,7 @@ public class ProductsAdminController : Controller
         return Ok(products);
     }
 
+    //TODO: update with sellingPrice 
     // POST : products/create
     [HttpPost("create")]
     public async Task<ActionResult<ProductCreateDto>> CreateProduct([FromBody] ProductCreateDto product)
@@ -75,6 +76,7 @@ public class ProductsAdminController : Controller
     }
 
     //PUT : products/{id}
+    //TODO: update with sellingPrice 
     [HttpPut("{productId}")]
     public async Task<ActionResult<ProductDto>> UpdateProduct(int productId, [FromBody] ProductUpdateDto updateProduct)
     {

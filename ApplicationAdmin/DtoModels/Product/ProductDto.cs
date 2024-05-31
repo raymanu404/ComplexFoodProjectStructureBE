@@ -13,5 +13,6 @@ namespace ApplicationAdmin.DtoModels.Product
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
         public bool IsInStock { get; set; }
+        public double SellingPrice { get; set; }
     }
 }
