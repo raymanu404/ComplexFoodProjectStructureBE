@@ -28,6 +28,8 @@ public class GetProductsByCalculusQueryHandler : IRequestHandler<GetProductsByCa
         int totalProducts = 0;
         int totalInStock = 0;
         int totalOutOfStock = 0;
+        double totalMerchantPrice = 0;
+        double totalPrice = 0;
         double totalProfitWithoutVTA = 0;
         double totalProfitWithVTA = 0;
 
@@ -52,7 +54,7 @@ public class GetProductsByCalculusQueryHandler : IRequestHandler<GetProductsByCa
                 InStock = g.Count(p => p.IsInStock),
                 OutOfStock = g.Count(p => !p.IsInStock),
                 TotalPrice = g.Sum(p => p.Price.Value),
-                TotalSellingPrice = g.Sum(p => p.MerchantPrice.Value),
+                TotalMerchantPrice = g.Sum(p => p.MerchantPrice.Value),
                 TotalProfitWithoutVTA = g.Sum(p => p.Price.Value - p.MerchantPrice.Value),
                 TotalProfitWithVTA = g.Sum(p => p.Price.Value - p.MerchantPrice.Value) * withTva
             })
@@ -66,6 +68,8 @@ public class GetProductsByCalculusQueryHandler : IRequestHandler<GetProductsByCa
             totalOutOfStock += item.OutOfStock;
             totalProfitWithoutVTA += item.TotalProfitWithoutVTA;
             totalProfitWithVTA += item.TotalProfitWithVTA;
+            totalMerchantPrice += item.TotalMerchantPrice;
+            totalPrice += item.TotalPrice;
         }
 
         return new Response
@@ -79,7 +83,9 @@ public class GetProductsByCalculusQueryHandler : IRequestHandler<GetProductsByCa
             TotalInStock = totalInStock,
             TotalProfitWithoutVTA = totalProfitWithoutVTA,
             TotalProfitWithVTA = totalProfitWithVTA,
-            TotalOutOfStock = totalOutOfStock
+            TotalOutOfStock = totalOutOfStock,
+            TotalMerchantPrice = totalMerchantPrice,
+            TotalPrice = totalPrice
         };
 
     }

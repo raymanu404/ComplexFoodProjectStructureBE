@@ -14,6 +14,8 @@ public class Response
     public int TotalProducts { get; set; }
     public int TotalInStock { get; set; }
     public int TotalOutOfStock { get; set; }
+    public double TotalPrice { get; set; }
+    public double TotalMerchantPrice { get; set; }
     public double TotalProfitWithoutVTA { get; set; }
     public double TotalProfitWithVTA { get; set; }
 
@@ -25,7 +27,7 @@ public class Response
         public int InStock { get; set; }
         public int OutOfStock { get; set; }
         public double TotalPrice { get; set; }
-        public double TotalSellingPrice { get; set; }
+        public double TotalMerchantPrice { get; set; }
         public double TotalProfitWithoutVTA { get; set; }
         public double TotalProfitWithVTA { get; set; }
     }
