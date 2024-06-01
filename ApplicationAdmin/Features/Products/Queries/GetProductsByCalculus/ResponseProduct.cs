@@ -3,17 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationAdmin.Contracts.Abstractions;
 
 namespace ApplicationAdmin.Features.Products.Queries.GetProductsByCalculus;
-public class ResponseProduct
+
+public class Response
 {
-    public string CategoryName { get; set; }
+
+    public ResponseData<ResponseCalculus> CalculusData { get; set; }
     public int TotalProducts { get; set; }
-    public int InStock { get; set; }
-    public int OutOfStock { get; set; }
-    public double TotalPrice { get; set; }
-    public double TotalSellingPrice { get; set; }
-    public double TotalProfit { get; set; }
+    public int TotalInStock { get; set; }
+    public int TotalOutOfStock { get; set; }
     public double TotalProfitWithoutVTA { get; set; }
     public double TotalProfitWithVTA { get; set; }
+
+
+    public class ResponseCalculus
+    {
+        public string CategoryName { get; set; }
+        public int TotalProducts { get; set; }
+        public int InStock { get; set; }
+        public int OutOfStock { get; set; }
+        public double TotalPrice { get; set; }
+        public double TotalSellingPrice { get; set; }
+        public double TotalProfitWithoutVTA { get; set; }
+        public double TotalProfitWithVTA { get; set; }
+    }
 }

@@ -95,10 +95,12 @@ public class ProductsAdminController : Controller
 
     //GET: Calculate Products data
     [HttpGet("calculus_products")]
-    public async Task<ActionResult<IList<ProductDto>>> GetAllCalculusData()
+    public async Task<ActionResult<IList<ProductDto>>> GetAllCalculusData([FromQuery] ProductCalculusFromBody? product)
     {
         var queryGetAllProducts = new GetProductsByCalculusQuery
         {
+            startDate = product.startDate,
+            endDate = product.endDate
         };
 
         var products = await _mediator.Send(queryGetAllProducts);

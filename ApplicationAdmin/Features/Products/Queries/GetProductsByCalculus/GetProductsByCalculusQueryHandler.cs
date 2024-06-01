@@ -4,9 +4,12 @@ using ApplicationAdmin.Contracts.Persistence;
 using AutoMapper;
 using HelperLibrary.Constants;
 using Microsoft.EntityFrameworkCore;
+using Domain.Models.Shopping;
+using System.Linq.Expressions;
+using static ApplicationAdmin.Features.Products.Queries.GetProductsByCalculus.Response;
 
 namespace ApplicationAdmin.Features.Products.Queries.GetProductsByCalculus;
-public class GetProductsByCalculusQueryHandler : IRequestHandler<GetProductsByCalculusQuery, ResponseData<ResponseProduct>>
+public class GetProductsByCalculusQueryHandler : IRequestHandler<GetProductsByCalculusQuery, Response>
 {
     private readonly IUnitOfWorkAdmin _unitOfWork;
     private readonly IMapper _mapper;
@@ -16,19 +19,35 @@ public class GetProductsByCalculusQueryHandler : IRequestHandler<GetProductsByCa
         _mapper = mapper;
 
     }
-    public async Task<ResponseData<ResponseProduct>> Handle(GetProductsByCalculusQuery request, CancellationToken cancellationToken)
+    public async Task<Response> Handle(GetProductsByCalculusQuery request, CancellationToken cancellationToken)
     {
 
-        const double withoutTva = 1 - Constants.TVA;
-        const double withTva = 1 + Constants.TVA;
+        const double withTva = 1 - Constants.TVA;
+
+        var startDate = request.startDate;
+        var endDate = request.endDate;
+
+        int totalProducts = 0;
+        int totalInStock = 0;
+        int totalOutOfStock = 0;
+        double totalProfitWithoutVTA = 0;
+        double totalProfitWithVTA = 0;
+
+
+        Expression<Func<Product, bool>>? predicate = null;
+
+        if (endDate >= startDate)
+        {
+            predicate = p => p.DateCreated >= startDate && p.DateCreated <= endDate;
+        }
 
         var products = await _unitOfWork.Products.GetQueryable()
-            //.Where(p => p.DateCreated >= startDate && p.DateCreated <= endDate)
+            .Where(predicate)
             .ToListAsync(cancellationToken: cancellationToken);
 
         var productsGroupedByCategory = products
             .GroupBy(p => p.Category)
-            .Select(g => new ResponseProduct
+            .Select(g => new ResponseCalculus
             {
                 CategoryName = g.Key.ToString(),
                 TotalProducts = g.Count(),
@@ -36,17 +55,33 @@ public class GetProductsByCalculusQueryHandler : IRequestHandler<GetProductsByCa
                 OutOfStock = g.Count(p => !p.IsInStock),
                 TotalPrice = g.Sum(p => p.Price.Value),
                 TotalSellingPrice = g.Sum(p => p.SellingPrice.Value),
-                TotalProfit = g.Sum(p =>  p.Price.Value - p.SellingPrice.Value),
-                TotalProfitWithoutVTA = g.Sum(p => p.Price.Value - p.SellingPrice.Value) * withoutTva, // Assuming 20% VTA
-                TotalProfitWithVTA = g.Sum(p => p.Price.Value - p.SellingPrice.Value) * withTva  // Assuming 20% VTA
+                TotalProfitWithoutVTA = g.Sum(p => p.Price.Value - p.SellingPrice.Value),
+                TotalProfitWithVTA = g.Sum(p => p.Price.Value - p.SellingPrice.Value) * withTva
             })
             .ToList();
 
 
-        return new ResponseData<ResponseProduct>
+        foreach (var item in productsGroupedByCategory)
         {
-            Data = productsGroupedByCategory,
-            TotalCount = productsGroupedByCategory.Count,
+            totalProducts += item.TotalProducts;
+            totalInStock += item.InStock;
+            totalOutOfStock += item.OutOfStock;
+            totalProfitWithoutVTA += item.TotalProfitWithoutVTA;
+            totalProfitWithVTA += item.TotalProfitWithVTA;
+        }
+
+        return new Response
+        {
+            CalculusData = new()
+            {
+                Data = productsGroupedByCategory,
+                TotalCount = productsGroupedByCategory.Count
+            },
+            TotalProducts = totalProducts,
+            TotalInStock = totalInStock,
+            TotalProfitWithoutVTA = totalProfitWithoutVTA,
+            TotalProfitWithVTA = totalProfitWithVTA,
+            TotalOutOfStock = totalOutOfStock
         };
 
     }
