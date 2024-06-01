@@ -12,11 +12,9 @@ namespace ApplicationAdmin.Features.Products.Queries.GetProductsByCalculus;
 public class GetProductsByCalculusQueryHandler : IRequestHandler<GetProductsByCalculusQuery, Response>
 {
     private readonly IUnitOfWorkAdmin _unitOfWork;
-    private readonly IMapper _mapper;
     public GetProductsByCalculusQueryHandler(IUnitOfWorkAdmin unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
-        _mapper = mapper;
 
     }
     public async Task<Response> Handle(GetProductsByCalculusQuery request, CancellationToken cancellationToken)
