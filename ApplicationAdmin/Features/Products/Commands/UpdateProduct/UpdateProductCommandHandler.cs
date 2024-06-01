@@ -49,9 +49,9 @@ namespace ApplicationAdmin.Features.Products.Commands.UpdateProduct
                 productToUpdate.Price = new Price(request.Product.Price ?? 0);
             }
 
-            if (request.Product.SellingPrice > 0 && request.Product.SellingPrice != null)
+            if (request.Product.MerchantPrice > 0 && request.Product.MerchantPrice != null)
             {
-                productToUpdate.SellingPrice = new Price(request.Product.SellingPrice);
+                productToUpdate.MerchantPrice = new Price(request.Product.MerchantPrice);
             }
             if (!string.IsNullOrWhiteSpace(request.Product.Image))
             {

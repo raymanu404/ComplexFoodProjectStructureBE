@@ -14,7 +14,7 @@ public class MappingProfile : Profile
 
         CreateMap<Product, ProductDto>()
             .ForMember(x => x.Price, dest => dest.MapFrom(x => x.Price.Value))
-            .ForMember(x => x.SellingPrice, dest => dest.MapFrom(x => x.SellingPrice.Value))
+            .ForMember(x => x.MerchantPrice, dest => dest.MapFrom(x => x.MerchantPrice.Value))
             .ReverseMap();
 
         CreateMap<ProductUpdateDto, ProductDto>()
@@ -22,7 +22,7 @@ public class MappingProfile : Profile
 
         CreateMap<Product, ProductCreateDto>()
             .ForMember(x => x.Price, dest => dest.MapFrom(x => x.Price.Value))
-            .ForMember(x => x.SellingPrice, dest => dest.MapFrom(x => x.SellingPrice.Value))
+            .ForMember(x => x.MerchantPrice, dest => dest.MapFrom(x => x.MerchantPrice.Value))
             .ReverseMap();
 
         CreateMap<Order, OrderDto>()

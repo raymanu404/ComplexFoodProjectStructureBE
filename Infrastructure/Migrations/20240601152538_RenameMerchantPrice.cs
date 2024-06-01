@@ -5,27 +5,24 @@
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class AddSellingPriceColumn : Migration
+    public partial class RenameMerchantPrice : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<double>(
-                name: "MerchantPrice",
+            migrationBuilder.RenameColumn(
+                name: "SellingPrice",
                 table: "Products",
-                type: "float",
-                nullable: false,
-                defaultValue: 0.0);
-
-            migrationBuilder.Sql("UPDATE Products SET MerchantPrice = Price * 0.25");
+                newName: "MerchantPrice");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
+            migrationBuilder.RenameColumn(
                 name: "MerchantPrice",
-                table: "Products");
+                table: "Products",
+                newName: "SellingPrice");
         }
     }
 }

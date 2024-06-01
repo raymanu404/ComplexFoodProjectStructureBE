@@ -29,8 +29,8 @@ public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
             .IsRequired(false);
 
         productBuilder
-            .Property(x => x.SellingPrice)
+            .Property(x => x.MerchantPrice)
             .HasConversion(v => v.Value, v => new Price(v))
-            .HasColumnName("SellingPrice");
+            .HasColumnName("MerchantPrice");
     }
 }

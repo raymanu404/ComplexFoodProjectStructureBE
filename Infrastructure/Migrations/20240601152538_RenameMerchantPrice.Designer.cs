@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240531185228_AddSellingPriceColumn")]
-    partial class AddSellingPriceColumn
+    [Migration("20240601152538_RenameMerchantPrice")]
+    partial class RenameMerchantPrice
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -326,13 +326,13 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("IsInStock")
                         .HasColumnType("bit");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float")
-                        .HasColumnName("Price");
-
                     b.Property<double>("MerchantPrice")
                         .HasColumnType("float")
                         .HasColumnName("MerchantPrice");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float")
+                        .HasColumnName("Price");
 
                     b.Property<string>("Title")
                         .IsRequired()

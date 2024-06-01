@@ -52,9 +52,9 @@ public class GetProductsByCalculusQueryHandler : IRequestHandler<GetProductsByCa
                 InStock = g.Count(p => p.IsInStock),
                 OutOfStock = g.Count(p => !p.IsInStock),
                 TotalPrice = g.Sum(p => p.Price.Value),
-                TotalSellingPrice = g.Sum(p => p.SellingPrice.Value),
-                TotalProfitWithoutVTA = g.Sum(p => p.Price.Value - p.SellingPrice.Value),
-                TotalProfitWithVTA = g.Sum(p => p.Price.Value - p.SellingPrice.Value) * withTva
+                TotalSellingPrice = g.Sum(p => p.MerchantPrice.Value),
+                TotalProfitWithoutVTA = g.Sum(p => p.Price.Value - p.MerchantPrice.Value),
+                TotalProfitWithVTA = g.Sum(p => p.Price.Value - p.MerchantPrice.Value) * withTva
             })
             .ToList();
 

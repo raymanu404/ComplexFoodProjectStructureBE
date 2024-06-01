@@ -323,13 +323,13 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("IsInStock")
                         .HasColumnType("bit");
 
+                    b.Property<double>("MerchantPrice")
+                        .HasColumnType("float")
+                        .HasColumnName("MerchantPrice");
+
                     b.Property<double>("Price")
                         .HasColumnType("float")
                         .HasColumnName("Price");
-
-                    b.Property<double>("SellingPrice")
-                        .HasColumnType("float")
-                        .HasColumnName("SellingPrice");
 
                     b.Property<string>("Title")
                         .IsRequired()
