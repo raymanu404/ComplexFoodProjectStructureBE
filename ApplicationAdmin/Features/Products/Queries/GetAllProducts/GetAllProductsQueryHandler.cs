@@ -74,7 +74,6 @@ namespace ApplicationAdmin.Features.Products.Queries.GetAllProducts
             {
                 Data = _mapper.Map<List<ProductDto>>(filteredData),
                 TotalCount = count,
-                CurrentPage = req.PageNumber
             };
         }
 

@@ -74,7 +74,6 @@ namespace ApplicationAdmin.Features.Orders.Queries.GetAllOrders
             {
                 Data = dataMapped,
                 TotalCount = count,
-                CurrentPage = req.PageNumber
             };
         }
     }
