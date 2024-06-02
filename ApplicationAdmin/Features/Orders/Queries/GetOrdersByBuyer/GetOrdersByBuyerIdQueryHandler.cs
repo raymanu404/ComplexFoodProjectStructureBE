@@ -69,7 +69,6 @@ namespace ApplicationAdmin.Features.Orders.Queries.GetOrdersByBuyer
             {
                 Data = _mapper.Map<List<OrderDto>>(filteredData),
                 TotalCount = count,
-                CurrentPage = req.PageNumber
             };
         }
     }

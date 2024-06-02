@@ -3,6 +3,8 @@ using ApplicationAdmin.Features.Products.Commands.CreateProduct;
 using ApplicationAdmin.Features.Products.Commands.DeleteProduct;
 using ApplicationAdmin.Features.Products.Commands.UpdateProduct;
 using ApplicationAdmin.Features.Products.Queries.GetAllProducts;
+using ApplicationAdmin.Features.Products.Queries.GetMostOrderedProducts;
+using ApplicationAdmin.Features.Products.Queries.GetProductsByCalculus;
 using ApplicationAdmin.Profiles;
 using HelperLibrary.Classes;
 using HelperLibrary.Constants;
@@ -88,5 +90,32 @@ public class ProductsAdminController : Controller
         if (updateP == StatusCodeEnum.Success) return Ok();
         if (updateP == StatusCodeEnum.NotFound) return NotFound();
         return BadRequest();
+    }
+
+    //GET: Calculate Products data
+    [HttpGet("products_statistics")]
+    public async Task<ActionResult<IList<ProductDto>>> GetAllCalculusData([FromQuery] ProductCalculusFromBody? product)
+    {
+        var queryGetAllProducts = new GetProductsByCalculusQuery
+        {
+            startDate = product.startDate,
+            endDate = product.endDate 
+        };
+
+        var products = await _mediator.Send(queryGetAllProducts);
+        return Ok(products);
+    }
+
+    //GET: Most ordered products
+    [HttpGet("most_ordered_products")]
+    public async Task<ActionResult<IList<ProductDto>>> GetMostOrderedProducts()
+    {
+        var query= new GetMostOrderedProductsQuery
+        {
+     
+        };
+
+        var products = await _mediator.Send(query);
+        return Ok(products);
     }
 }

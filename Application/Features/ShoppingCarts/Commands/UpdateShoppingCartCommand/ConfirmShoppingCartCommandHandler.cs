@@ -120,6 +120,8 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
 
                                 };
 
+                                getProduct.MostOrderedProductCount += getShoppingItem.Cantity.Value; //increase this value for that specific product
+
                                 var newOrderItem = _mapper.Map<OrderItem>(newOrderItemDto);
                                 await _unitOfWork.OrderItems.AddAsync(newOrderItem);
 

@@ -13,7 +13,6 @@ namespace Infrastructure.Repositories.Admin
             _context = context;
         }
 
-        //TODO: for now we don't consume this method, if yes, add pagination, or get compute ingredients from this
         public async Task<List<OrderItem>> GetAllItems() => await _context.OrderItems.ToListAsync();
 
         public async Task<List<OrderItem>> GetAllItemsByOrderId(int orderId) => await _context.OrderItems.Where(x => x.OrderId == orderId).ToListAsync();

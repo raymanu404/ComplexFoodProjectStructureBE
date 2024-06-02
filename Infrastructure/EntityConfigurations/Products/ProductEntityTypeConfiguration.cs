@@ -27,5 +27,10 @@ public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
         productBuilder
             .Property(x => x.Image)
             .IsRequired(false);
+
+        productBuilder
+            .Property(x => x.MerchantPrice)
+            .HasConversion(v => v.Value, v => new Price(v))
+            .HasColumnName("MerchantPrice");
     }
 }

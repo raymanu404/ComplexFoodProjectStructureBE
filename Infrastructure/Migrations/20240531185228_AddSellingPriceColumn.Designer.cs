@@ -4,6 +4,7 @@ using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20240531185228_AddSellingPriceColumn")]
+    partial class AddSellingPriceColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -323,16 +326,13 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("IsInStock")
                         .HasColumnType("bit");
 
-                    b.Property<double>("MerchantPrice")
-                        .HasColumnType("float")
-                        .HasColumnName("MerchantPrice");
-
-                    b.Property<int>("MostOrderedProductCount")
-                        .HasColumnType("int");
-
                     b.Property<double>("Price")
                         .HasColumnType("float")
                         .HasColumnName("Price");
+
+                    b.Property<double>("MerchantPrice")
+                        .HasColumnType("float")
+                        .HasColumnName("MerchantPrice");
 
                     b.Property<string>("Title")
                         .IsRequired()
