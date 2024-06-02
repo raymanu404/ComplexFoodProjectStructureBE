@@ -12,7 +12,7 @@ namespace ApplicationAdmin.Features.Products.Queries.GetProductsByCalculus;
 public class GetProductsByCalculusQueryHandler : IRequestHandler<GetProductsByCalculusQuery, Response>
 {
     private readonly IUnitOfWorkAdmin _unitOfWork;
-    public GetProductsByCalculusQueryHandler(IUnitOfWorkAdmin unitOfWork, IMapper mapper)
+    public GetProductsByCalculusQueryHandler(IUnitOfWorkAdmin unitOfWork)
     {
         _unitOfWork = unitOfWork;
 
@@ -32,7 +32,6 @@ public class GetProductsByCalculusQueryHandler : IRequestHandler<GetProductsByCa
         double totalPrice = 0;
         double totalProfitWithoutVTA = 0;
         double totalProfitWithVTA = 0;
-
 
         Expression<Func<Product, bool>>? predicate = null;
 

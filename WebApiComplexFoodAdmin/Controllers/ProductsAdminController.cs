@@ -3,6 +3,7 @@ using ApplicationAdmin.Features.Products.Commands.CreateProduct;
 using ApplicationAdmin.Features.Products.Commands.DeleteProduct;
 using ApplicationAdmin.Features.Products.Commands.UpdateProduct;
 using ApplicationAdmin.Features.Products.Queries.GetAllProducts;
+using ApplicationAdmin.Features.Products.Queries.GetMostOrderedProducts;
 using ApplicationAdmin.Features.Products.Queries.GetProductsByCalculus;
 using ApplicationAdmin.Profiles;
 using HelperLibrary.Classes;
@@ -41,7 +42,6 @@ public class ProductsAdminController : Controller
         return Ok(products);
     }
 
-    //TODO: update with sellingPrice 
     // POST : products/create
     [HttpPost("create")]
     public async Task<ActionResult<ProductCreateDto>> CreateProduct([FromBody] ProductCreateDto product)
@@ -77,7 +77,6 @@ public class ProductsAdminController : Controller
     }
 
     //PUT : products/{id}
-    //TODO: update with sellingPrice 
     [HttpPut("{productId}")]
     public async Task<ActionResult<ProductDto>> UpdateProduct(int productId, [FromBody] ProductUpdateDto updateProduct)
     {
@@ -104,6 +103,19 @@ public class ProductsAdminController : Controller
         };
 
         var products = await _mediator.Send(queryGetAllProducts);
+        return Ok(products);
+    }
+
+    //GET: Most ordered products
+    [HttpGet("most_ordered_products")]
+    public async Task<ActionResult<IList<ProductDto>>> GetMostOrderedProducts()
+    {
+        var query= new GetMostOrderedProductsQuery
+        {
+     
+        };
+
+        var products = await _mediator.Send(query);
         return Ok(products);
     }
 }

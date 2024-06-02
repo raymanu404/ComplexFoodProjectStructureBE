@@ -1,6 +1,7 @@
 ﻿using ApplicationAdmin.DtoModels.Order;
 using ApplicationAdmin.DtoModels.OrderItem;
 using ApplicationAdmin.DtoModels.Product;
+using ApplicationAdmin.Features.Products.Queries.GetMostOrderedProducts;
 using AutoMapper;
 using Domain.Models.Ordering;
 using Domain.Models.Shopping;
@@ -13,6 +14,11 @@ public class MappingProfile : Profile
     {
 
         CreateMap<Product, ProductDto>()
+            .ForMember(x => x.Price, dest => dest.MapFrom(x => x.Price.Value))
+            .ForMember(x => x.MerchantPrice, dest => dest.MapFrom(x => x.MerchantPrice.Value))
+            .ReverseMap();
+
+        CreateMap<Product, Response.ProductDto>()
             .ForMember(x => x.Price, dest => dest.MapFrom(x => x.Price.Value))
             .ForMember(x => x.MerchantPrice, dest => dest.MapFrom(x => x.MerchantPrice.Value))
             .ReverseMap();

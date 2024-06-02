@@ -100,8 +100,6 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
                     if (responseOrderId > 0)
                     {
 
-                        //TODO: update MostOrderedProductCount from products with product that it was ordered by productId (count on for each product)
-
                         //inainte sa stergem cartul nostru ar trebui sa creeam orderItems-urile pentru buyer-ul nostru in functie de ShoppingItems
                         var getShoppingItemsByCartIdList = await _unitOfWork.ShoppingItems.GetAllShoppingItemsByShoppingCartId(getCartByBuyerId.Id);
                         foreach (var getShoppingItem in getShoppingItemsByCartIdList)
@@ -121,6 +119,8 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
                                     ProductId = getProduct.Id
 
                                 };
+
+                                getProduct.MostOrderedProductCount += getShoppingItem.Cantity.Value; //increase this value for that specific product
 
                                 var newOrderItem = _mapper.Map<OrderItem>(newOrderItemDto);
                                 await _unitOfWork.OrderItems.AddAsync(newOrderItem);
