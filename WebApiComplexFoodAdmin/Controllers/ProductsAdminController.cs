@@ -93,7 +93,7 @@ public class ProductsAdminController : Controller
     }
 
     //GET: Calculate Products data
-    [HttpGet("calculus_products")]
+    [HttpGet("products_statistics")]
     public async Task<ActionResult<IList<ProductDto>>> GetAllCalculusData([FromQuery] ProductCalculusFromBody? product)
     {
         var queryGetAllProducts = new GetProductsByCalculusQuery

@@ -3,6 +3,8 @@ using ApplicationAdmin.Features.Orders.Commands.UpdateOrderCommand;
 using ApplicationAdmin.Features.Orders.Queries.GetAllOrders;
 using ApplicationAdmin.Features.Orders.Queries.GetOrderById;
 using ApplicationAdmin.Features.Orders.Queries.GetOrdersByBuyer;
+using ApplicationAdmin.Features.Orders.Queries.GetOrdersStatistics;
+using ApplicationAdmin.Features.Products.Queries.GetProductsByCalculus;
 using HelperLibrary.Classes;
 using HelperLibrary.Constants;
 using MediatR;
@@ -76,6 +78,20 @@ namespace WebApiComplexFoodAdmin.Controllers
             if (response == StatusCodeEnum.NotFound) return Ok(response);
 
             return BadRequest();
+
+        }
+
+        [HttpGet("statistics")]
+        public async Task<ActionResult<OrderDto>> GetOrdersStatistics([FromQuery] Request? req)
+        {
+            var query = new GetOrdersStatisticsQuery()
+            {
+               startDate = req.startDate,
+               endDate = req.endDate,
+            };
+
+            var order = await _mediator.Send(query);
+            return Ok(order);
 
         }
     }
