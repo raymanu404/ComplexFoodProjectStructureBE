@@ -28,6 +28,7 @@ public class GetProductsByCalculusQueryHandler : IRequestHandler<GetProductsByCa
         int totalProducts = 0;
         int totalInStock = 0;
         int totalOutOfStock = 0;
+        int totalMostOrderedProducts = 0;
         double totalMerchantPrice = 0;
         double totalPrice = 0;
         double totalProfitWithoutVTA = 0;
@@ -52,10 +53,11 @@ public class GetProductsByCalculusQueryHandler : IRequestHandler<GetProductsByCa
                 TotalProducts = g.Count(),
                 InStock = g.Count(p => p.IsInStock),
                 OutOfStock = g.Count(p => !p.IsInStock),
-                TotalPrice = g.Sum(p => p.Price.Value),
-                TotalMerchantPrice = g.Sum(p => p.MerchantPrice.Value),
-                TotalProfitWithoutVTA = g.Sum(p => p.Price.Value - p.MerchantPrice.Value),
-                TotalProfitWithVTA = g.Sum(p => p.Price.Value - p.MerchantPrice.Value) * withTva
+                TotalPrice = g.Sum(p => p.Price.Value * p.MostOrderedProductCount),
+                TotalMerchantPrice = g.Sum(p => p.MerchantPrice.Value * p.MostOrderedProductCount),
+                TotalProfitWithoutVTA = g.Sum(p => (p.Price.Value - p.MerchantPrice.Value) * p.MostOrderedProductCount),
+                TotalProfitWithVTA = g.Sum(p => (p.Price.Value - p.MerchantPrice.Value) * p.MostOrderedProductCount) * withTva,
+                TotalOrderedProducts = g.Sum(p => p.MostOrderedProductCount)
             })
             .ToList();
 
@@ -69,6 +71,7 @@ public class GetProductsByCalculusQueryHandler : IRequestHandler<GetProductsByCa
             totalProfitWithVTA += item.TotalProfitWithVTA;
             totalMerchantPrice += item.TotalMerchantPrice;
             totalPrice += item.TotalPrice;
+            totalMostOrderedProducts += item.TotalOrderedProducts;
         }
 
         return new Response
@@ -84,7 +87,9 @@ public class GetProductsByCalculusQueryHandler : IRequestHandler<GetProductsByCa
             TotalProfitWithVTA = totalProfitWithVTA,
             TotalOutOfStock = totalOutOfStock,
             TotalMerchantPrice = totalMerchantPrice,
-            TotalPrice = totalPrice
+            TotalPrice = totalPrice,
+            TotalOrderedProducts = totalMostOrderedProducts
+
         };
 
     }

@@ -99,7 +99,7 @@ public class ProductsAdminController : Controller
         var queryGetAllProducts = new GetProductsByCalculusQuery
         {
             startDate = product.startDate,
-            endDate = product.endDate
+            endDate = product.endDate 
         };
 
         var products = await _mediator.Send(queryGetAllProducts);

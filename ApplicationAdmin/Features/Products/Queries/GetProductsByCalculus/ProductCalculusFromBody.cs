@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace ApplicationAdmin.Features.Products.Queries.GetProductsByCalculus;
 public class ProductCalculusFromBody
 {
-    public DateTime startDate { get; set; } = DateTime.Now.Date;
+    public DateTime startDate { get; set; } = new DateTime(2024, 1, 1);
     public DateTime endDate { get; set; } = DateTime.Now;
 }

@@ -4,7 +4,7 @@ using Domain.Models.Enums;
 namespace ApplicationAdmin.Features.Products.Queries.GetMostOrderedProducts;
 public class Response
 {
-    public ResponseData<ProductDto> Products { get; set; }
+    public ResponseData<ProductDto> Data { get; set; }
 
     public class ProductDto
     {

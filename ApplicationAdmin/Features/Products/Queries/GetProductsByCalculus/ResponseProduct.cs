@@ -18,6 +18,7 @@ public class Response
     public double TotalMerchantPrice { get; set; }
     public double TotalProfitWithoutVTA { get; set; }
     public double TotalProfitWithVTA { get; set; }
+    public int TotalOrderedProducts { get; set; }
 
 
     public class ResponseCalculus
@@ -30,5 +31,6 @@ public class Response
         public double TotalMerchantPrice { get; set; }
         public double TotalProfitWithoutVTA { get; set; }
         public double TotalProfitWithVTA { get; set; }
+        public int TotalOrderedProducts { get; set; }
     }
 }

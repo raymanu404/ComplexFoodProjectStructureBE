@@ -25,7 +25,7 @@ public class GetMostOrderedProductsQueryHandler : IRequestHandler<GetMostOrdered
 
         return new Response
         {
-            Products = new()
+            Data = new()
             {
                 TotalCount = products.Count,
                 Data = _mapper.Map<List<Response.ProductDto>>(products)
