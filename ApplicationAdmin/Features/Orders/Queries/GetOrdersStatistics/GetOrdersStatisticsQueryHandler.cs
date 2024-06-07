@@ -21,7 +21,7 @@ public class GetOrdersStatisticsQueryHandler : IRequestHandler<GetOrdersStatisti
         var startDate = request.startDate;
         var endDate = request.endDate;
 
-        var orders = await _unitOfWork.Orders.GetQueryable()
+        var ordersByPeriod = await _unitOfWork.Orders.GetQueryable()
             .Include(o => o.OrderItems)
             .ThenInclude(oi => oi.Product)
             .Where(o => o.DatePlaced >= startDate && o.DatePlaced <= endDate)
@@ -32,7 +32,7 @@ public class GetOrdersStatisticsQueryHandler : IRequestHandler<GetOrdersStatisti
             .ThenInclude(oi => oi.Product)
             .ToListAsync(cancellationToken);
 
-        var totalMerchantPrice = orders
+        var totalMerchantPriceByPeriod = ordersByPeriod
             .SelectMany(o => o.OrderItems)
             .Sum(oi => oi.Cantity.Value * oi.Product.MerchantPrice.Value);
 
@@ -42,10 +42,10 @@ public class GetOrdersStatisticsQueryHandler : IRequestHandler<GetOrdersStatisti
                     .Sum(oi => oi.Cantity.Value * oi.Product.MerchantPrice.Value);
 
 
-        var totalOrders = orders.Count;
-        var totalPrice = orders.Sum(o => o.TotalPrice.Value);
-        var totalProfitWithoutVTA = totalPrice - totalMerchantPrice;
-        var totalProfitWithVTA = totalProfitWithoutVTA * withTva;
+        var totalOrdersByPeriod = ordersByPeriod.Count;
+        var totalPriceByPeriod = ordersByPeriod.Sum(o => o.TotalPrice.Value);
+        var totalProfitWithoutVTAByPeriod = totalPriceByPeriod - totalMerchantPriceByPeriod;
+        var totalProfitWithVTAByPeriod = totalProfitWithoutVTAByPeriod * withTva;
 
 
         var totalDataOrders = totalOrdersList.Count;
@@ -56,20 +56,21 @@ public class GetOrdersStatisticsQueryHandler : IRequestHandler<GetOrdersStatisti
 
         var dataInPeriodOfTime = new DataInPeriodOfTime()
         {
-            TotalOrders = totalOrders,
-            TotalPrice = totalPrice,
-            TotalProfitWithVTA = totalProfitWithVTA,
-            TotalProfitWithoutVTA = totalProfitWithoutVTA,
-            TotalMerchantPrice = totalMerchantPrice
+            TotalOrders = totalOrdersByPeriod,
+            TotalPrice = totalPriceByPeriod,
+            TotalMerchantPrice = totalMerchantPriceByPeriod,
+            TotalProfitWithoutVTA = totalProfitWithoutVTAByPeriod,
+            TotalProfitWithVTA = totalProfitWithVTAByPeriod
+
         };
 
         var totalData = new TotalData()
         {
             TotalOrders = totalDataOrders,
             TotalPrice = totalDataPrice,
-            TotalProfitWithVTA = totalDataProfitWithVTA,
+            TotalMerchantPrice = totalDataMerchantPrice,
             TotalProfitWithoutVTA = totalDataProfitWithoutVTA,
-            TotalMerchantPrice = totalDataProfitWithVTA
+            TotalProfitWithVTA = totalDataProfitWithVTA,
         };
 
         var percentages = CalculatePercentages(dataInPeriodOfTime, totalData);

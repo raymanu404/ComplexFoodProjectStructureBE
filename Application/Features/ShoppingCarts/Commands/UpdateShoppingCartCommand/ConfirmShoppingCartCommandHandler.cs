@@ -62,7 +62,7 @@ namespace Application.Features.ShoppingCarts.Commands.UpdateShoppingCartCommand
 
                             }
 
-                            discountTotalPrice = getCartByBuyerId.TotalPrice.Value - getCartByBuyerId.TotalPrice.Value * discount / 100 - PRICE_PER_COUPON;
+                            discountTotalPrice = getCartByBuyerId.TotalPrice.Value - (getCartByBuyerId.TotalPrice.Value * discount / 100) - PRICE_PER_COUPON;
                             _unitOfWork.Coupons.Delete(couponDto);
 
                         }
